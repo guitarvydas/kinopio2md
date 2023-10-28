@@ -166,12 +166,17 @@ cell_from_elem :: proc(doc: ^xml.Document, elem: xml.Element, user_object_parent
             }
         }
     }
-    if (cell.type == .Arrow && cell.mxgraph_source == "") {
-      fmt.println ("\n###        arrow has no source")
-      fmt.println (cell)
+    if (cell.type == .Arrow && cell.mxgraph_source == "" && cell.mxgraph_target == "") {
+	fmt.println ("\n*** Error: *** arrow is completely disconnected")
+	fmt.println (cell)
+    } else if (cell.type == .Arrow && cell.mxgraph_source == "") {
+	fmt.println ("\n*** Error: *** arrow has no source")
+	fmt.println (cell)
+	fmt.printf ("to: %v\n", cell.mxgraph_target)
     } else if (cell.type == .Arrow && cell.mxgraph_target == "") {
-      fmt.println ("\n###        arrow has no target")
-      fmt.println (cell)
+	fmt.println ("\n*** Error: *** arrow has no target")
+	fmt.println (cell)
+	fmt.printf ("from: %v\n", cell.mxgraph_source)
     }
     return cell
 }

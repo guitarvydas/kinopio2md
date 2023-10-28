@@ -1,4 +1,4 @@
-package top
+package kinopio2md
 
 import "debug"
 
@@ -14,7 +14,6 @@ import reg "registry0d"
 import "process"
 import "syntax"
 import zd "0d"
-import user "user0d"
 import leaf "leaf0d"
 
 main :: proc() {
@@ -47,7 +46,7 @@ main :: proc() {
         instantiate = leaf.stdout_instantiate,
     })
 
-    user.components (&leaves)
+    components (&leaves)
 
     regstry := reg.make_component_registry(leaves[:], diagram_source_file)
 
@@ -74,7 +73,7 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 
 
 inject :: proc (main_container : ^zd.Eh) {
-    p := zd.new_datum_string ("main.odin")
+    p := zd.new_datum_string ("test.json")
     msg := zd.make_message("input", p, zd.make_cause (main_container, nil) )
     main_container.handler(main_container, msg)
 }
@@ -102,3 +101,36 @@ dump_outputs :: proc (main_container : ^zd.Eh) {
 dump_stats :: proc (pregstry : ^reg.Component_Registry) {
     reg.print_stats (pregstry)
 }
+
+
+////////
+components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
+    append(leaves, reg.Leaf_Template { name = "1then2", instantiate = leaf.deracer_instantiate })
+    append(leaves, reg.Leaf_Template { name = "?", instantiate = leaf.probe_instantiate })
+    append(leaves, reg.Leaf_Template { name = "trash", instantiate = leaf.trash_instantiate })
+
+    // for ohmjs
+    append(leaves, reg.Leaf_Template { name = "HardCodedGrammar", instantiate = leaf.hard_coded_rwr_grammar_instantiate })
+    append(leaves, reg.Leaf_Template { name = "HardCodedSemantics", instantiate = leaf.hard_coded_rwr_semantics_instantiate })
+    append(leaves, reg.Leaf_Template { name = "HardCodedSupport", instantiate = leaf.hard_coded_rwr_support_instantiate })
+    append(leaves, reg.Leaf_Template { name = "Bang", instantiate = leaf.bang_instantiate })
+    append(leaves, reg.Leaf_Template { name = "concat", instantiate = leaf.concat_instantiate })
+    append(leaves, reg.Leaf_Template { name = "OhmJS", instantiate = leaf.ohmjs_instantiate })
+
+    // for RT front end
+    append(leaves, reg.Leaf_Template { name = "'Word'", instantiate = leaf.word_instantiate })
+    append(leaves, reg.Leaf_Template { name = "'rt/word.ohm'", instantiate = leaf.wordohm_instantiate })
+    append(leaves, reg.Leaf_Template { name = "'rt/word.sem.js'", instantiate = leaf.wordjs_instantiate })
+
+    append(leaves, reg.Leaf_Template { name = "'RWR'", instantiate = leaf.rwr_instantiate })
+    append(leaves, reg.Leaf_Template { name = "'rwr/rwr.ohm'", instantiate = leaf.rwrohm_instantiate })
+    append(leaves, reg.Leaf_Template { name = "'rwr/rwr.sem.js'", instantiate = leaf.rwrsemjs_instantiate })
+
+    append(leaves, reg.Leaf_Template { name = "'Escapes'", instantiate = leaf.escapes_instantiate })
+    append(leaves, reg.Leaf_Template { name = "'rt/escapes.ohm'", instantiate = leaf.escapesohm_instantiate })
+    append(leaves, reg.Leaf_Template { name = "'rt/escapes.rwr'", instantiate = leaf.escapesrwr_instantiate })
+    
+    append(leaves, reg.Leaf_Template { name = "fakepipename", instantiate = leaf.fakepipename_instantiate })
+    append(leaves, reg.Leaf_Template { name = "syncfilewrite2", instantiate = leaf.syncfilewrite2_instantiate })
+}
+
