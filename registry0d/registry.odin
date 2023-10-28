@@ -96,10 +96,7 @@ container_instantiator :: proc(reg: ^Component_Registry, owner : ^zd.Eh, decl: s
     {
         for child_decl in decl.children {
             child_instance, ok := get_component_instance(reg, child_decl.name, container)
-            if !ok {
-                fmt.println ("\n###           Can't find component", child_decl.name)
-		fmt.println ()
-            }
+            fmt.assertf (ok, "\n*** Error: Can't find component %v\n", child_decl.name)
             append(&children, child_instance)
             child_id_map[child_decl.id] = child_instance
         }
