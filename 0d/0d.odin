@@ -282,7 +282,15 @@ route :: proc(container: ^Eh, from: ^Eh, message: ^Message) {
             }
 	}
     }
-    fmt.assertf (was_sent, "\n\n!!! message from %v dropped on floor: %v\n%v [%v]\n\n", from.name, message.port, message.datum.asString (message.datum), message.cause)
+    if ! was_sent {
+	fmt.printf ("\n\n*** Error: ***")
+	fmt.printf (" *** message from %v dropped on floor: %v\n%v [%v]\n\n", from.name, message.port, message.datum.asString (message.datum), message.cause)
+	fmt.printf ("\n*** possible connections:")
+	for connector in container.connections {
+	    fmt.printf ("\n\n%v", connector)
+	}
+	fmt.printf ("\n***\n")
+    }
 }
 
 any_child_ready :: proc(container: ^Eh) -> (ready: bool) {
