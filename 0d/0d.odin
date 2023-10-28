@@ -282,7 +282,7 @@ route :: proc(container: ^Eh, from: ^Eh, message: ^Message) {
             }
 	}
     }
-    fmt.assertf (was_sent, "\n\n!!! message from %v dropped on floor: %v %v [%v/%v]\n\n", from.name, message.port, message.datum, message.cause)
+    fmt.assertf (was_sent, "\n\n!!! message from %v dropped on floor: %v\n%v [%v]\n\n", from.name, message.port, message.datum.asString (message.datum), message.cause)
 }
 
 any_child_ready :: proc(container: ^Eh) -> (ready: bool) {
