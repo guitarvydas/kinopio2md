@@ -109,6 +109,11 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, reg.Leaf_Template { name = "?", instantiate = leaf.probe_instantiate })
     append(leaves, reg.Leaf_Template { name = "trash", instantiate = leaf.trash_instantiate })
 
+    append(leaves, reg.Leaf_Template { name = "Low Level Read Text File", instantiate = leaf.low_level_read_text_file_instantiate })
+    append(leaves, reg.Leaf_Template { name = "Read Text From FD", instantiate = leaf.read_text_from_fd_instantiate })
+    append(leaves, reg.Leaf_Template { name = "Open Text File", instantiate = leaf.open_text_file_instantiate })
+    append(leaves, reg.Leaf_Template { name = "Ensure String Datum", instantiate = leaf.ensure_string_datum_instantiate })
+
     // for ohmjs
     append(leaves, reg.Leaf_Template { name = "HardCodedGrammar", instantiate = leaf.hard_coded_rwr_grammar_instantiate })
     append(leaves, reg.Leaf_Template { name = "HardCodedSemantics", instantiate = leaf.hard_coded_rwr_semantics_instantiate })
@@ -132,5 +137,6 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     
     append(leaves, reg.Leaf_Template { name = "fakepipename", instantiate = leaf.fakepipename_instantiate })
     append(leaves, reg.Leaf_Template { name = "syncfilewrite2", instantiate = leaf.syncfilewrite2_instantiate })
+
 }
 

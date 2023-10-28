@@ -532,3 +532,77 @@ syncfilewrite2_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     }
 }
 
+////////
+
+low_level_read_text_file_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    name_with_id := gensym("Low Level Read Text File")
+    return zd.make_leaf (name_with_id, owner, nil, low_level_read_text_file_handle)
+}
+
+low_level_read_text_file_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    fname := msg.datum.data.(string)
+    fd, errnum := os.open (fname)
+    if errnum == 0 {
+	data, success := os.read_entire_file_from_handle (fd)
+	if success {
+	    zd.send_string (eh, "str", transmute(string)data, msg)
+	} else {
+            emsg := fmt.aprintf("read error on file %s", msg.datum.data.(string))
+	    zd.send_string (eh, "error", emsg, msg)
+	}
+    } else {
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.data.(string), errnum)
+	zd.send_string (eh, "error", emsg, msg)
+    }
+}
+
+
+////////
+open_text_file_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    name_with_id := gensym("Open Text File")
+    return zd.make_leaf (name_with_id, owner, nil, open_text_file_handle)
+}
+
+open_text_file_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    fd, errnum := os.open (msg.datum.data.(string))
+    if errnum == 0 {
+	zd.send (eh, "fd", zd.new_datum_handle (fd), msg)
+    } else {
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.data.(string), errnum)
+	zd.send_string (eh, "error", emsg, msg)
+    }
+}
+
+////////
+
+read_text_from_fd_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    name_with_id := gensym("Low Level Read Text From FD")
+    return zd.make_leaf (name_with_id, owner, nil, low_level_read_text_from_fd_handle)
+}
+
+low_level_read_text_from_fd_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    fd := msg.datum.data.(os.Handle)
+    data, success := os.read_entire_file_from_handle (fd)
+    if success {
+	zd.send_string (eh, "str", transmute(string)data, msg)
+    } else {
+        emsg := fmt.aprintf("read error on file %s", msg.datum.data.(string))
+	zd.send_string (eh, "error", emsg, msg)
+    }
+}
+
+////////
+ensure_string_datum_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    name_with_id := gensym("Ensure String Datum")
+    return zd.make_leaf (name_with_id, owner, nil, ensure_string_datum_handle)
+}
+
+ensure_string_datum_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    switch x in msg.datum.data {
+    case string:
+	zd.forward (eh, "output", msg)
+    case:
+	zd.send_string (eh, "error", "ensure: type error (expected a string datum)", msg)
+    }
+}
+
