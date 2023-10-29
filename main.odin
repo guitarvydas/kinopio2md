@@ -89,8 +89,8 @@ print_output :: proc (main_container : ^zd.Eh) {
 // debugging helpers
 
 dump_hierarchy :: proc (main_container : ^zd.Eh) {
-    fmt.println("\n\n--- Hierarchy ---")
-    debug.log_hierarchy (main_container)
+    /* fmt.println("\n\n--- Hierarchy ---") */
+    /* debug.log_hierarchy (main_container) */
 }
 
 dump_outputs :: proc (main_container : ^zd.Eh) {
@@ -119,7 +119,7 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, reg.Leaf_Template { name = "HardCodedSemantics", instantiate = leaf.hard_coded_rwr_semantics_instantiate })
     append(leaves, reg.Leaf_Template { name = "HardCodedSupport", instantiate = leaf.hard_coded_rwr_support_instantiate })
     append(leaves, reg.Leaf_Template { name = "Bang", instantiate = leaf.bang_instantiate })
-    append(leaves, reg.Leaf_Template { name = "concat", instantiate = leaf.concat_instantiate })
+    append(leaves, reg.Leaf_Template { name = "stringconcat", instantiate = leaf.stringconcat_instantiate })
     append(leaves, reg.Leaf_Template { name = "OhmJS", instantiate = leaf.ohmjs_instantiate })
 
     // for RT front end
@@ -138,5 +138,9 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, reg.Leaf_Template { name = "fakepipename", instantiate = leaf.fakepipename_instantiate })
     append(leaves, reg.Leaf_Template { name = "syncfilewrite2", instantiate = leaf.syncfilewrite2_instantiate })
 
+    append(leaves, leaf.string_constant ("KinopioCards"))
+    append(leaves, leaf.string_constant ("cards.ohm"))
+    append(leaves, leaf.string_constant ("cards.rwr"))
+    append(leaves, leaf.string_constant ("support.js"))
 }
 

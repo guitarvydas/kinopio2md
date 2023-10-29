@@ -1,0 +1,14 @@
+KinopioCards {
+
+  SemanticJSON [lb kcards kcolon lb Card+ rb kcomma kconnections kcolon lb Connection+ rb rb] =
+    ‛«lb»«kcards»«kcolon»«lb»«Card+»«rb»«kcomma»«kconnections»«kcolon»«lb»«Connection+»«rb»«rb»’
+
+  Card [ID kcolon lb sid kcolon ID kcomma kname kcolon Text rb kcomma?] =
+    ‛«ID»«kcolon»«lb»«sid»«kcolon»«ID»«kcomma»«kname»«kcolon»«Text»«rb»«kcomma»’
+
+  Connection [ID kcolon lb kid kcolon ID kcomma kfrom kcolon ID kcomma kto kcolon ID kcomma ktype kcolon ID rb kcomma?] = 
+    ‛«ID»«kcolon»«lb»«kid»«kcolon»«ID»«kcomma»«kfrom»«kcolon»«ID»«kcomma»«kto»«kcolon»«ID»«kcomma»«ktype»«kcolon»«ID»«rb»«kcomma»’
+
+  string [dq1 cs* dq2] = ‛«dq1»«cs»«dq2»’
+  s [dq1 str dq2] = ‛«dq1»«str»«dq2»’
+}

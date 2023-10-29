@@ -400,29 +400,38 @@ bang_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 }
 
 ///
-Concat_Instance_Data :: struct {
-    buffer : string,
+StringConcat_Instance_Data :: struct {
+    buffer : string
 }
 
-empty_string := ""
-
-concat_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
-    name_with_id := gensym("concat")
-    instp := new (Concat_Instance_Data)
-    instp.buffer = strings.clone (empty_string)
-    return zd.make_leaf (name_with_id, owner, instp^, concat_handle)
+stringconcat_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    name_with_id := gensym("stringconcat")
+    instp := new (StringConcat_Instance_Data)
+    return zd.make_leaf (name_with_id, owner, instp^, stringconcat_handle)
 }
 
-concat_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    inst := &eh.instance_data.(Concat_Instance_Data)
-    switch (msg.port) {
-    case "str":
-	delete (inst.buffer)
-	inst.buffer = fmt.aprintf ("%s%s", inst.buffer, msg.datum.data.(string))
-    case "flush":
-	zd.send_string (eh, "str", inst.buffer, msg)
-	delete (inst.buffer)
-	inst.buffer = ""
+stringconcat_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    inst := &eh.instance_data.(StringConcat_Instance_Data)
+    switch msg.port {
+    case "1":
+	inst.buffer = strings.clone (msg.datum.data.(string))
+    case "2":
+	s := strings.clone (msg.datum.data.(string))
+	if 0 == len (inst.buffer) && 0 == len (s) {
+	    fmt.printf ("stringconcat %d %d\n", len (inst.buffer), len (s))
+	    fmt.assertf (false, "TODO: something is wrong in stringconcat, both strings are 0 length\n")
+	}
+	concatenated_string : string
+	if 0 == len (inst.buffer) {
+	    concatenated_string = fmt.aprintf ("%s", s)
+	} else if 0 == len (s) {
+	    concatenated_string = fmt.aprintf ("%s", inst.buffer)
+	} else {
+	    concatenated_string = fmt.aprintf ("%s%s", inst.buffer, s)
+	}
+	zd.send_string (eh, "output", concatenated_string, msg)
+     case:
+        fmt.assertf (false, "bad msg.port for stringconcat: %v\n", msg.port)
     }
 }
 
@@ -606,3 +615,28 @@ ensure_string_datum_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     }
 }
 
+////////
+literal_instantiate :: proc (quoted_name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    name_with_id := gensym(quoted_name)
+    pstr := string_dup_to_heap (quoted_name [1:(len (quoted_name) - 1)])
+    return zd.make_leaf (name_with_id, owner, pstr^, literal_handle)
+}
+
+literal_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    zd.send_string (eh, "output", eh.instance_data.(string), msg)
+}
+
+string_constant :: proc (str: string) -> reg.Leaf_Template {
+    quoted_name := fmt.aprintf ("'%s'", str)
+    return reg.Leaf_Template { name = quoted_name, instantiate = literal_instantiate }
+}
+
+string_dup_to_heap :: proc (s : string) -> ^string{
+    heap_s := new (string)
+    heap_s^ = strings.clone (s)
+    return heap_s
+}
+
+////////
+////////
+////////
