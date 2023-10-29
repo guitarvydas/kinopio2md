@@ -323,11 +323,11 @@ print_output_list :: proc(eh: ^Eh) {
     iter := make_fifo_iterator(&eh.output)
     for msg, idx in fifo_iterate(&iter) {
         if idx > 0 {
-            write_string(&sb, ", ")
+            write_string(&sb, ",\n")
         }
 	cause := msg.cause
-        fmt.sbprintf(&sb, "{{«%v» ⎨%v⎬ <- ⟨%v,%v⟩}}", 
-		     msg.port, msg.datum.asString (msg.datum),
+        fmt.sbprintf(&sb, "{{«%v» ⎨%v...⎬ <- ⟨%v,%v⟩}}", 
+		     msg.port, msg.datum.asString (msg.datum)[:9],
 		     cause.who.name, cause.message.port)
     }
     strings.write_rune(&sb, ']')
