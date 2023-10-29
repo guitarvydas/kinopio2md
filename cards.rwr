@@ -1,14 +1,14 @@
 KinopioCards {
 
-  SemanticJSON [lb kcards kcolon lb2 Card+ rb kcomma kconnections kcolon2 lb3 Connection+ rb2 rb3] =
-    ‛«lb»«kcards»«kcolon»«lb2»«Card»«rb»«kcomma»«kconnections»«kcolon2»«lb3»«Connection»«rb2»«rb3»’
+  SemanticJSON [lb kcards kcolon lb2 Cards+ rb kcomma kconnections kcolon2 lb3 Connections+ rb2 rb3] =
+    ‛«Cards»«Connections»’
 
   Card [ID kcolon lb sid kcolon2 ID2 kcomma kname kcolon3 Text rb kcomma2] =
-    ‛«ID»«kcolon»«lb»«sid»«kcolon»«ID2»«kcomma2»«kname»«kcolon3»«Text»«rb»«kcomma2»’
+    ‛\ntext('«ID2»','«Text»').’
 
   Connection [ID kcolon lb kid kcolon2 ID2 kcomma kfrom kcolon3 ID3 kcomma2 kto kcolon4 ID4 kcomma3 ktype kcolon5 ID5 rb kcomma4] = 
-    ‛«ID»«kcolon»«lb»«kid»«kcolon2»«ID2»«kcomma»«kfrom»«kcolon3»«ID3»«kcomma2»«kto»«kcolon4»«ID4»«kcomma3»«ktype»«kcolon5»«ID5»«rb»«kcomma4»’
+    ‛\nconnection('«ID3»','«ID4»','«ID5»').’
 
-  string [dq1 cs* dq2] = ‛«dq1»«cs»«dq2»’
-  s [dq1 str dq2] = ‛«dq1»«str»«dq2»’
+  string [dq1 cs* dq2] = ‛«cs»’
+  s [dq1 str dq2] = ‛«str»’
 }
