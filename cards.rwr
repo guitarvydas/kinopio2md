@@ -1,13 +1,13 @@
 KinopioCards {
 
-  SemanticJSON [lb kcards kcolon lb Card+ rb kcomma kconnections kcolon lb Connection+ rb rb] =
-    ‛«lb»«kcards»«kcolon»«lb»«Card+»«rb»«kcomma»«kconnections»«kcolon»«lb»«Connection+»«rb»«rb»’
+  SemanticJSON [lb kcards kcolon lb2 Card+ rb kcomma kconnections kcolon2 lb3 Connection+ rb2 rb3] =
+    ‛«lb»«kcards»«kcolon»«lb2»«Card»«rb»«kcomma»«kconnections»«kcolon2»«lb3»«Connection»«rb2»«rb3»’
 
-  Card [ID kcolon lb sid kcolon ID kcomma kname kcolon Text rb kcomma?] =
-    ‛«ID»«kcolon»«lb»«sid»«kcolon»«ID»«kcomma»«kname»«kcolon»«Text»«rb»«kcomma»’
+  Card [ID kcolon lb sid kcolon2 ID2 kcomma kname kcolon3 Text rb kcomma2] =
+    ‛«ID»«kcolon»«lb»«sid»«kcolon»«ID2»«kcomma2»«kname»«kcolon3»«Text»«rb»«kcomma2»’
 
-  Connection [ID kcolon lb kid kcolon ID kcomma kfrom kcolon ID kcomma kto kcolon ID kcomma ktype kcolon ID rb kcomma?] = 
-    ‛«ID»«kcolon»«lb»«kid»«kcolon»«ID»«kcomma»«kfrom»«kcolon»«ID»«kcomma»«kto»«kcolon»«ID»«kcomma»«ktype»«kcolon»«ID»«rb»«kcomma»’
+  Connection [ID kcolon lb kid kcolon2 ID2 kcomma kfrom kcolon3 ID3 kcomma2 kto kcolon4 ID4 kcomma3 ktype kcolon5 ID5 rb kcomma4] = 
+    ‛«ID»«kcolon»«lb»«kid»«kcolon2»«ID2»«kcomma»«kfrom»«kcolon3»«ID3»«kcomma2»«kto»«kcolon4»«ID4»«kcomma3»«ktype»«kcolon5»«ID5»«rb»«kcomma4»’
 
   string [dq1 cs* dq2] = ‛«dq1»«cs»«dq2»’
   s [dq1 str dq2] = ‛«dq1»«str»«dq2»’
