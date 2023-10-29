@@ -326,9 +326,18 @@ print_output_list :: proc(eh: ^Eh) {
             write_string(&sb, ",\n")
         }
 	cause := msg.cause
-        fmt.sbprintf(&sb, "{{«%v» ⎨%v...⎬ <- ⟨%v,%v⟩}}", 
-		     msg.port, msg.datum.asString (msg.datum)[:9],
-		     cause.who.name, cause.message.port)
+	{
+	    mds : string
+	    tempstr := msg.datum.asString (msg.datum)
+	    if len (tempstr) > 10 {
+		mds = fmt.aprintf ("%v...", tempstr[:9])
+	    } else {
+		mds = tempstr
+	    }
+            fmt.sbprintf(&sb, "{{«%v» ⎨%v⎬ <- ⟨%v,%v⟩}}", 
+			 msg.port, mds,
+			 cause.who.name, cause.message.port)
+	}
     }
     strings.write_rune(&sb, ']')
 

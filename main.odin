@@ -63,7 +63,7 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
         main_container_name,
         diagram_source_file,
     )
-    dump_hierarchy (main_container)
+    //dump_hierarchy (main_container)
     inject (main_container)
     dump_outputs (main_container)
     dump_stats (pregstry)
@@ -89,8 +89,8 @@ print_output :: proc (main_container : ^zd.Eh) {
 // debugging helpers
 
 dump_hierarchy :: proc (main_container : ^zd.Eh) {
-    /* fmt.println("\n\n--- Hierarchy ---") */
-    /* debug.log_hierarchy (main_container) */
+    fmt.println("\n\n--- Hierarchy ---")
+    debug.log_hierarchy (main_container)
 }
 
 dump_outputs :: proc (main_container : ^zd.Eh) {

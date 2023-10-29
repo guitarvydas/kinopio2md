@@ -128,8 +128,6 @@ function hangOperationOntoAsst (asst, opName, opFileName) {
 let src;
 
 function processCST (opName, asst, cst) {
-    console.error (asst.getOperationNames ())
-    console.error (opName)
     try {
 	return (asst (cst) [opName]) ();
     } catch (e) {
@@ -159,9 +157,6 @@ function main () {
 	if (argv.trace) {
 	    _tracing = true;
 	}
-	// if ('Find' === grammarName) {
-	//     _tracing = true;
-	// }
 
 	let grammarText = fs.readFileSync (grammarFileName, 'utf-8');
 	let rwr = fs.readFileSync (rwrFileName, 'utf-8');
