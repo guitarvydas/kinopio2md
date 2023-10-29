@@ -25,11 +25,18 @@ print_text(ID,IndentLevel):-
     write(Text),
     nl.
 
+print_dash_text(ID,IndentLevel):-
+    text(ID,Text),
+    write(IndentLevel),
+    write(' - '),
+    write(Text),
+    nl.
+
 print_root(ID) :-
     is_root(ID),
     connection(ID,Child,_),
     print_node(ID,0),
-    print_tree(Child,1).
+    print_tree(Child,0).
 print_root(ID) :-
     is_root(ID),
     \+connection(ID,_,_),
@@ -38,16 +45,19 @@ print_root(ID) :-
 print_node(ID,Level):-
     print_text(ID,Level).
 
+print_dash_node(ID,Level):-
+    print_dash_text(ID,Level).
+
 print_tree(ID,Level):-
     text(ID,_),
     connection(ID,Child,_),
-    print_node(ID,Level),
+    print_dash_node(ID,Level),
     succ(Level,NextLevel),
     print_tree(Child,NextLevel).
 print_tree(ID,Level):-
     text(ID,_),
     \+connection(ID,_,_),
-    print_node(ID,Level).
+    print_dash_node(ID,Level).
 
 main(ID) :-
     print_root(ID).
