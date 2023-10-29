@@ -18,17 +18,24 @@ is_root(ID) :-
     text(ID,_),
     \+is_child(ID).
 
+print_indent(N):-
+    N \= 0,
+    write('    '),
+    succ(M,N),
+    print_indent(M).
+print_indent(N) :-
+    N = 0.
+
 print_text(ID,IndentLevel):-
     text(ID,Text),
-    write(IndentLevel),
-    write(' '),
+    print_indent(IndentLevel),
     write(Text),
     nl.
 
 print_dash_text(ID,IndentLevel):-
     text(ID,Text),
-    write(IndentLevel),
-    write(' - '),
+    print_indent(IndentLevel),
+    write('- '),
     write(Text),
     nl.
 
