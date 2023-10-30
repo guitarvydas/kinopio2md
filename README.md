@@ -12,3 +12,9 @@ convert Kinopio mind-map to markdown
 	 - from (card id)
 	 - to   (card id)
 	 - connectionType (used to determine whether the connection is indentation or footnote)
+
+2. Transpile semantic information to PROLOG
+3. Generate markdown from semantic information using SWIPL (PROLOG) using 'content.pl' and 'md.pl'
+
+TODO:
+- rename 'stdin' to 'input' everywhere, same with 'stdout' and 'stderr'

@@ -496,35 +496,15 @@ Syncfilewrite_Data :: struct {
     filename : string
 }
 
+// temp copy for bootstrap, sends "done" (error during bootstrap if not wired)
+
 syncfilewrite_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("syncfilewrite")
-    instp := new (Syncfilewrite_Data)
-    return zd.make_leaf (name_with_id, owner, instp^, syncfilewrite_handle)
+    inst := new (Syncfilewrite_Data)
+    return zd.make_leaf (name_with_id, owner, inst^, syncfilewrite_handle)
 }
 
 syncfilewrite_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    inst := &eh.instance_data.(Syncfilewrite_Data)
-    switch msg.port {
-    case "filename":
-	inst.filename = msg.datum.data.(string)
-    case "stdin":
-	contents := msg.datum.data.(string)
-	ok := os.write_entire_file (inst.filename, transmute([]u8)contents, true)
-	if !ok {
-	    zd.send_string (eh, "stderr", "write error", msg)
-	}
-    }
-}
-
-// temp copy for bootstrap, sends "done" (error during bootstrap if not wired)
-
-syncfilewrite2_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
-    name_with_id := gensym("syncfilewrite2")
-    inst := new (Syncfilewrite_Data)
-    return zd.make_leaf (name_with_id, owner, inst^, syncfilewrite2_handle)
-}
-
-syncfilewrite2_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := &eh.instance_data.(Syncfilewrite_Data)
     switch msg.port {
     case "filename":

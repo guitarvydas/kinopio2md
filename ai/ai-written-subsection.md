@@ -1,3 +1,13 @@
+## TL;DR
+see 2023-10-29-Experimenting With ChatGPT As My Ghost Writer 
+## Code Repo
+
+[kinopio2md](https://github.com/guitarvydas/kinopio2md)
+
+This is a stand-alone repo that contains all of `odin0d` and `top.drawio` (the diagram of my pipeline).
+## BRAINSTORMING:
+I Use Kinopio to capture ideas in point form:
+![[Screenshot 2023-10-29 at 10.24.11 PM.png]]
 ## PROMPT: 
 summarize the following markdown as a subsection for a chapter in a book
 
@@ -6,6 +16,8 @@ summarize the following markdown as a subsection for a chapter in a book
 I'd be happy to help you summarize the content, but it seems like you haven't provided the specific Markdown content you'd like me to summarize. Please paste the content you want summarized, and I'll assist you in creating a subsection for a chapter in a book based on that content.
 
 ## PROMPT:
+*[I manually created this file, using the above Kinopio brainstorm as a guide]*
+
 control flow is not data
 - control flow is _interpretation_ of data - dynamic flow
     - a CPU is an interpreter

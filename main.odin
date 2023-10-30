@@ -137,11 +137,12 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, reg.Leaf_Template { name = "'rt/escapes.rwr'", instantiate = leaf.escapesrwr_instantiate })
     
     append(leaves, reg.Leaf_Template { name = "fakepipename", instantiate = leaf.fakepipename_instantiate })
-    append(leaves, reg.Leaf_Template { name = "syncfilewrite2", instantiate = leaf.syncfilewrite2_instantiate })
+    append(leaves, reg.Leaf_Template { name = "syncfilewrite", instantiate = leaf.syncfilewrite_instantiate })
 
     append(leaves, leaf.string_constant ("KinopioCards"))
     append(leaves, leaf.string_constant ("cards.ohm"))
     append(leaves, leaf.string_constant ("cards.rwr"))
     append(leaves, leaf.string_constant ("support.js"))
+    append(leaves, leaf.string_constant ("content.pl"))
 }
 
