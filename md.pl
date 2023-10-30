@@ -63,8 +63,7 @@ print_tree(ID,Level):-
     text(ID,_),
     print_dash_node(ID,Level),
     succ(Level,NextLevel),
-    connection(ID,Child,_),
-    print_tree(Child,NextLevel).
+    forall(connection(ID,Child,_),print_tree(Child,NextLevel)).
 print_tree(ID,Level):-
     text(ID,_),
     \+connection(ID,_,_),
