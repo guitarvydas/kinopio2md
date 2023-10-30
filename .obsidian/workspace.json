@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "junk.md",
+                "file": "ai/ai-written-subsection.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "junk.md",
+                "file": "ai/ai-written-subsection.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "junk.md",
+                "file": "ai/ai-written-subsection.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "junk.md"
+                "file": "ai/ai-written-subsection.md"
               }
             }
           }
@@ -148,6 +148,11 @@
   },
   "active": "95961c235b3d4e7b",
   "lastOpenFiles": [
+    "junk.md",
+    "ai/ai-written-subsection.md",
+    "at",
+    "ai",
+    "ai-written-subsection.md",
     "junk.md~",
     "test2.content.pl",
     "kinopio2md",
@@ -155,7 +160,6 @@
     "test2.json",
     "software atoms content.pl",
     "kinopio2md.ld_TE3BDu",
-    "kinopio2md.ld_dhqjZt",
-    "softwareAtomsTest.json"
+    "kinopio2md.ld_dhqjZt"
   ]
 }
