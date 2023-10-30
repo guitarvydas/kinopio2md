@@ -1,0 +1,160 @@
+{
+  "main": {
+    "id": "afa168e678b23983",
+    "type": "split",
+    "children": [
+      {
+        "id": "38b79b4b7c34e86f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "95961c235b3d4e7b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "junk.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8379036dad037b4f",
+    "type": "split",
+    "children": [
+      {
+        "id": "85dba69eedb16b52",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "943340816dc3d1d6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d172e4b2744a9069",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0eaa21d64438e1ad",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7e51d5ff6003aed0",
+    "type": "split",
+    "children": [
+      {
+        "id": "6f2127db3b35b789",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "128987c93ee5eeb7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "junk.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d3ae22b68e61b6fa",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "junk.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f7c5953bfbcdde67",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "cf73fc229a1ed877",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "junk.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "95961c235b3d4e7b",
+  "lastOpenFiles": [
+    "test2.content.pl",
+    "kinopio2md",
+    "kinopio2md.o",
+    "test2.json",
+    "software atoms content.pl",
+    "kinopio2md.ld_TE3BDu",
+    "kinopio2md.ld_dhqjZt",
+    "softwareAtomsTest.json"
+  ]
+}

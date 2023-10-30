@@ -1,8 +1,8 @@
 import json
+import sys
 
 # read file
-with open('test.json', 'r') as myfile:
-    data=myfile.read()
+data = sys.stdin.read ()
 
 # parse file
 obj = json.loads(data)
