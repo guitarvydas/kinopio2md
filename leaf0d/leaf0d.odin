@@ -90,7 +90,7 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
         {
             stderr, ok := process.process_read_handle(handle.error)
             if ok {
-                send_output(eh, "stderr", stderr, msg)
+                send_output(eh, "error", stderr, msg)
             }
 
             if len(stderr) > 0 {
