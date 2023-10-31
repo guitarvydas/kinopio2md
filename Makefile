@@ -2,8 +2,7 @@ ODIN_FLAGS ?= -debug -o:none
 
 all: dev
 
-dev:
-	@echo 'run swipl manually, consult(md), main.'
+dev: diagram
 
 diagram:
 	rm -f kinopio2md
