@@ -1,17 +1,13 @@
-text('8amuHptsj11UlfGwDM5Et','T').
-text('3zLaUVBx3pUtRqiQOVCr4','U').
-text('l3C8sczlzjbvLFLmmMBqE','X').
-text('lQvKy_hiolqibmb7BZ3vz','V').
-text('-f4AWj9xIn7dTLv7YSSSr','Y').
-text('esbPehRs8ubCbSUDeWf_M','W').
-text('d823RC6LcljEzjzSSwyE8','Z').
-text('RPBNnXq8PZAG_OIo50tRS','N').
-text('KhA8q_UyjDMguM6Y2hPrc','M').
-connection('8amuHptsj11UlfGwDM5Et','3zLaUVBx3pUtRqiQOVCr4','QtiZbof3vqGX8J0jK6-tw').
-connection('8amuHptsj11UlfGwDM5Et','l3C8sczlzjbvLFLmmMBqE','QtiZbof3vqGX8J0jK6-tw').
-connection('3zLaUVBx3pUtRqiQOVCr4','lQvKy_hiolqibmb7BZ3vz','QtiZbof3vqGX8J0jK6-tw').
-connection('l3C8sczlzjbvLFLmmMBqE','-f4AWj9xIn7dTLv7YSSSr','QtiZbof3vqGX8J0jK6-tw').
-connection('lQvKy_hiolqibmb7BZ3vz','esbPehRs8ubCbSUDeWf_M','QtiZbof3vqGX8J0jK6-tw').
-connection('esbPehRs8ubCbSUDeWf_M','d823RC6LcljEzjzSSwyE8','BWmozYfhcWgTPlzgLAbL1').
-connection('lQvKy_hiolqibmb7BZ3vz','RPBNnXq8PZAG_OIo50tRS','8Zdh33bp2dA1mYgIyI8l1').
-connection('RPBNnXq8PZAG_OIo50tRS','KhA8q_UyjDMguM6Y2hPrc','8Zdh33bp2dA1mYgIyI8l1').
+text('QdcyjbU3Vhvvey7G2O3E1','control flow is not data').
+text('hrA0G0cV8-2jTwzZbZeXN','control flow is _interpretation_ of data - dynamic flow').
+text('7BwhZNgIsA5BoJSMYfomd','a CPU is an interpreter').
+text('1iqhffqqZDb4mCCOpXIet','a CPU interprets _opcodes_').
+text('imhGfRoM95ixnSB-N0D5g','a CPU interprets _opcodes_ so quickly that we think of it as something other than interpretation').
+text('kG4t71uepUS36ToC_iLvh','data is _static_ - and is not interpreted by the underlying system').
+text('NszFdu5PKUwsja7G_czC2','static data is interpreted by the _program_, not the CPU').
+connection('QdcyjbU3Vhvvey7G2O3E1','hrA0G0cV8-2jTwzZbZeXN','4TR-Saps8RXfUKXtkhJ7j').
+connection('hrA0G0cV8-2jTwzZbZeXN','7BwhZNgIsA5BoJSMYfomd','4TR-Saps8RXfUKXtkhJ7j').
+connection('7BwhZNgIsA5BoJSMYfomd','1iqhffqqZDb4mCCOpXIet','4TR-Saps8RXfUKXtkhJ7j').
+connection('7BwhZNgIsA5BoJSMYfomd','imhGfRoM95ixnSB-N0D5g','4TR-Saps8RXfUKXtkhJ7j').
+connection('kG4t71uepUS36ToC_iLvh','NszFdu5PKUwsja7G_czC2','4TR-Saps8RXfUKXtkhJ7j').
+connection('QdcyjbU3Vhvvey7G2O3E1','kG4t71uepUS36ToC_iLvh','4TR-Saps8RXfUKXtkhJ7j').
