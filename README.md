@@ -17,4 +17,4 @@ convert Kinopio mind-map to markdown
 3. Generate markdown from semantic information using SWIPL (PROLOG) using 'content.pl' and 'md.pl'
 
 TODO:
-- rename 'stdin' to 'input' everywhere, same with 'stdout' and 'stderr'
+- 
