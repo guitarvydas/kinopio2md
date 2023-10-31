@@ -511,7 +511,7 @@ syncfilewrite_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 	inst.filename = msg.datum.data.(string)
     case "input":
 	contents := msg.datum.data.(string)
-	//ok := os.write_entire_file (inst.filename, transmute([]u8)contents, true)
+	// see .../Odin/core/os.odin/write_entire_file - the following code was stolen from there
 	mode: int = 0
 	when os.OS == .Linux || os.OS == .Darwin {
 		// NOTE(justasd): 644 (owner read, write; group read; others read)
