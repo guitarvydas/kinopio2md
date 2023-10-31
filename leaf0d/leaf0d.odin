@@ -513,10 +513,10 @@ syncfilewrite_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 	contents := msg.datum.data.(string)
 	//ok := os.write_entire_file (inst.filename, transmute([]u8)contents, true)
 	mode: int = 0
-	//when os.OS == os.Linux || os.OS == os.Darwin {
+	when os.OS == .Linux || os.OS == .Darwin {
 		// NOTE(justasd): 644 (owner read, write; group read; others read)
 		mode = os.S_IRUSR | os.S_IWUSR | os.S_IRGRP | os.S_IROTH
-    //}
+	}
 	fd, open_errnum := os.open (path = inst.filename, flags =  os.O_WRONLY|os.O_CREATE, mode = mode)
 	if open_errnum == 0 {
 	    numchars, write_errnum := os.write (fd, transmute([]u8)contents)
