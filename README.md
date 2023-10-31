@@ -16,5 +16,10 @@ convert Kinopio mind-map to markdown
 2. Transpile semantic information to PROLOG
 3. Generate markdown from semantic information using SWIPL (PROLOG) using 'content.pl' and 'md.pl'
 
+
+DATA:
+- softwareAtomsTest.json - Kinopio page https://kinopio.club/software-atoms-test-FhzG4AniDsQj1ilz2N7FA
+- softwareAtomsFull.json - Kinopio page https://kinopio.club/sub-atomic-details-of-software-atoms-Mqr8w-uh0twAkuv7Gb3zD
+
 TODO:
 - 

@@ -67,7 +67,7 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
                 os.write(handle.input, bytes)
             case []byte:
                 os.write(handle.input, value)
-            case zd.Bang:
+            case bool: // zd.Bang contains a bool
                 // OK, no input, just run it
 	    case:
                 log.errorf("%s: Shell leaf input can handle string, bytes, or bang (got: %v)", eh.name, value.id)
