@@ -55,7 +55,7 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     }
 
     switch msg.port {
-    case "stdin":
+    case "input":
         handle := process.process_start(eh.instance_data.(string))
         defer process.process_destroy_handle(handle)
 
@@ -171,7 +171,7 @@ icommand_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     switch msg.port {
     case "command":
         inst.buffer = msg.datum.data.(string)
-    case "stdin":
+    case "input":
         received_input := msg.datum.data.(string)
         captured_output, _ := process.run_command (inst.buffer, received_input)
         zd.send_string (eh, "stdout", captured_output, msg)
