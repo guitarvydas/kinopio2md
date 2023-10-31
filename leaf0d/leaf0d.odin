@@ -82,7 +82,7 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
         {
             stdout, ok := process.process_read_handle(handle.output)
             if ok {
-                send_output(eh, "stdout", stdout, msg)
+                send_output(eh, "output", stdout, msg)
             }
         }
 
@@ -154,7 +154,7 @@ command_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
         inst.buffer = msg.datum.data.(string)
         received_input := msg.datum.data.(string)
         captured_output, _ := process.run_command (inst.buffer, received_input)
-        zd.send_string (eh, "stdout", captured_output, msg)
+        zd.send_string (eh, "output", captured_output, msg)
 	case:
         fmt.assertf (false, "!!! ERROR: command got an illegal message port %v", msg.port)
     }
@@ -174,7 +174,7 @@ icommand_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     case "input":
         received_input := msg.datum.data.(string)
         captured_output, _ := process.run_command (inst.buffer, received_input)
-        zd.send_string (eh, "stdout", captured_output, msg)
+        zd.send_string (eh, "output", captured_output, msg)
 	case:
         fmt.assertf (false, "!!! ERROR: command got an illegal message port %v", msg.port)
     }
