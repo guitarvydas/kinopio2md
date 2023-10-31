@@ -511,11 +511,24 @@ syncfilewrite_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 	inst.filename = msg.datum.data.(string)
     case "input":
 	contents := msg.datum.data.(string)
-	ok := os.write_entire_file (inst.filename, transmute([]u8)contents, true)
-	if !ok {
-	    zd.send_string (eh, "error", "write error", msg)
+	//ok := os.write_entire_file (inst.filename, transmute([]u8)contents, true)
+	mode: int = 0
+	//when os.OS == os.Linux || os.OS == os.Darwin {
+		// NOTE(justasd): 644 (owner read, write; group read; others read)
+		mode = os.S_IRUSR | os.S_IWUSR | os.S_IRGRP | os.S_IROTH
+    //}
+	fd, open_errnum := os.open (path = inst.filename, flags =  os.O_WRONLY|os.O_CREATE, mode = mode)
+	if open_errnum == 0 {
+	    numchars, write_errnum := os.write (fd, transmute([]u8)contents)
+	    if write_errnum == 0 {
+		zd.send (eh, "done", zd.new_datum_bang (), msg)
+	    } else {
+		zd.send_string (eh, "error", fmt.aprintf("/%v/: %v", inst.filename, write_errnum), msg)
+		zd.send_string (eh, "error", "write error", msg)
+	    }
 	} else {
-	    zd.send (eh, "done", zd.new_datum_bang (), msg)
+	    zd.send_string (eh, "error", fmt.aprintf("/%v/: %v", inst.filename, open_errnum), msg)
+		zd.send_string (eh, "error", "open error", msg)
 	}
     }
 }

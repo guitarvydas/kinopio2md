@@ -54,4 +54,5 @@ print_tree(ID,Level):-
 
 main :-
     consult(content),
-    forall(is_root(ID),print_root(ID)).
+    forall(is_root(ID),print_root(ID)),
+    halt.
