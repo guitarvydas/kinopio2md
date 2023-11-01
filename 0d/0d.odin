@@ -331,7 +331,8 @@ print_output_list :: proc(eh: ^Eh) {
 	{
 	    mds : string
 	    tempstr := msg.datum.asString (msg.datum)
-	    if len (tempstr) > 20 {
+	    // if len (tempstr) > 20 {
+	    if false {
 		mds = fmt.aprintf ("%v...", tempstr[:19])
 	    } else {
 		mds = tempstr
