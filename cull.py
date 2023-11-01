@@ -4,6 +4,10 @@ import sys
 # read file
 data = sys.stdin.read ()
 
+file = open("/tmp/junk.json", "w")
+file.write(data)
+file.close()
+
 # parse file
 obj = json.loads(data)
 

@@ -19,7 +19,8 @@ import leaf "leaf0d"
 main :: proc() {
 
     //log_level := zd.log_handlers
-    log_level := runtime.Logger_Level.Info
+    //log_level := runtime.Logger_Level.Info
+    log_level := runtime.Logger_Level.Debug
     fmt.printf ("\n*** starting logger level %v ***\n", log_level)
     context.logger = log.create_console_logger(
 	lowest=cast(runtime.Logger_Level)log_level,
@@ -73,9 +74,9 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 
 
 inject :: proc (main_container : ^zd.Eh) {
-    // p := zd.new_datum_string ("softwareAtomsFull.json")
+    p := zd.new_datum_string ("softwareAtomsCulled.json")
     // p := zd.new_datum_string ("softwareAtomsTest.json")
-    p := zd.new_datum_string ("test3.json")
+    // p := zd.new_datum_string ("test3.json")
     // p := zd.new_datum_string ("test2.json")
     msg := zd.make_message("filename", p, zd.make_cause (main_container, nil) )
     main_container.handler(main_container, msg)

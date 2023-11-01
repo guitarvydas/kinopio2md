@@ -76,16 +76,18 @@ make_leaf :: proc(name: string, owner: ^Eh, instance_data: any, handler: proc(^E
 // of the given component.
 send :: proc(eh: ^Eh, port: string, datum: ^Datum, causingMessage : ^Message) {
     cause := make_cause (eh, causingMessage)
-    sendf("SEND 0x%p %s(%s)[%v]", eh, eh.name, cause)
+    sendf("SEND 0x%p %s(%v) [%v]", eh, eh.name, port, cause)
     msg := make_message(port, datum, cause)
     fifo_push(&eh.output, msg)
 }
 
 send_string :: proc(eh: ^Eh, port: string, s : string, causingMessage : ^Message) {
     cause := make_cause (eh, causingMessage)
-    sendf("SEND 0x%p %s [%v]", eh, eh.name, port, cause.message.port)
-    datum := new_datum_string (s)
-    msg := make_message(port, datum, cause)
+    sendf("SEND 0x%p %s(%v) [%v]", eh, eh.name, port, cause.message.port)
+    pdatum := new_datum_string (s)
+    fmt.printf ("send_string len string=%v datum=%v\n", len(s), len(pdatum.asString(pdatum) ))
+    msg := make_message(port, pdatum, cause)
+
     fifo_push(&eh.output, msg)
 }
 
@@ -242,7 +244,7 @@ step_children :: proc(container: ^Eh, causingMessage: ^Message) {
 	if child.state == .active {
 	    container.state = .active
 	}
-
+	
         for child.output.len > 0 {
             msg, _ = fifo_pop(&child.output)
             outputf("OUTPUT 0x%p %s/%s(%s)", child, container.name, child.name, msg.port)
