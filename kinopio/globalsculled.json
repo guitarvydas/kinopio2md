@@ -1,0 +1,130 @@
+{
+    "cards": {
+        "L-3eh99zkJ3ZFkgfyBUSq": {
+            "id": "L-3eh99zkJ3ZFkgfyBUSq",
+            "name": "globals aren't the problem"
+        },
+        "H7eOnzn1N42CMIz_2FWcn": {
+            "id": "H7eOnzn1N42CMIz_2FWcn",
+            "name": "the problem"
+        },
+        "aHbnn0TnmpWcTP0OQu4nh": {
+            "id": "aHbnn0TnmpWcTP0OQu4nh",
+            "name": "you can't see all of the variables in one eyefull"
+        },
+        "2ycdOTPk0Clp_rERrk0kd": {
+            "id": "2ycdOTPk0Clp_rERrk0kd",
+            "name": "unstructured leaking of information"
+        },
+        "6LkHlSOE6ifA32XFpL0qg": {
+            "id": "6LkHlSOE6ifA32XFpL0qg",
+            "name": "wasn't a problem when programs were \"small\""
+        },
+        "JzwLTox9-uFcKhno8MA3x": {
+            "id": "JzwLTox9-uFcKhno8MA3x",
+            "name": "5-line BASIC programs"
+        },
+        "VpPL_PDrMG02q2O2hJhPZ": {
+            "id": "VpPL_PDrMG02q2O2hJhPZ",
+            "name": "small snippets of Assembler"
+        },
+        "MY2EiZfc9jJ8bQ_lt-svl": {
+            "id": "MY2EiZfc9jJ8bQ_lt-svl",
+            "name": "Denotational Semantics solved this problem by insisting on making everything explicit"
+        },
+        "QFwHi5H36vQk7X-f6hJnP": {
+            "id": "QFwHi5H36vQk7X-f6hJnP",
+            "name": "need Ports"
+        },
+        "qX-MZmmriKI9DqEoDGYh_": {
+            "id": "qX-MZmmriKI9DqEoDGYh_",
+            "name": "*everything* includes control flow"
+        },
+        "_tQqts7IMsuypxDDz_tBb": {
+            "id": "_tQqts7IMsuypxDDz_tBb",
+            "name": "modern languages make control flow implicit (top-down, left-to-right implied, CALL/RETURN not visualized)"
+        },
+        "B-lxr5suTK9I38ZZ012ZB": {
+            "id": "B-lxr5suTK9I38ZZ012ZB",
+            "name": "Lambda parameters === cave-man Ports"
+        },
+        "U9W52Di3eYMrRTLhlpIKf": {
+            "id": "U9W52Di3eYMrRTLhlpIKf",
+            "name": "I would call this *spaghetti data*.  Others call it *globals*."
+        }
+    },
+    "connections": {
+        "9gaTRIQ5eUsNH2u1bP3B-": {
+            "id": "9gaTRIQ5eUsNH2u1bP3B-",
+            "from": "H7eOnzn1N42CMIz_2FWcn",
+            "to": "L-3eh99zkJ3ZFkgfyBUSq",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "Lk1hn4MOqgF56-FVdXX1u": {
+            "id": "Lk1hn4MOqgF56-FVdXX1u",
+            "from": "2ycdOTPk0Clp_rERrk0kd",
+            "to": "H7eOnzn1N42CMIz_2FWcn",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "a8YLZv_U1sZe1G93cZfd_": {
+            "id": "a8YLZv_U1sZe1G93cZfd_",
+            "from": "aHbnn0TnmpWcTP0OQu4nh",
+            "to": "H7eOnzn1N42CMIz_2FWcn",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "Xt4v2gSomvwoxIkwr2nEP": {
+            "id": "Xt4v2gSomvwoxIkwr2nEP",
+            "from": "aHbnn0TnmpWcTP0OQu4nh",
+            "to": "6LkHlSOE6ifA32XFpL0qg",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "tXciWvrHE-Ylb_MiDuNz7": {
+            "id": "tXciWvrHE-Ylb_MiDuNz7",
+            "from": "VpPL_PDrMG02q2O2hJhPZ",
+            "to": "6LkHlSOE6ifA32XFpL0qg",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "vEghZ05heKcMx7VWJN-KX": {
+            "id": "vEghZ05heKcMx7VWJN-KX",
+            "from": "JzwLTox9-uFcKhno8MA3x",
+            "to": "6LkHlSOE6ifA32XFpL0qg",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "qcysY3ZBChDIl0aVwTntb": {
+            "id": "qcysY3ZBChDIl0aVwTntb",
+            "from": "QFwHi5H36vQk7X-f6hJnP",
+            "to": "2ycdOTPk0Clp_rERrk0kd",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "IqaQt09_r2r8hVgJ8cRRw": {
+            "id": "IqaQt09_r2r8hVgJ8cRRw",
+            "from": "MY2EiZfc9jJ8bQ_lt-svl",
+            "to": "2ycdOTPk0Clp_rERrk0kd",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "pNoATcxMXSCSPDosCPqfK": {
+            "id": "pNoATcxMXSCSPDosCPqfK",
+            "from": "MY2EiZfc9jJ8bQ_lt-svl",
+            "to": "qX-MZmmriKI9DqEoDGYh_",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "GwyRP8kfXbOkOLi-Er1UP": {
+            "id": "GwyRP8kfXbOkOLi-Er1UP",
+            "from": "qX-MZmmriKI9DqEoDGYh_",
+            "to": "_tQqts7IMsuypxDDz_tBb",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "stMg1p7KhYa-ilYuGXRY2": {
+            "id": "stMg1p7KhYa-ilYuGXRY2",
+            "from": "QFwHi5H36vQk7X-f6hJnP",
+            "to": "B-lxr5suTK9I38ZZ012ZB",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        },
+        "EjlbPkCa6mk7c6AEv22x8": {
+            "id": "EjlbPkCa6mk7c6AEv22x8",
+            "from": "2ycdOTPk0Clp_rERrk0kd",
+            "to": "U9W52Di3eYMrRTLhlpIKf",
+            "type": "p5LeoNw_uEK9P7-WQ0FV4"
+        }
+    }
+}

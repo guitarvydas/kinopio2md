@@ -261,6 +261,20 @@ probe_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     fmt.eprintln (eh.name, msg.datum.asString (msg.datum))
 }
 
+probetruncate_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    name_with_id := gensym("?...")
+    return zd.make_leaf (name_with_id, owner, nil, probetruncate_handle)
+}
+
+probetruncate_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    sfull := msg.datum.asString (msg.datum)
+    if len (sfull) > 19 {
+	fmt.eprintf ("%v %v...\n", eh.name, sfull [:20])
+    } else {
+	fmt.eprintln (eh.name, sfull)
+    }
+}
+
 trash_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("trash")
     return zd.make_leaf (name_with_id, owner, nil, trash_handle)

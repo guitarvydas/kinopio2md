@@ -7,7 +7,7 @@ KinopioCards {
     ‛\ntext('«ID2»','«Text»').’
 
   Connection [ID kcolon lb kid kcolon2 ID2 kcomma kfrom kcolon3 ID3 kcomma2 kto kcolon4 ID4 kcomma3 ktype kcolon5 ID5 rb kcomma4] = 
-    ‛\nconnection('«ID3»','«ID4»','«ID5»').’
+    ‛\nconnectionXXX('«ID3»','«ID4»','«ID5»').’
 
   string [dq1 cs* dq2] = ‛«cs»’
   s [dq1 str dq2] = ‛«str»’

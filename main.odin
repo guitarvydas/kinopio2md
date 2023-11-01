@@ -64,7 +64,7 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
         main_container_name,
         diagram_source_file,
     )
-    //dump_hierarchy (main_container)
+    dump_hierarchy (main_container)
     inject (main_container)
     dump_outputs (main_container)
     dump_stats (pregstry)
@@ -74,10 +74,12 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 
 
 inject :: proc (main_container : ^zd.Eh) {
-    p := zd.new_datum_string ("softwareAtomsCulled.json")
+    // p := zd.new_datum_string ("kinopio/globalsculled.json")
+    // p := zd.new_datum_string ("softwareAtomsCulled.json") // chokes escapes.ohm
     // p := zd.new_datum_string ("softwareAtomsTest.json")
     // p := zd.new_datum_string ("test3.json")
     // p := zd.new_datum_string ("test2.json")
+    p := zd.new_datum_string ("test.json")
     msg := zd.make_message("filename", p, zd.make_cause (main_container, nil) )
     main_container.handler(main_container, msg)
 }
@@ -111,6 +113,7 @@ dump_stats :: proc (pregstry : ^reg.Component_Registry) {
 components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, reg.Leaf_Template { name = "1then2", instantiate = leaf.deracer_instantiate })
     append(leaves, reg.Leaf_Template { name = "?", instantiate = leaf.probe_instantiate })
+    append(leaves, reg.Leaf_Template { name = "?...", instantiate = leaf.probetruncate_instantiate })
     append(leaves, reg.Leaf_Template { name = "trash", instantiate = leaf.trash_instantiate })
 
     append(leaves, reg.Leaf_Template { name = "Low Level Read Text File", instantiate = leaf.low_level_read_text_file_instantiate })

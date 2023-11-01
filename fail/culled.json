@@ -1,0 +1,764 @@
+{
+    "cards": {
+        "5Q51_bsAaXz-U9nMCVvId": {
+            "id": "5Q51_bsAaXz-U9nMCVvId",
+            "name": "sub-atomic details of software atoms"
+        },
+        "Scpjkc6qpyxnNs1Cwl0cz": {
+            "id": "Scpjkc6qpyxnNs1Cwl0cz",
+            "name": "what is the *unit* of *type*?"
+        },
+        "eJz0m66J6-8fqbEd2lbD6": {
+            "id": "eJz0m66J6-8fqbEd2lbD6",
+            "name": "what is the *unit* of *control flow*?"
+        },
+        "uAkF5K_8VzFDSshpb1rG7": {
+            "id": "uAkF5K_8VzFDSshpb1rG7",
+            "name": "what is the *unit* of *data structure*?"
+        },
+        "KPIoO3ZnWOZJvJJE-o0-I": {
+            "id": "KPIoO3ZnWOZJvJJE-o0-I",
+            "name": "paradigms"
+        },
+        "RJ05fcUTbzkW4VbXz9DFs": {
+            "id": "RJ05fcUTbzkW4VbXz9DFs",
+            "name": "bit"
+        },
+        "ck3LWh24GqjV6H73NNtkx": {
+            "id": "ck3LWh24GqjV6H73NNtkx",
+            "name": "we seem to have settled on the use of *byte* as a collection of 8 bits"
+        },
+        "H5UFhWl62D2qBo95xEfpD": {
+            "id": "H5UFhWl62D2qBo95xEfpD",
+            "name": "allocation in memory"
+        },
+        "lq5Ec0daJDx9t8DciLD9S": {
+            "id": "lq5Ec0daJDx9t8DciLD9S",
+            "name": "\"thing\""
+        },
+        "5mckTHc7V7-rtbhLctKP_": {
+            "id": "5mckTHc7V7-rtbhLctKP_",
+            "name": "script (program counter pointing to place in memory)"
+        },
+        "q0GSuj8N9wc-lM-mXE9lH": {
+            "id": "q0GSuj8N9wc-lM-mXE9lH",
+            "name": "Message"
+        },
+        "NvnOM_VlpzobfuabWfRXO": {
+            "id": "NvnOM_VlpzobfuabWfRXO",
+            "name": "caching"
+        },
+        "YU7bLFrsiDaAwOzbmQMCz": {
+            "id": "YU7bLFrsiDaAwOzbmQMCz",
+            "name": "stack (LIFO - scoping)"
+        },
+        "04cc-5Wd5pUJhh-hxRy1V": {
+            "id": "04cc-5Wd5pUJhh-hxRy1V",
+            "name": "heap (RAM - random access)"
+        },
+        "OPg51C0sAFP-Eflf9qP0B": {
+            "id": "OPg51C0sAFP-Eflf9qP0B",
+            "name": "reclaiming "
+        },
+        "59zvyly1mOcCX7s0i8eTH": {
+            "id": "59zvyly1mOcCX7s0i8eTH",
+            "name": "operand"
+        },
+        "iiTw5MjXp_fRE2T9hr2yN": {
+            "id": "iiTw5MjXp_fRE2T9hr2yN",
+            "name": "CPU Registers (very fast RAM)"
+        },
+        "cAgCd32jDrVeAGtfIOBpN": {
+            "id": "cAgCd32jDrVeAGtfIOBpN",
+            "name": "parsing"
+        },
+        "5Y2dFfKPN-QRYN9iURAaq": {
+            "id": "5Y2dFfKPN-QRYN9iURAaq",
+            "name": "sequential text"
+        },
+        "Q_Josiv8m5d_oV54bSnKl": {
+            "id": "Q_Josiv8m5d_oV54bSnKl",
+            "name": "GC"
+        },
+        "MRYE_e-6eY2NAH6zA4oqs": {
+            "id": "MRYE_e-6eY2NAH6zA4oqs",
+            "name": "popping the stack"
+        },
+        "eQmZ_p8Z3b11_Q0RUdKqn": {
+            "id": "eQmZ_p8Z3b11_Q0RUdKqn",
+            "name": "recursive text"
+        },
+        "bsgIPn2P8x8ZcSj2UHheN": {
+            "id": "bsgIPn2P8x8ZcSj2UHheN",
+            "name": "Registers, L1/L2/etc, RAM, disk, offline"
+        },
+        "B-gKV6RODUaksqRa8tYEy": {
+            "id": "B-gKV6RODUaksqRa8tYEy",
+            "name": "0D"
+        },
+        "6OOANsF6CjKlK1kh8-EJR": {
+            "id": "6OOANsF6CjKlK1kh8-EJR",
+            "name": "sequential composition of text"
+        },
+        "DedZsmi4IsfzisFXZT9ko": {
+            "id": "DedZsmi4IsfzisFXZT9ko",
+            "name": "Object Oriented Programming defines *operands*, but, not *operators*"
+        },
+        "Qq5WE_lUNCgAzFQfPLDfL": {
+            "id": "Qq5WE_lUNCgAzFQfPLDfL",
+            "name": "\"memory mangagement\""
+        },
+        "7Ez8ZV_xxacg3TgLm6d5q": {
+            "id": "7Ez8ZV_xxacg3TgLm6d5q",
+            "name": "concurrency"
+        },
+        "8K92iuabrBib-bZXL_u1k": {
+            "id": "8K92iuabrBib-bZXL_u1k",
+            "name": "non-textual languages"
+        },
+        "SgSgTw0IhWVvazxyAPo30": {
+            "id": "SgSgTw0IhWVvazxyAPo30",
+            "name": "https://en.wikipedia.org/wiki/CPU_cache#:~:text=A%20CPU%20cache%20is%20a,frequently%20used%20main%20memory%20locations?hidden=true."
+        },
+        "5674uk5s4hcFoooAd7k2n": {
+            "id": "5674uk5s4hcFoooAd7k2n",
+            "name": "opcodes"
+        },
+        "hEtiVsyPrnBWzb3W-KarY": {
+            "id": "hEtiVsyPrnBWzb3W-KarY",
+            "name": "paralleli"
+        },
+        "XTpLE1iAEzLCuOQ5zxRnm": {
+            "id": "XTpLE1iAEzLCuOQ5zxRnm",
+            "name": "lisp"
+        },
+        "76X5ER3hb0zuuul0SOI54": {
+            "id": "76X5ER3hb0zuuul0SOI54",
+            "name": "Virtual Me"
+        },
+        "EPpOdsmP0qjpjQ29VkbWg": {
+            "id": "EPpOdsmP0qjpjQ29VkbWg",
+            "name": "step-wise simultaneity"
+        },
+        "RhOCDGzE8HdGnX8Pamr2y": {
+            "id": "RhOCDGzE8HdGnX8Pamr2y",
+            "name": "an *object* is a piece of data"
+        },
+        "jgZNLzInxrXcbsrujbvxB": {
+            "id": "jgZNLzInxrXcbsrujbvxB",
+            "name": "true asynchronous"
+        },
+        "r08hMmtpZJwoJXqXYkzeF": {
+            "id": "r08hMmtpZJwoJXqXYkzeF",
+            "name": "MMU"
+        },
+        "_Z7_EqwBn6gAcnYHwkUUV": {
+            "id": "_Z7_EqwBn6gAcnYHwkUUV",
+            "name": "multiple CPUs"
+        },
+        "x28rJK_Su6Q2ODcLiLxXz": {
+            "id": "x28rJK_Su6Q2ODcLiLxXz",
+            "name": "hardware assist via MMUs"
+        },
+        "sb_Vq24KVW_sASDiUeMF7": {
+            "id": "sb_Vq24KVW_sASDiUeMF7",
+            "name": "extra software needed"
+        },
+        "Z2KLnRvDuFJQM7mGnTxD7": {
+            "id": "Z2KLnRvDuFJQM7mGnTxD7",
+            "name": "FBP"
+        },
+        "hWKnpdaRGvE-vjHbKJkyI": {
+            "id": "hWKnpdaRGvE-vjHbKJkyI",
+            "name": "data struct"
+        },
+        "RGB3ms9U7VpZzt2y_QH5g": {
+            "id": "RGB3ms9U7VpZzt2y_QH5g",
+            "name": "0D"
+        },
+        "fBOPZCzWHuQYn4YqM8EX8": {
+            "id": "fBOPZCzWHuQYn4YqM8EX8",
+            "name": "Arduinos, rPIs, etc."
+        },
+        "_N7Hyef0qy_xKsO4bJwKO": {
+            "id": "_N7Hyef0qy_xKsO4bJwKO",
+            "name": "*methods* on the data can return conditional values based on the data"
+        },
+        "Gq9GIfmoCSwPZs1w058ob": {
+            "id": "Gq9GIfmoCSwPZs1w058ob",
+            "name": "classes"
+        },
+        "BZgMBeT9tO3PaRRvzQZq6": {
+            "id": "BZgMBeT9tO3PaRRvzQZq6",
+            "name": "avoided in 1950"
+        },
+        "cPx2vsE49UflvUNNtz8bz": {
+            "id": "cPx2vsE49UflvUNNtz8bz",
+            "name": "structs"
+        },
+        "JJ7k7984Qr2R5xopyrM3I": {
+            "id": "JJ7k7984Qr2R5xopyrM3I",
+            "name": "user-defined types"
+        },
+        "oAbmlACDKDNLmBWFthRLG": {
+            "id": "oAbmlACDKDNLmBWFthRLG",
+            "name": "compilation"
+        },
+        "iRv7ajxlfA81d2yMHOXnO": {
+            "id": "iRv7ajxlfA81d2yMHOXnO",
+            "name": "due to $$$ of CPUs"
+        },
+        "kWXMSmNq0fQyUhOvxiYLn": {
+            "id": "kWXMSmNq0fQyUhOvxiYLn",
+            "name": "like *conditional function definitions* from written mathematical notation"
+        },
+        "vPfZ5iZDJYWp5dbgWn5cB": {
+            "id": "vPfZ5iZDJYWp5dbgWn5cB",
+            "name": "type aliases"
+        },
+        "MwBC6AHp5XOD2HJUORDAd": {
+            "id": "MwBC6AHp5XOD2HJUORDAd",
+            "name": "arbitrary line between compile-time and runtime"
+        },
+        "oWXzXjlzbNydQfs31H9MI": {
+            "id": "oWXzXjlzbNydQfs31H9MI",
+            "name": "optimzation"
+        },
+        "oJ-XGNj9wxs29MGERIz_o": {
+            "id": "oJ-XGNj9wxs29MGERIz_o",
+            "name": "production engineering"
+        },
+        "aKkn-WThAlxHFyK3J_ir-": {
+            "id": "aKkn-WThAlxHFyK3J_ir-",
+            "name": "interpretation"
+        },
+        "KsAe9Y4H_r8VBsnA21-hz": {
+            "id": "KsAe9Y4H_r8VBsnA21-hz",
+            "name": "types"
+        },
+        "zATqTtcsZ9zI1AGniPujo": {
+            "id": "zATqTtcsZ9zI1AGniPujo",
+            "name": "dynamic typing"
+        },
+        "5hv_YJ50GJelbibE1EnRN": {
+            "id": "5hv_YJ50GJelbibE1EnRN",
+            "name": "static typing"
+        },
+        "XnoAFgSP_aIkK0X22Zbw3": {
+            "id": "XnoAFgSP_aIkK0X22Zbw3",
+            "name": "state machines"
+        },
+        "wI2cAhzmjiB7N-DTyIbuC": {
+            "id": "wI2cAhzmjiB7N-DTyIbuC",
+            "name": "type checking"
+        },
+        "4h2-Jplpc_TyZisTrXlUN": {
+            "id": "4h2-Jplpc_TyZisTrXlUN",
+            "name": "StateCharts"
+        },
+        "Y9sTWR_k3-y7GGLEmpEbz": {
+            "id": "Y9sTWR_k3-y7GGLEmpEbz",
+            "name": "VPL"
+        },
+        "jQHBqOn0W60s5ktv9tR50": {
+            "id": "jQHBqOn0W60s5ktv9tR50",
+            "name": "Drakon"
+        },
+        "uTCOfItyc3fqz2N_uNdXf": {
+            "id": "uTCOfItyc3fqz2N_uNdXf",
+            "name": "FBP"
+        },
+        "rhatg0xGalZ-hjeh1S2kN": {
+            "id": "rhatg0xGalZ-hjeh1S2kN",
+            "name": "Object Oriented"
+        },
+        "CG1pMdMyHT3UUyqiLJuI8": {
+            "id": "CG1pMdMyHT3UUyqiLJuI8",
+            "name": "drawware0D"
+        },
+        "UlRgNnTnLyIWc24zhwK38": {
+            "id": "UlRgNnTnLyIWc24zhwK38",
+            "name": "methods associated with data"
+        },
+        "h7EUhe60dQuTWGOnnWHjb": {
+            "id": "h7EUhe60dQuTWGOnnWHjb",
+            "name": "eval all args"
+        },
+        "FvGYmDl_FCgmN5ciX7f4m": {
+            "id": "FvGYmDl_FCgmN5ciX7f4m",
+            "name": "OOP employs CASE on TYPE"
+        },
+        "Z-Eu9Yn4UawpAttQn79kN": {
+            "id": "Z-Eu9Yn4UawpAttQn79kN",
+            "name": "FP"
+        },
+        "FN9khU60Lah1lv9dmlwJm": {
+            "id": "FN9khU60Lah1lv9dmlwJm",
+            "name": "lazy evaluation"
+        },
+        "OnkBqtCW1GViyImAffpt9": {
+            "id": "OnkBqtCW1GViyImAffpt9",
+            "name": "exceptions"
+        },
+        "QY4mOSjjuUKtIAqaeaY6v": {
+            "id": "QY4mOSjjuUKtIAqaeaY6v",
+            "name": "bag on side to deal with elision of control flow"
+        },
+        "CaUX2Tw9bxtAcyXgsK98z": {
+            "id": "CaUX2Tw9bxtAcyXgsK98z",
+            "name": "antidote / epicycle that allows deferring of evaluation"
+        },
+        "5e_Nc5J8JXkiOpYGqT14z": {
+            "id": "5e_Nc5J8JXkiOpYGqT14z",
+            "name": "single happy path"
+        },
+        "a6RIJkhN-2niFC0K6b8fI": {
+            "id": "a6RIJkhN-2niFC0K6b8fI",
+            "name": "promise"
+        },
+        "wSJk7lDU2NgEGBcgoDK-4": {
+            "id": "wSJk7lDU2NgEGBcgoDK-4",
+            "name": "networking"
+        },
+        "3XPNQjAsQ9FfRb6QSn7hl": {
+            "id": "3XPNQjAsQ9FfRb6QSn7hl",
+            "name": "futures"
+        },
+        "ZlV1GnK3jN9u_uqglLG2t": {
+            "id": "ZlV1GnK3jN9u_uqglLG2t",
+            "name": "functions -> 1 path, reality -> multiple paths"
+        },
+        "3e68JXUSK3EsuSJpAQpKo": {
+            "id": "3e68JXUSK3EsuSJpAQpKo",
+            "name": "layered typing"
+        }
+    },
+    "connections": {
+        "WOO_eBxHIjfg2kvyZ55sP": {
+            "id": "WOO_eBxHIjfg2kvyZ55sP",
+            "from": "Scpjkc6qpyxnNs1Cwl0cz",
+            "to": "5Q51_bsAaXz-U9nMCVvId",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "PGbMpA5UlnpyW7pipxJa1": {
+            "id": "PGbMpA5UlnpyW7pipxJa1",
+            "from": "Scpjkc6qpyxnNs1Cwl0cz",
+            "to": "RJ05fcUTbzkW4VbXz9DFs",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "Oexd34vnPnD3f237IaVLg": {
+            "id": "Oexd34vnPnD3f237IaVLg",
+            "from": "Scpjkc6qpyxnNs1Cwl0cz",
+            "to": "ck3LWh24GqjV6H73NNtkx",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "OaKjmXVEQUZTIxA_M_e_A": {
+            "id": "OaKjmXVEQUZTIxA_M_e_A",
+            "from": "eJz0m66J6-8fqbEd2lbD6",
+            "to": "5mckTHc7V7-rtbhLctKP_",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "1u7WonV6rknSDx_WL6d_H": {
+            "id": "1u7WonV6rknSDx_WL6d_H",
+            "from": "eJz0m66J6-8fqbEd2lbD6",
+            "to": "B-gKV6RODUaksqRa8tYEy",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "sBHy1XJsb3RQ-gVQqlhs0": {
+            "id": "sBHy1XJsb3RQ-gVQqlhs0",
+            "from": "eJz0m66J6-8fqbEd2lbD6",
+            "to": "5Q51_bsAaXz-U9nMCVvId",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "Gi9lBmSGslpP-FaxdA78P": {
+            "id": "Gi9lBmSGslpP-FaxdA78P",
+            "from": "KPIoO3ZnWOZJvJJE-o0-I",
+            "to": "cAgCd32jDrVeAGtfIOBpN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "aXPY0Vx5qCD0LMGJ_1HVP": {
+            "id": "aXPY0Vx5qCD0LMGJ_1HVP",
+            "from": "KPIoO3ZnWOZJvJJE-o0-I",
+            "to": "7Ez8ZV_xxacg3TgLm6d5q",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "1yVLPNytqUOLWWhfPCgzI": {
+            "id": "1yVLPNytqUOLWWhfPCgzI",
+            "from": "uAkF5K_8VzFDSshpb1rG7",
+            "to": "lq5Ec0daJDx9t8DciLD9S",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "-k5lJtXANDapjuB38GPHo": {
+            "id": "-k5lJtXANDapjuB38GPHo",
+            "from": "uAkF5K_8VzFDSshpb1rG7",
+            "to": "5Q51_bsAaXz-U9nMCVvId",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "oEfHrgd5gyboLI2g16dUb": {
+            "id": "oEfHrgd5gyboLI2g16dUb",
+            "from": "uAkF5K_8VzFDSshpb1rG7",
+            "to": "q0GSuj8N9wc-lM-mXE9lH",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "zhpkvu_azKLdFiH88ZrIt": {
+            "id": "zhpkvu_azKLdFiH88ZrIt",
+            "from": "uAkF5K_8VzFDSshpb1rG7",
+            "to": "59zvyly1mOcCX7s0i8eTH",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "AAAWZqxAycIhnuWfK6lmj": {
+            "id": "AAAWZqxAycIhnuWfK6lmj",
+            "from": "uAkF5K_8VzFDSshpb1rG7",
+            "to": "DedZsmi4IsfzisFXZT9ko",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "4zk4oNeZzLIDDcvmZgXRV": {
+            "id": "4zk4oNeZzLIDDcvmZgXRV",
+            "from": "H5UFhWl62D2qBo95xEfpD",
+            "to": "KPIoO3ZnWOZJvJJE-o0-I",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "NkWmLMuyZ3XvCpYjNG2IH": {
+            "id": "NkWmLMuyZ3XvCpYjNG2IH",
+            "from": "H5UFhWl62D2qBo95xEfpD",
+            "to": "Qq5WE_lUNCgAzFQfPLDfL",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "82gUYPmCmwxBXqop485Fi": {
+            "id": "82gUYPmCmwxBXqop485Fi",
+            "from": "H5UFhWl62D2qBo95xEfpD",
+            "to": "OPg51C0sAFP-Eflf9qP0B",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "DBK4SlVm2wRfNTmGq6HWz": {
+            "id": "DBK4SlVm2wRfNTmGq6HWz",
+            "from": "NvnOM_VlpzobfuabWfRXO",
+            "to": "76X5ER3hb0zuuul0SOI54",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "G9Psl0OYk1WbP6o3sp4Uh": {
+            "id": "G9Psl0OYk1WbP6o3sp4Uh",
+            "from": "NvnOM_VlpzobfuabWfRXO",
+            "to": "iiTw5MjXp_fRE2T9hr2yN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "WsI8bJv0CCfbTmTvhL5n2": {
+            "id": "WsI8bJv0CCfbTmTvhL5n2",
+            "from": "NvnOM_VlpzobfuabWfRXO",
+            "to": "bsgIPn2P8x8ZcSj2UHheN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "u5vHAYIbBHwqYzN224xSO": {
+            "id": "u5vHAYIbBHwqYzN224xSO",
+            "from": "NvnOM_VlpzobfuabWfRXO",
+            "to": "SgSgTw0IhWVvazxyAPo30",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "L-PDjEBpcyvlzml-ucIia": {
+            "id": "L-PDjEBpcyvlzml-ucIia",
+            "from": "NvnOM_VlpzobfuabWfRXO",
+            "to": "KPIoO3ZnWOZJvJJE-o0-I",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "zMYBlYZpvxtLkW522KY7X": {
+            "id": "zMYBlYZpvxtLkW522KY7X",
+            "from": "OPg51C0sAFP-Eflf9qP0B",
+            "to": "MRYE_e-6eY2NAH6zA4oqs",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "NBsR5tpRzA9Rzfu1zEO8W": {
+            "id": "NBsR5tpRzA9Rzfu1zEO8W",
+            "from": "OPg51C0sAFP-Eflf9qP0B",
+            "to": "Q_Josiv8m5d_oV54bSnKl",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "h9OZtXDWIjoW0AuwocxpK": {
+            "id": "h9OZtXDWIjoW0AuwocxpK",
+            "from": "YU7bLFrsiDaAwOzbmQMCz",
+            "to": "H5UFhWl62D2qBo95xEfpD",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "8Alvz6oLwWFY6lxceJVCF": {
+            "id": "8Alvz6oLwWFY6lxceJVCF",
+            "from": "04cc-5Wd5pUJhh-hxRy1V",
+            "to": "H5UFhWl62D2qBo95xEfpD",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "bfZdXTX9efu1N9sQtUEwG": {
+            "id": "bfZdXTX9efu1N9sQtUEwG",
+            "from": "5Y2dFfKPN-QRYN9iURAaq",
+            "to": "eJz0m66J6-8fqbEd2lbD6",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "Mi4YKfWg8aE6ry-DrlCIW": {
+            "id": "Mi4YKfWg8aE6ry-DrlCIW",
+            "from": "5Y2dFfKPN-QRYN9iURAaq",
+            "to": "5674uk5s4hcFoooAd7k2n",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "2eCoNPY20eNiQres9sFWz": {
+            "id": "2eCoNPY20eNiQres9sFWz",
+            "from": "eQmZ_p8Z3b11_Q0RUdKqn",
+            "to": "XTpLE1iAEzLCuOQ5zxRnm",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "yDCx5FnioPSdJqMRr-vlK": {
+            "id": "yDCx5FnioPSdJqMRr-vlK",
+            "from": "eQmZ_p8Z3b11_Q0RUdKqn",
+            "to": "eJz0m66J6-8fqbEd2lbD6",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "49mVd8_7zMQteBseUT0T9": {
+            "id": "49mVd8_7zMQteBseUT0T9",
+            "from": "6OOANsF6CjKlK1kh8-EJR",
+            "to": "cAgCd32jDrVeAGtfIOBpN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "ukDC1Z361GKK4t527E6Qf": {
+            "id": "ukDC1Z361GKK4t527E6Qf",
+            "from": "8K92iuabrBib-bZXL_u1k",
+            "to": "cAgCd32jDrVeAGtfIOBpN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "uuJsh5H5liFFhHbw_9p_7": {
+            "id": "uuJsh5H5liFFhHbw_9p_7",
+            "from": "hEtiVsyPrnBWzb3W-KarY",
+            "to": "7Ez8ZV_xxacg3TgLm6d5q",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "g2u-2EOM_J8frmHi9fjaF": {
+            "id": "g2u-2EOM_J8frmHi9fjaF",
+            "from": "Qq5WE_lUNCgAzFQfPLDfL",
+            "to": "r08hMmtpZJwoJXqXYkzeF",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "fMofB587iSKApZBnsTMp4": {
+            "id": "fMofB587iSKApZBnsTMp4",
+            "from": "DedZsmi4IsfzisFXZT9ko",
+            "to": "_N7Hyef0qy_xKsO4bJwKO",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "W_DIC9hYJExmzB5X7fjAg": {
+            "id": "W_DIC9hYJExmzB5X7fjAg",
+            "from": "DedZsmi4IsfzisFXZT9ko",
+            "to": "RhOCDGzE8HdGnX8Pamr2y",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "WaTfWUbicvre8ZzEDuo_C": {
+            "id": "WaTfWUbicvre8ZzEDuo_C",
+            "from": "76X5ER3hb0zuuul0SOI54",
+            "to": "x28rJK_Su6Q2ODcLiLxXz",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "flnh1GnfsX5ZBrWjyaxe3": {
+            "id": "flnh1GnfsX5ZBrWjyaxe3",
+            "from": "76X5ER3hb0zuuul0SOI54",
+            "to": "sb_Vq24KVW_sASDiUeMF7",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "HN0rbNx9kyEX1NnmAoJyC": {
+            "id": "HN0rbNx9kyEX1NnmAoJyC",
+            "from": "EPpOdsmP0qjpjQ29VkbWg",
+            "to": "7Ez8ZV_xxacg3TgLm6d5q",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "WJw7Eh-wlU5EV8mwYy5ob": {
+            "id": "WJw7Eh-wlU5EV8mwYy5ob",
+            "from": "jgZNLzInxrXcbsrujbvxB",
+            "to": "7Ez8ZV_xxacg3TgLm6d5q",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "j8rfnWMGuc7RQ1PO7a-Aw": {
+            "id": "j8rfnWMGuc7RQ1PO7a-Aw",
+            "from": "_Z7_EqwBn6gAcnYHwkUUV",
+            "to": "fBOPZCzWHuQYn4YqM8EX8",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "RC1y39VIhN3oXdz1z8RsN": {
+            "id": "RC1y39VIhN3oXdz1z8RsN",
+            "from": "_Z7_EqwBn6gAcnYHwkUUV",
+            "to": "BZgMBeT9tO3PaRRvzQZq6",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "uz-P2ZcfZ3eDgDheYEZw4": {
+            "id": "uz-P2ZcfZ3eDgDheYEZw4",
+            "from": "Z2KLnRvDuFJQM7mGnTxD7",
+            "to": "7Ez8ZV_xxacg3TgLm6d5q",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "xiZfjVheYLX3-oNDsD2Rd": {
+            "id": "xiZfjVheYLX3-oNDsD2Rd",
+            "from": "RGB3ms9U7VpZzt2y_QH5g",
+            "to": "7Ez8ZV_xxacg3TgLm6d5q",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "9V9QiP42gcCKD-oB5zKBk": {
+            "id": "9V9QiP42gcCKD-oB5zKBk",
+            "from": "hWKnpdaRGvE-vjHbKJkyI",
+            "to": "vPfZ5iZDJYWp5dbgWn5cB",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "mpvi9wyBAc160Jw06Cop4": {
+            "id": "mpvi9wyBAc160Jw06Cop4",
+            "from": "Gq9GIfmoCSwPZs1w058ob",
+            "to": "hWKnpdaRGvE-vjHbKJkyI",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "hwB4_s7f8zJQ25PR3thjj": {
+            "id": "hwB4_s7f8zJQ25PR3thjj",
+            "from": "cPx2vsE49UflvUNNtz8bz",
+            "to": "hWKnpdaRGvE-vjHbKJkyI",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "UoCmWHe73hOBmmy52ysEc": {
+            "id": "UoCmWHe73hOBmmy52ysEc",
+            "from": "BZgMBeT9tO3PaRRvzQZq6",
+            "to": "iRv7ajxlfA81d2yMHOXnO",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "2MtfWJrn5qmw0AyW_8Qzv": {
+            "id": "2MtfWJrn5qmw0AyW_8Qzv",
+            "from": "oAbmlACDKDNLmBWFthRLG",
+            "to": "oWXzXjlzbNydQfs31H9MI",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "hX8mdH0PpZxTkQOTziKID": {
+            "id": "hX8mdH0PpZxTkQOTziKID",
+            "from": "oAbmlACDKDNLmBWFthRLG",
+            "to": "oJ-XGNj9wxs29MGERIz_o",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "GxVtyXGWQ3ShjtglLYDv9": {
+            "id": "GxVtyXGWQ3ShjtglLYDv9",
+            "from": "oAbmlACDKDNLmBWFthRLG",
+            "to": "MwBC6AHp5XOD2HJUORDAd",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "MjHrah6dvvpBmg_Z2cOHH": {
+            "id": "MjHrah6dvvpBmg_Z2cOHH",
+            "from": "JJ7k7984Qr2R5xopyrM3I",
+            "to": "hWKnpdaRGvE-vjHbKJkyI",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "ojY9RdgetWC2714cNYDSS": {
+            "id": "ojY9RdgetWC2714cNYDSS",
+            "from": "_N7Hyef0qy_xKsO4bJwKO",
+            "to": "kWXMSmNq0fQyUhOvxiYLn",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "qN-qfx0iUDb7ZxLucwXz9": {
+            "id": "qN-qfx0iUDb7ZxLucwXz9",
+            "from": "KsAe9Y4H_r8VBsnA21-hz",
+            "to": "zATqTtcsZ9zI1AGniPujo",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "yKaL8TgacJIGCdJYMiTH0": {
+            "id": "yKaL8TgacJIGCdJYMiTH0",
+            "from": "KsAe9Y4H_r8VBsnA21-hz",
+            "to": "wI2cAhzmjiB7N-DTyIbuC",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "hl2dHI6OTANcCOimOkSOU": {
+            "id": "hl2dHI6OTANcCOimOkSOU",
+            "from": "KsAe9Y4H_r8VBsnA21-hz",
+            "to": "5hv_YJ50GJelbibE1EnRN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "fdGpdeAxcHIwS8ink4Bka": {
+            "id": "fdGpdeAxcHIwS8ink4Bka",
+            "from": "XnoAFgSP_aIkK0X22Zbw3",
+            "to": "4h2-Jplpc_TyZisTrXlUN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "lW7UsQxgmoBAl0VmrGm0Y": {
+            "id": "lW7UsQxgmoBAl0VmrGm0Y",
+            "from": "Y9sTWR_k3-y7GGLEmpEbz",
+            "to": "jQHBqOn0W60s5ktv9tR50",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "h6rms1_Qo3_ZpvPup3FDM": {
+            "id": "h6rms1_Qo3_ZpvPup3FDM",
+            "from": "Y9sTWR_k3-y7GGLEmpEbz",
+            "to": "CG1pMdMyHT3UUyqiLJuI8",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "mULWAFxZaO_qP0C-vXMZ5": {
+            "id": "mULWAFxZaO_qP0C-vXMZ5",
+            "from": "Y9sTWR_k3-y7GGLEmpEbz",
+            "to": "uTCOfItyc3fqz2N_uNdXf",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "0cSCeH8R_Ixa5p8HbnBCl": {
+            "id": "0cSCeH8R_Ixa5p8HbnBCl",
+            "from": "h7EUhe60dQuTWGOnnWHjb",
+            "to": "FN9khU60Lah1lv9dmlwJm",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "jB2PJaabYRnpwyhWcUj-8": {
+            "id": "jB2PJaabYRnpwyhWcUj-8",
+            "from": "Z-Eu9Yn4UawpAttQn79kN",
+            "to": "h7EUhe60dQuTWGOnnWHjb",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "bJi5ZSbWhvtxa19dVIA6x": {
+            "id": "bJi5ZSbWhvtxa19dVIA6x",
+            "from": "Z-Eu9Yn4UawpAttQn79kN",
+            "to": "OnkBqtCW1GViyImAffpt9",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "RPpZBjenBagzRhNr9MPCx": {
+            "id": "RPpZBjenBagzRhNr9MPCx",
+            "from": "Z-Eu9Yn4UawpAttQn79kN",
+            "to": "5e_Nc5J8JXkiOpYGqT14z",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "Fw2vzwkBF-7GA-uT__5Uk": {
+            "id": "Fw2vzwkBF-7GA-uT__5Uk",
+            "from": "UlRgNnTnLyIWc24zhwK38",
+            "to": "rhatg0xGalZ-hjeh1S2kN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "9OIBZUbMFUp_lyBYq1jcv": {
+            "id": "9OIBZUbMFUp_lyBYq1jcv",
+            "from": "FN9khU60Lah1lv9dmlwJm",
+            "to": "CaUX2Tw9bxtAcyXgsK98z",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "ZlnoBu8ziMvo_k6woQDtC": {
+            "id": "ZlnoBu8ziMvo_k6woQDtC",
+            "from": "FN9khU60Lah1lv9dmlwJm",
+            "to": "3XPNQjAsQ9FfRb6QSn7hl",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "PiHOykymlVahZuu_jKGZn": {
+            "id": "PiHOykymlVahZuu_jKGZn",
+            "from": "FN9khU60Lah1lv9dmlwJm",
+            "to": "a6RIJkhN-2niFC0K6b8fI",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "o5S09PujRa2mAPEv8VgaH": {
+            "id": "o5S09PujRa2mAPEv8VgaH",
+            "from": "OnkBqtCW1GViyImAffpt9",
+            "to": "QY4mOSjjuUKtIAqaeaY6v",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "PFIINkXQ96rfqc0RUO0Rp": {
+            "id": "PFIINkXQ96rfqc0RUO0Rp",
+            "from": "FvGYmDl_FCgmN5ciX7f4m",
+            "to": "rhatg0xGalZ-hjeh1S2kN",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "KaX4wujG9mDkfPZ1B5BRX": {
+            "id": "KaX4wujG9mDkfPZ1B5BRX",
+            "from": "5e_Nc5J8JXkiOpYGqT14z",
+            "to": "ZlV1GnK3jN9u_uqglLG2t",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        },
+        "xHY93E6sySDe7tEJclbJ8": {
+            "id": "xHY93E6sySDe7tEJclbJ8",
+            "from": "wSJk7lDU2NgEGBcgoDK-4",
+            "to": "3e68JXUSK3EsuSJpAQpKo",
+            "type": "mmj8iW7rwsX4nrJojGjt6"
+        }
+    }
+}
