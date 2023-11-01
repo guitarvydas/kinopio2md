@@ -545,11 +545,8 @@ low_level_read_text_file_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     fd, errnum := os.open (fname)
     if errnum == 0 {
 	data, success := os.read_entire_file_from_handle (fd)
-	fmt.eprintf ("llrtf typeof data %v\n", typeid_of (type_of (data)))
 	if success {
 	    s := string (data)
-	    fmt.eprintf ("llrtf typeof s %v\n", typeid_of (type_of (s)))
-	    fmt.eprintf ("llrtf len=%v\n", len (s))
 	    zd.send_string (eh, "str", s, msg)
 	} else {
             emsg := fmt.aprintf("read error on file %s", msg.datum.data.(string))

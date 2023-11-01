@@ -19,8 +19,8 @@ import leaf "leaf0d"
 main :: proc() {
 
     //log_level := zd.log_handlers
-    //log_level := runtime.Logger_Level.Info
-    log_level := runtime.Logger_Level.Debug
+    log_level := runtime.Logger_Level.Info
+    // log_level := runtime.Logger_Level.Debug
     fmt.printf ("\n*** starting logger level %v ***\n", log_level)
     context.logger = log.create_console_logger(
 	lowest=cast(runtime.Logger_Level)log_level,

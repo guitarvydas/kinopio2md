@@ -16,13 +16,11 @@ Datum :: struct {
 new_datum_string :: proc (s : string) -> ^Datum {
     string_in_heap := new (string)
     string_in_heap^ = strings.clone (s)
-    fmt.eprintf ("string_in_heap len=%v\n", len (string_in_heap))
     datum_in_heap := new (Datum)
     datum_in_heap.data = string_in_heap^
     datum_in_heap.clone = clone_datum_string
     datum_in_heap.reclaim = reclaim_datum_string    
     datum_in_heap.asString = asString_datum_string    
-    fmt.eprintf ("string_in_heap len(datum_in_heap.data.string))=%v\n", len (datum_in_heap.data.(string) ))
     return datum_in_heap
 }
 

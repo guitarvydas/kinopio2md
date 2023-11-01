@@ -85,7 +85,6 @@ send_string :: proc(eh: ^Eh, port: string, s : string, causingMessage : ^Message
     cause := make_cause (eh, causingMessage)
     sendf("SEND 0x%p %s(%v) [%v]", eh, eh.name, port, cause.message.port)
     pdatum := new_datum_string (s)
-    fmt.printf ("send_string len string=%v datum=%v\n", len(s), len(pdatum.asString(pdatum) ))
     msg := make_message(port, pdatum, cause)
 
     fifo_push(&eh.output, msg)
