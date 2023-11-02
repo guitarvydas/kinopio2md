@@ -148,5 +148,6 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, leaf.string_constant ("Escapes"))
     append(leaves, leaf.string_constant ("rt/escapes.ohm"))
     append(leaves, leaf.string_constant ("rt/escapes.rwr"))
+    append(leaves, leaf.string_constant ("rt/escapessupport.js"))
 }
 

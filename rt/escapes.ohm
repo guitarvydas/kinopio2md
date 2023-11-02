@@ -13,6 +13,7 @@ Escapes {
     | "<" -- lt
     | ">" -- gt
     | "&" -- amp
+    | sq -- squot
     | dq -- quot
     | any -- any
 
@@ -20,6 +21,7 @@ Escapes {
     | "❲" wordchar+ "❳" -- rec
     | any -- bottom
     
+  sq = "'"
   dq = "\""
   nl = "\n"
 }
