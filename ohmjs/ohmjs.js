@@ -151,6 +151,7 @@ function main () {
 	let grammarName = argv._[0];
 	let grammarFileName = argv._[1];
 	let rwrFileName = argv._[2];
+
 	src = fs.readFileSync ('/dev/fd/0', 'utf-8');
 
 	_traceDepth = 0;

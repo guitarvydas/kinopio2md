@@ -290,7 +290,9 @@ ohmjs_maybe :: proc (eh: ^zd.Eh, inst: ^OhmJS_Instance_Data, causingMsg: ^zd.Mes
     if "" != inst.grammarname && "" != inst.grammarfilename && "" != inst.semanticsfilename && "" != inst.input {
 
         cmd := fmt.aprintf ("ohmjs/ohmjs.js %s %s %s", inst.grammarname, inst.grammarfilename, inst.semanticsfilename)
+	fmt.eprintf ("ohmjs_maybe begin: %v\n", cmd)
 	captured_output, err := process.run_command (cmd, inst.input)
+	fmt.eprintf ("ohmjs_maybe process finished: %v\n", cmd)
         zd.send_string (eh, "output", strings.trim_space (captured_output), causingMsg)
 	zd.send_string (eh, "error", strings.trim_space (err), causingMsg)
     }
