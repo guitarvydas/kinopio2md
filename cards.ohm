@@ -1,5 +1,5 @@
 KinopioCards {
-  SemanticJSON = "{" s<"cards"> ":" "{" Card+ "}" "," s<"connections"> ":" "{" Connection+ "}" "}"
+  SemanticJSON = "{" s<"cards"> ":" "{" Card+ "}" "," s<"connections"> ":" "{" Connection* "}" "}"
   Card = ID ":" "{" s<"id"> ":" ID "," s<"name"> ":" Text "}" ","?
   Connection = ID ":" "{" s<"id"> ":" ID "," s<"from"> ":" ID "," s<"to"> ":" ID "," s<"type"> ":" ID "}" ","?
 
