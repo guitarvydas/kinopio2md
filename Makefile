@@ -5,6 +5,6 @@ all: dev
 dev: diagram
 
 diagram:
-	rm -f kinopio2md
+	rm -f kinopio2md content.pl
 	odin run . $(ODIN_FLAGS)
 
