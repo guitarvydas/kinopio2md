@@ -148,7 +148,6 @@ function main () {
     // top level command, prints on stdout and stderr (if error) then exits with 0 or 1 (OK, or not OK, resp.)
     try {
 	argv = require('yargs/yargs')(process.argv.slice(2)).argv;
-	console.error (argv);
 	let grammarName = argv._[0];
 	let grammarFileName = argv._[1];
 	let rwrFileName = argv._[2];
