@@ -19,7 +19,8 @@ import leaf "leaf0d"
 main :: proc() {
 
     //log_level := zd.log_handlers
-    log_level := runtime.Logger_Level.Info
+    // log_level := runtime.Logger_Level.Info
+    log_level := runtime.Logger_Level.Debug
     fmt.printf ("\n*** starting logger level %v ***\n", log_level)
     context.logger = log.create_console_logger(
 	lowest=cast(runtime.Logger_Level)log_level,
@@ -74,7 +75,8 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 
 inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("kjson/0dvsfbp.json")
-    p := zd.new_datum_string ("kjson/test8.json")
+    p := zd.new_datum_string ("kjson/test9.json")
+    // p := zd.new_datum_string ("kjson/test8.json")
     // p := zd.new_datum_string ("kjson/test7.json")
     // p := zd.new_datum_string ("kjson/test5.json") // test with dq and sq
     // p := zd.new_datum_string ("kjson/softwareAtomsTest.json")
