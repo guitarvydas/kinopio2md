@@ -136,10 +136,6 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, reg.Leaf_Template { name = "'rwr/rwr.ohm'", instantiate = leaf.rwrohm_instantiate })
     append(leaves, reg.Leaf_Template { name = "'rwr/rwr.sem.js'", instantiate = leaf.rwrsemjs_instantiate })
 
-    append(leaves, reg.Leaf_Template { name = "'Escapes'", instantiate = leaf.escapes_instantiate })
-    append(leaves, reg.Leaf_Template { name = "'rt/escapes.ohm'", instantiate = leaf.escapesohm_instantiate })
-    append(leaves, reg.Leaf_Template { name = "'rt/escapes.rwr'", instantiate = leaf.escapesrwr_instantiate })
-    
     append(leaves, reg.Leaf_Template { name = "fakepipename", instantiate = leaf.fakepipename_instantiate })
     append(leaves, reg.Leaf_Template { name = "syncfilewrite", instantiate = leaf.syncfilewrite_instantiate })
 
@@ -148,5 +144,9 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
     append(leaves, leaf.string_constant ("cards.rwr"))
     append(leaves, leaf.string_constant ("support.js"))
     append(leaves, leaf.string_constant ("content.pl"))
+
+    append(leaves, leaf.string_constant ("Escapes"))
+    append(leaves, leaf.string_constant ("rt/escapes.ohm"))
+    append(leaves, leaf.string_constant ("rt/escapes.rwr"))
 }
 
