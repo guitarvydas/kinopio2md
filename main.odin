@@ -74,7 +74,8 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 
 inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("kjson/0dvsfbp.json")
-    p := zd.new_datum_string ("kjson/test5.json") // test with dq and sq
+    // p := zd.new_datum_string ("kjson/test5.json") // test with dq and sq
+    p := zd.new_datum_string ("kjson/test6.json") // test with dq only
     // p := zd.new_datum_string ("kjson/softwareAtomsTest.json")
     // p := zd.new_datum_string ("kjson/test4.json")
     // p := zd.new_datum_string ("kjson/test2.json")

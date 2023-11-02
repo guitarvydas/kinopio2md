@@ -13,6 +13,7 @@ Escapes {
     | "<" -- lt
     | ">" -- gt
     | "&" -- amp
+    | quoteddq -- qdq
     | sq -- squot
     | dq -- quot
     | any -- any
@@ -21,6 +22,7 @@ Escapes {
     | "❲" wordchar+ "❳" -- rec
     | any -- bottom
     
+  quoteddq = "\\" dq
   sq = "'"
   dq = "\""
   nl = "\n"

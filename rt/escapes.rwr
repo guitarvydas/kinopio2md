@@ -8,6 +8,7 @@ Escapes {
   wordchar_rec [lb cs+ rb] = ‛«lb»«cs»«rb»’
   wordchar_bottom [c] = ‛«c»’
 
+  quoteddq [bsl dq] = ‛«dq»’
   sq [c] = ‛«c»’
   dq [c] = ‛«c»’
   nl [c] = ‛«c»’
