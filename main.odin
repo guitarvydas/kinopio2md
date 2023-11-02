@@ -74,8 +74,9 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 
 inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("softwareAtomsTest.json")
+    p := zd.new_datum_string ("kjson/test4.json")
     // p := zd.new_datum_string ("kjson/test2.json")
-    p := zd.new_datum_string ("kjson/test0.json")
+    // p := zd.new_datum_string ("kjson/test0.json")
     msg := zd.make_message("filename", p, zd.make_cause (main_container, nil) )
     main_container.handler(main_container, msg)
 }

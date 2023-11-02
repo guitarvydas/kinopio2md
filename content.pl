@@ -1,1 +1,0 @@
-text('FKp9pB6HvMtvr4cXWL9k1','G').

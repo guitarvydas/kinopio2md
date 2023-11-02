@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-11-02T09:24:57.056Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="-F5_6kxlhhXHMM6lcJIk" version="21.6.8" type="device" pages="11">
+<mxfile host="Electron" modified="2023-11-02T09:35:31.719Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="fKyM8raz5qVtp7Z6EamJ" version="21.6.8" type="device" pages="11">
   <diagram name="main" id="4QlTtk_WPPcwoPzxX5HY">
     <mxGraphModel dx="956" dy="733" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
@@ -119,9 +119,6 @@
         <mxCell id="SNbKEDQqI2v0QhSMEQ1h-7" value="input" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;points=[[0,0.5,0,0,0],[1,0.5,0,0,0]];arcSize=50;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="SNbKEDQqI2v0QhSMEQ1h-6">
           <mxGeometry x="-16.75" y="27.5" width="66" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="SNbKEDQqI2v0QhSMEQ1h-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="vMXB2hUwACe108pR5QHL-5" target="SNbKEDQqI2v0QhSMEQ1h-7">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="MasbKTUKDfrCumEDvGSJ-1" value="?" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;container=1;recursiveResize=0;verticalAlign=top;arcSize=6;fontStyle=1;autosize=0;points=[];absoluteArcSize=1;shadow=1;strokeColor=#b85450;fillColor=#f8cecc;fontFamily=Helvetica;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1000" y="400" width="80" height="80" as="geometry">
             <mxRectangle x="-98" y="-1230" width="99" height="26" as="alternateBounds" />
@@ -130,8 +127,11 @@
         <mxCell id="MasbKTUKDfrCumEDvGSJ-2" value="input" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;points=[[0,0.5,0,0,0],[1,0.5,0,0,0]];arcSize=50;fontFamily=Helvetica;fontSize=11;fontColor=default;" vertex="1" parent="MasbKTUKDfrCumEDvGSJ-1">
           <mxGeometry x="-16.75" y="27.5" width="66" height="25" as="geometry" />
         </mxCell>
-        <mxCell id="MasbKTUKDfrCumEDvGSJ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="tcpZpr2PI8rBzga33bK--7" target="MasbKTUKDfrCumEDvGSJ-2">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="fo_Fnw23k_qoXYiesX---1" value="watch output from &#39;Extract Semantic Information&#39;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="500" width="140" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="fo_Fnw23k_qoXYiesX---2" value="watch output from &#39;Transpile Cards to PROLOG&#39;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="500" width="140" height="160" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
