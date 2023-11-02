@@ -258,7 +258,8 @@ probe_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
 }
 
 probe_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    fmt.eprintln (eh.name, msg.datum.asString (msg.datum))
+    s := msg.datum.asString (msg.datum)
+    fmt.eprintf ("probe: eh.name /%v/ len=%v\n", s, len (s))
 }
 
 trash_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
