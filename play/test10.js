@@ -34,109 +34,6 @@ Escapes {
 }
 `;
 
-var semstr = String.raw`
-_ = {
-    encodews : function (s) { return _.encodequotes (encodeURIComponent (s)); },
-    encodequotes : function (s) { 
-	rs= s.replace (/"/g, '%22').replace (/'/g, '%27');
-	return rs;
-    }
-},
-{
-    text: function (c) {
-	_ruleEnter ("text");
-	c = c.rwr ().join ('');
-
-	_ruleExit ("text");
-	return \`\$\{c}\`;
-    },
-    char_string: function (ldq,cs,rdq) {
-	_ruleEnter ("char_string");
-	ldq = ldq.rwr ();
-	cs = cs.rwr ().join ('');
-	rdq = rdq.rwr ();
-
-	_ruleExit ("char_string");
-	return \`\$\{ldq}\$\{_.encodews (cs)}\$\{rdq}\`;
-    },
-    char_comment: function (kcomment,cs,nl) {
-	_ruleEnter ("char_comment");
-	kcomment = kcomment.rwr ();
-	cs = cs.rwr ().join ('');
-	nl = nl.rwr ();
-
-	_ruleExit ("char_comment");
-	return \`\$\{kcomment}\$\{_.encodews (cs)}\$\{nl}\`;
-    },
-    char_word: function (lb,cs,rb) {
-	_ruleEnter ("char_word");
-	lb = lb.rwr ();
-	cs = cs.rwr ().join ('');
-	rb = rb.rwr ();
-
-	_ruleExit ("char_word");
-	return \`\$\{lb}\$\{encodeURIComponent (cs)}\$\{rb}\`;
-    },
-    char_any: function (c) {
-	_ruleEnter ("char_any");
-	c = c.rwr ();
-
-	_ruleExit ("char_any");
-	return \`\$\{c}\`;
-    },
-    wordchar_rec: function (lb,cs,rb) {
-	_ruleEnter ("wordchar_rec");
-	lb = lb.rwr ();
-	cs = cs.rwr ().join ('');
-	rb = rb.rwr ();
-
-	_ruleExit ("wordchar_rec");
-	return \`\$\{lb}\$\{cs}\$\{rb}\`;
-    },
-    wordchar_bottom: function (c) {
-	_ruleEnter ("wordchar_bottom");
-	c = c.rwr ();
-
-	_ruleExit ("wordchar_bottom");
-	return \`\$\{c}\`;
-    },
-    quoteddq: function (bsl,dq) {
-	_ruleEnter ("quoteddq");
-	bsl = bsl.rwr ();
-	dq = dq.rwr ();
-
-	_ruleExit ("quoteddq");
-	return \`\$\{dq}\`;
-    },
-    sq: function (c) {
-	_ruleEnter ("sq");
-	c = c.rwr ();
-
-	_ruleExit ("sq");
-	return \`\$\{c}\`;
-    },
-    dq: function (c) {
-	_ruleEnter ("dq");
-	c = c.rwr ();
-
-	_ruleExit ("dq");
-	return \`\$\{c}\`;
-    },
-    nl: function (c) {
-	_ruleEnter ("nl");
-	c = c.rwr ();
-
-	_ruleExit ("nl");
-	return \`\$\{c}\`;
-    },
-
-    _terminal: function () { return this.sourceString; },
-    _iter: function (...children) { return children.map(c => c.rwr ()); },
-    spaces: function (x) { return this.sourceString; },
-    space: function (x) { return this.sourceString; }
-}
-`;
-
 ///////////
 
 //'use strict'
@@ -303,8 +200,14 @@ function main () {
 
 	// let grammarText = fs.readFileSync (grammarFileName, 'utf-8');
 	// let rwr = fs.readFileSync (rwrFileName, 'utf-8');
+
 	let grammarText = grammar;
-	let semantics = eval ("(" + semstr + ")");
+	let semstr = fs.readFileSync ('test10.ns', 'utf-8');
+	console.log (semstr);
+	let semns = eval ("(" + semstr + ")");
+	console.log (semns);
+
+	let semantics = semns;
 
 	let ast = makeAST (grammarName, grammarText);
 	let cst = patternMatch (src, ast);

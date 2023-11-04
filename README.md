@@ -18,3 +18,8 @@ convert Kinopio mind-map to markdown
 
 TODO:
 - 
+
+THEORY: - 'Read Text File' or Send() mutilates the bits
+TEST: - filename -> 'Read Text File' -> $cat - >/tmp/out ; both, input and output files should be the same
+RESULT: files are the same
+

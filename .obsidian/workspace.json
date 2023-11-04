@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ai/ai-written-subsection.md",
+                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b61d8251a24240e7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0D vs FBP (2).md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -85,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ai/ai-written-subsection.md",
+                "file": "0D vs FBP (2).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ai/ai-written-subsection.md",
+                "file": "0D vs FBP (2).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ai/ai-written-subsection.md"
+                "file": "0D vs FBP (2).md"
               }
             }
           }
@@ -146,23 +159,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "95961c235b3d4e7b",
+  "active": "b61d8251a24240e7",
   "lastOpenFiles": [
+    "content.pl",
     "kinopio2md",
     "kinopio2md.o",
-    "content.pl",
-    "kinopio2md.ld_PqZdUw",
-    "kinopio2md.ld_PKiEkq",
-    "kinopio2md.ld_SLaFy9",
-    "kinopio2md.ld_Iq9Ikp",
-    "leaf0d/#leaf0d.odin#",
-    "kinopio2md.ld_5naxi2",
-    "README.md~",
-    "#README.md#",
+    "0dvsfbp/test107.json~",
+    "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
+    "0D vs FBP (2).md",
+    "0dvsfbp/test109.json",
+    "0dvsfbp/test108.json~",
+    "0dvsfbp/test108.json",
+    "0dvsfbp/test107.json",
+    "0dvsfbp/test106.json~",
+    "0dvsfbp/test106.json",
+    "0dvsfbp/test105.json",
+    "0dvsfbp/0dvsfbp-points.md",
+    "0dvsfbp/prompt.md",
+    "0dvsfbp/0dvsfbp First Attempt.md",
+    "ai/ai-written-subsection.md",
     "ai/generated-khoj-software atoms.md",
     "ai/Screenshot 2023-10-29 at 10.24.11 PM.png",
     "junk.md",
-    "ai/ai-written-subsection.md",
     "ai-written-subsection.md"
   ]
 }
