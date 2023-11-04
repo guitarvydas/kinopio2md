@@ -45,12 +45,7 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     
     send_output :: proc(eh: ^zd.Eh, port: string, output: []byte, causingMsg: ^zd.Message) {
         if len(output) > 0 {
-            str, ok := utf8_string(output)
-            if ok {
-                zd.send_string (eh, port, str, causingMsg)
-            } else {
-                zd.send (eh, port, zd.new_datum_bytes (output), causingMsg)
-            }
+            zd.send (eh, port, zd.new_datum_bytes (output), causingMsg)
         }
     }
 
@@ -80,25 +75,29 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 
         // stdout handling
         {
-            stdout, ok := process.process_read_handle(handle.output)
-            if ok {
-                send_output(eh, "output", stdout, msg)
-            }
-        }
+            stdout, stdout_ok := process.process_read_handle(handle.output)
 
-        // stderr handling
-        {
-            stderr, ok := process.process_read_handle(handle.error)
-            if ok {
-                send_output(eh, "error", stderr, msg)
+            // stderr handling
+            stderr_untrimmed, stderr_ok := process.process_read_handle(handle.error)
+	    stderr : string
+            if stderr_ok {
+		stderr = strings.trim_right_space(cast(string)stderr_untrimmed)
             }
-
-            if len(stderr) > 0 {
-                str := string(stderr)
-                str = strings.trim_right_space(str)
-                log.error(str)
+	    if stdout_ok && stderr_ok {
+		// fire only one output port
+		// on error, send both, stdout and stderr to the error port
+		if len (stderr) > 0 {
+                    send_output (eh, "error", stdout, msg)
+		    zd.send_string(eh, "error", stderr, msg)
+		} else {
+                    send_output (eh, "output", stdout, msg)
+		}
+	    } else {
+		// panic - we should never fail to collect stdout and stderr
+		// if we come here, then something is deeply wrong with this code
+		fmt.assertf (false, "PANIC: failed to retrieve outputs stdout_ok = %v stderr_ok = %v\n", stdout_ok, stderr_ok)
             }
-        }
+	}
     }
 }
 
