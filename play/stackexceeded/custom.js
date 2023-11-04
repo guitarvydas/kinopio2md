@@ -10,7 +10,6 @@
 const fs = require ('fs');
 const ohm = require ('ohm-js');
 
-let argv;
 let grammarName;
 let grammarFileName;
 let rwrFileName;
@@ -156,17 +155,14 @@ function processCST (opName, asst, cst) {
 function main () {
     // top level command, prints on stdout and stderr (if error) then exits with 0 or 1 (OK, or not OK, resp.)
     try {
-	argv = require('yargs/yargs')(process.argv.slice(2)).argv;
-	grammarName = argv._[0];
-	grammarFileName = argv._[1];
-	rwrFileName = argv._[2];
+	grammarName = 'Escapes';
+	grammarFileName = 'escapes.ohm';
+	rwrFileName = 'fakepipename1';
 
-	src = fs.readFileSync ('/dev/fd/0', 'utf-8');
+	src = fs.readFileSync ('src', 'utf-8');
 
 	_traceDepth = 0;
-	if (argv.trace) {
 	    _tracing = true;
-	}
 
 	let grammarText = fs.readFileSync (grammarFileName, 'utf-8');
 	let rwr = fs.readFileSync (rwrFileName, 'utf-8');
