@@ -27,7 +27,6 @@ new_datum_string :: proc (s : string) -> ^Datum {
     datum_in_heap.reclaim = reclaim_datum_string    
     datum_in_heap.asString = asString_datum_string    
     datum_in_heap.kind = string_kind
-    fmt.printf ("new_datum_string %v\n", datum_in_heap)
     return datum_in_heap
 }
 

@@ -258,6 +258,7 @@ probe_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
 
 probe_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     s := msg.datum.asString (msg.datum)
+    fmt.eprintf ("probe: %v\n", s)
     fmt.eprintf ("probe %v: /%v/ len=%v\n", eh.name, s, len (s))
 }
 
@@ -601,7 +602,6 @@ ensure_string_datum_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh 
 }
 
 ensure_string_datum_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    fmt.printf ("esdh: %v datum=%v\n", msg, msg.datum)
     switch msg.datum.kind () {
     case "string":
 	zd.forward (eh, "output", msg)

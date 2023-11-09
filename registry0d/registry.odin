@@ -66,24 +66,26 @@ make_component_registry :: proc(leaves: []Leaf_Template, container_xml: string) 
     return reg
 }
 
-get_component_instance :: proc(reg: ^Component_Registry, name: string, owner : ^zd.Eh) -> (instance: ^zd.Eh, ok: bool) {
+get_component_instance :: proc(reg: ^Component_Registry, name_prefix: string, name: string, owner : ^zd.Eh) -> (instance: ^zd.Eh, ok: bool) {
     descriptor: Template
     descriptor, ok = reg.templates[name]
     if ok {
         switch template in descriptor {
         case Leaf_Template:
-            instance = template.instantiate(name, owner)
+	    full_name := fmt.aprint ("%s.%s", name_prefix, name)
+            instance = template.instantiate(full_name, owner)
         case Container_Template:
-            instance = container_instantiator(reg, owner, template.decl)
+            instance = container_instantiator(reg, owner, name_prefix, template.decl)
         }
 	reg.stats.ninstances += 1
     }
     return instance, ok
 }
 
-container_instantiator :: proc(reg: ^Component_Registry, owner : ^zd.Eh, decl: syntax.Container_Decl) -> ^zd.Eh {
+container_instantiator :: proc(reg: ^Component_Registry, owner : ^zd.Eh, name_prefix: string, decl: syntax.Container_Decl) -> ^zd.Eh {
 
-    container := zd.make_container(decl.name, owner)
+    container_name := fmt.aprintf ("%s.%s", name_prefix, decl.name)
+    container := zd.make_container(container_name, owner)
 
     children := make([dynamic]^zd.Eh)
 
@@ -95,7 +97,7 @@ container_instantiator :: proc(reg: ^Component_Registry, owner : ^zd.Eh, decl: s
     // collect children
     {
         for child_decl in decl.children {
-            child_instance, ok := get_component_instance(reg, child_decl.name, container)
+            child_instance, ok := get_component_instance(reg, container_name, child_decl.name, container)
             fmt.assertf (ok, "\n*** Error: Can't find component %v\n", child_decl.name)
             append(&children, child_instance)
             child_id_map[child_decl.id] = child_instance
