@@ -25,14 +25,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0D vs FBP (2).md",
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "cd561520875414ab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "doc/doc.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0D vs FBP (2).md",
+                "file": "doc/doc.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "0D vs FBP (2).md",
+                "file": "doc/doc.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0D vs FBP (2).md"
+                "file": "doc/doc.md"
               }
             }
           }
@@ -159,26 +171,33 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b61d8251a24240e7",
+  "active": "cd561520875414ab",
   "lastOpenFiles": [
     "kinopio2md",
     "kinopio2md.o",
-    "play/stackexceeded/custom-cull.py~",
-    "play/stackexceeded/custom-cull.py",
-    "play/stackexceeded/cull.py",
-    "play/stackexceeded/hold-fakepipename1",
-    "play/stackexceeded/runcustom.bash~",
-    "play/stackexceeded/runcustom.bash",
-    "play/stackexceeded/custom.js~",
-    "play/stackexceeded/custom.js",
-    "play/stackexceeded/run.bash~",
-    "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
+    "0d/#datum.odin#",
+    "leaf0d/#leaf0d.odin#",
+    "#main.odin#",
+    "ai/software atoms test.json",
+    "ai/generated-khoj-software atoms.md",
+    "ai/generated-software atoms.md",
+    "doc/doc.md",
+    "ai/ai-written-subsection.md",
+    "doc/top level.png",
+    "doc/Screenshot 2023-11-08 at 10.24.36 PM.png",
+    "Screenshot 2023-11-08 at 10.24.36 PM.png",
+    "README.md",
+    "doc",
+    "untitled folder",
+    "attic/noop.pl",
     "0D vs FBP (2).md",
+    "kjson/points.md~",
+    "kjson/points.md",
+    "kjson/#points.md#",
+    "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
     "0dvsfbp/0dvsfbp-points.md",
     "0dvsfbp/prompt.md",
     "0dvsfbp/0dvsfbp First Attempt.md",
-    "ai/ai-written-subsection.md",
-    "ai/generated-khoj-software atoms.md",
     "ai/Screenshot 2023-10-29 at 10.24.11 PM.png",
     "junk.md",
     "ai-written-subsection.md"

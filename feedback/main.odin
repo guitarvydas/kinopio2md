@@ -18,14 +18,14 @@ import leaf "leaf0d"
 
 main :: proc() {
 
-    log_level := zd.log_handlers // set this to only track handlers in Components
-    //log_level := zd.log_all // set this to track everything, equivalen to runtime.Logger_Level.Debug
-    // log_level := runtime.Logger_Level.Info
-    fmt.printf ("\n*** starting logger level %v ***\n", log_level)
-    context.logger = log.create_console_logger(
-	lowest=cast(runtime.Logger_Level)log_level,
-        opt={.Level, .Time, .Terminal_Color},
-    )
+    /* log_level := zd.log_handlers // set this to only track handlers in Components */
+    /* //log_level := zd.log_all // set this to track everything, equivalen to runtime.Logger_Level.Debug */
+    /* // log_level := runtime.Logger_Level.Info */
+    /* fmt.printf ("\n*** starting logger level %v ***\n", log_level) */
+    /* context.logger = log.create_console_logger( */
+    /* 	lowest=cast(runtime.Logger_Level)log_level, */
+    /*     opt={.Level, .Time, .Terminal_Color}, */
+    /* ) */
 
     // load arguments
     diagram_source_file := slice.get(os.args, 1) or_else "top.drawio"
@@ -76,14 +76,14 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("0dvsfbp/test109.json")
     // p := zd.new_datum_string ("0dvsfbp/test108.json")
-    //--p := zd.new_datum_string ("0dvsfbp/test107.json")
-    p := zd.new_datum_string ("0dvsfbp/test106.json")
-    // xx p := zd.new_datum_string ("0dvsfbp/test105.json")
+    p := zd.new_datum_string ("0dvsfbp/test107.json")
+    // p := zd.new_datum_string ("0dvsfbp/test106.json")
+    // p := zd.new_datum_string ("0dvsfbp/test105.json")
     // p := zd.new_datum_string ("0dvsfbp/test104.json")
     // p := zd.new_datum_string ("0dvsfbp/test103.json")
     // p := zd.new_datum_string ("0dvsfbp/test102.json")
     // p := zd.new_datum_string ("0dvsfbp/test101.json")
-    // xx p := zd.new_datum_string ("kjson/test100.json")
+    // p := zd.new_datum_string ("kjson/test100.json")
 
     // p := zd.new_datum_string ("kjson/0dvsfbp.json")
     // p := zd.new_datum_string ("play/test10.json")
@@ -91,9 +91,7 @@ inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("kjson/test8.json")
     // p := zd.new_datum_string ("kjson/test7.json")
     // p := zd.new_datum_string ("kjson/test5.json") // test with dq and sq
-
-    // p := zd.new_datum_string ("kjson/softwareAtomsTest.json") // from Kinopio 'software atoms test' https://kinopio.club/software-atoms-test-FhzG4AniDsQj1ilz2N7FA
-
+    // p := zd.new_datum_string ("kjson/softwareAtomsTest.json")
     // p := zd.new_datum_string ("kjson/test4.json")
     // p := zd.new_datum_string ("kjson/test2.json")
     // p := zd.new_datum_string ("kjson/test0.json")

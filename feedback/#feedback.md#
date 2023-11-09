@@ -1,0 +1,4 @@
+:"Feedback comes in two flavours: positive feedback, and negative feedback
+"Positive feedback adds the feedback to the input, making the output signal grow without bound"
+negative feedback subtracts the feedback from the input makig the output smaller than the input
+"In electronics, I.C. called an op amp. It has two inputs and one output. One of the inputs is the negative input. The other is the positive input and the output is the sum of the two inputs

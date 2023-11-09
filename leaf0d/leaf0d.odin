@@ -601,11 +601,13 @@ ensure_string_datum_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh 
 }
 
 ensure_string_datum_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    switch x in msg.datum.data {
-    case string:
+    fmt.printf ("esdh: %v datum=%v\n", msg, msg.datum)
+    switch msg.datum.kind (msg.datum) {
+    case "string":
 	zd.forward (eh, "output", msg)
     case:
-	zd.send_string (eh, "error", "ensure: type error (expected a string datum)", msg)
+	emsg := fmt.aprintf ("*** ensure: type error (expected a string datum) but got %v in %v", msg.datum.kind (msg.datum), msg)
+	zd.send_string (eh, "error", emsg, msg)
     }
 }
 
