@@ -415,9 +415,9 @@ stringconcat_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := &eh.instance_data.(StringConcat_Instance_Data)
     switch msg.port {
     case "1":
-	inst.buffer = strings.clone (msg.datum.data.(string))
+	inst.buffer = strings.clone (msg.datum.asString (msg.datum))
     case "2":
-	s := strings.clone (msg.datum.data.(string))
+	s := strings.clone (msg.datum.asString (msg.datum))
 	if 0 == len (inst.buffer) && 0 == len (s) {
 	    fmt.printf ("stringconcat %d %d\n", len (inst.buffer), len (s))
 	    fmt.assertf (false, "TODO: something is wrong in stringconcat, both strings are 0 length\n")
@@ -510,9 +510,9 @@ syncfilewrite_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := &eh.instance_data.(Syncfilewrite_Data)
     switch msg.port {
     case "filename":
-	inst.filename = msg.datum.data.(string)
+	inst.filename = msg.datum.asString (msg.datum)
     case "input":
-	contents := msg.datum.data.(string)
+	contents := msg.datum.asString (msg.datum)
 	// see .../Odin/core/os.odin/write_entire_file - the following code was stolen from there
 	mode: int = 0
 	when os.OS == .Linux || os.OS == .Darwin {
@@ -543,18 +543,18 @@ low_level_read_text_file_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^z
 }
 
 low_level_read_text_file_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    fname := msg.datum.data.(string)
+    fname := msg.datum.asString (msg.datum)
     fd, errnum := os.open (fname)
     if errnum == 0 {
 	data, success := os.read_entire_file_from_handle (fd)
 	if success {
 	    zd.send_string (eh, "str", transmute(string)data, msg)
 	} else {
-            emsg := fmt.aprintf("read error on file %s", msg.datum.data.(string))
+            emsg := fmt.aprintf("read error on file %s", msg.datum.asString (msg.datum))
 	    zd.send_string (eh, "error", emsg, msg)
 	}
     } else {
-        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.data.(string), errnum)
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.asString (msg.datum), errnum)
 	zd.send_string (eh, "error", emsg, msg)
     }
 }
@@ -567,11 +567,11 @@ open_text_file_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
 }
 
 open_text_file_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    fd, errnum := os.open (msg.datum.data.(string))
+    fd, errnum := os.open (msg.datum.asString (msg.datum))
     if errnum == 0 {
 	zd.send (eh, "fd", zd.new_datum_handle (fd), msg)
     } else {
-        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.data.(string), errnum)
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.asString (msg.datum), errnum)
 	zd.send_string (eh, "error", emsg, msg)
     }
 }
@@ -589,7 +589,7 @@ low_level_read_text_from_fd_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     if success {
 	zd.send_string (eh, "str", transmute(string)data, msg)
     } else {
-        emsg := fmt.aprintf("read error on file %s", msg.datum.data.(string))
+        emsg := fmt.aprintf("read error on file %s", msg.datum.asString (msg.datum))
 	zd.send_string (eh, "error", emsg, msg)
     }
 }
