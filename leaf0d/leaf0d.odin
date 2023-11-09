@@ -150,8 +150,8 @@ command_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := eh.instance_data.(Command_Instance_Data)
     switch msg.port {
     case "command":
-        inst.buffer = msg.datum.data.(string)
-        received_input := msg.datum.data.(string)
+        inst.buffer = msg.datum.asString (msg.datum)
+        received_input := msg.datum.asString (msg.datum)
         captured_output, _ := process.run_command (inst.buffer, received_input)
         zd.send_string (eh, "output", captured_output, msg)
 	case:
@@ -169,9 +169,9 @@ icommand_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := eh.instance_data.(Command_Instance_Data)
     switch msg.port {
     case "command":
-        inst.buffer = msg.datum.data.(string)
+        inst.buffer = msg.datum.asString (msg.datum)
     case "input":
-        received_input := msg.datum.data.(string)
+        received_input := msg.datum.asString (msg.datum)
         captured_output, _ := process.run_command (inst.buffer, received_input)
         zd.send_string (eh, "output", captured_output, msg)
 	case:
@@ -301,16 +301,16 @@ ohmjs_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := &eh.instance_data.(OhmJS_Instance_Data)
     switch (msg.port) {
     case "grammar name":
-	inst.grammarname = strings.clone (msg.datum.data.(string))
+	inst.grammarname = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
     case "grammar":
-	inst.grammarfilename = strings.clone (msg.datum.data.(string))
+	inst.grammarfilename = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
     case "semantics":
-	inst.semanticsfilename = strings.clone (msg.datum.data.(string))
+	inst.semanticsfilename = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
     case "input":
-	inst.input = strings.clone (msg.datum.data.(string))
+	inst.input = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
 	case:
         emsg := fmt.aprintf("!!! ERROR: OhmJS got an illegal message port %v", msg.port)
