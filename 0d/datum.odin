@@ -11,12 +11,12 @@ Datum :: struct {
     clone:    #type proc (^Datum) -> ^Datum,
     reclaim:  #type proc (^Datum),
     asString: #type proc (^Datum) -> string,
-    kind:       #type proc (^Datum) -> string
+    kind:     #type proc ()       -> string
 }
 
 
 new_datum_string :: proc (s : string) -> ^Datum {
-    string_kind :: proc (src: ^Datum) -> string {
+    string_kind :: proc () -> string {
 	return "string"
     }
     string_in_heap := new (string)
@@ -55,7 +55,7 @@ asString_datum_string :: proc (self : ^Datum) -> string {
 
 
 new_datum_bang :: proc () -> ^Datum {
-    my_kind :: proc (src: ^Datum) -> string {
+    my_kind :: proc () -> string {
 	return "bang"
     }
     p := new (Datum)
@@ -80,7 +80,7 @@ asString_datum_bang :: proc (src : ^Datum) -> string {
 
 ///
 new_datum_bytes :: proc (b : []byte) -> ^Datum {
-    my_kind :: proc (src: ^Datum) -> string {
+    my_kind :: proc () -> string {
 	return "bytes"
     }
     p := new (Datum)
@@ -120,7 +120,7 @@ clone_bytes :: proc(b: any) -> any {
 
 //
 new_datum_handle :: proc (h : os.Handle) -> ^Datum {
-    my_kind :: proc (src: ^Datum) -> string {
+    my_kind :: proc () -> string {
 	return "handle"
     }
     p := new (Datum)
