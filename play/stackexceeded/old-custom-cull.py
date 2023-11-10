@@ -2,14 +2,14 @@ import json
 import sys
 
 # read file
-data = sys.stdin.read ()
+f = open("fakepipename1", "r")
+data = f.read()
 
-# parse file
 # parse file
 try:
     obj = json.loads(data)
 except:
-  sys.exit ("An exception occurred in json.loads () -- out of memory?")
+  sys.exit ("An exception occurred in json.loads ()")
 
 cards = {}
 

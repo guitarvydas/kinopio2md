@@ -8,12 +8,17 @@ import "core:fmt"
 
 Datum :: struct {
     data: any,
-    clone: #type proc (^Datum) -> ^Datum,
-    reclaim: #type proc (^Datum),
-    asString: #type proc (^Datum) -> string
+    clone:    #type proc (^Datum) -> ^Datum,
+    reclaim:  #type proc (^Datum),
+    asString: #type proc (^Datum) -> string,
+    kind:     #type proc ()       -> string
 }
 
+
 new_datum_string :: proc (s : string) -> ^Datum {
+    string_kind :: proc () -> string {
+	return "string"
+    }
     string_in_heap := new (string)
     string_in_heap^ = strings.clone (s)
     datum_in_heap := new (Datum)
@@ -21,6 +26,7 @@ new_datum_string :: proc (s : string) -> ^Datum {
     datum_in_heap.clone = clone_datum_string
     datum_in_heap.reclaim = reclaim_datum_string    
     datum_in_heap.asString = asString_datum_string    
+    datum_in_heap.kind = string_kind
     return datum_in_heap
 }
 
@@ -31,9 +37,8 @@ clone_datum_string :: proc (src: ^Datum) -> ^Datum {
     temp_str := strings.clone (temp_datum.data.(string))
     cloned_string_in_heap^ = temp_str
     datum_in_heap := new (Datum)
+    datum_in_heap = src
     datum_in_heap.data = cloned_string_in_heap^
-    datum_in_heap.clone = src.clone
-    datum_in_heap.asString = src.asString
     return datum_in_heap
 }
 
@@ -49,11 +54,15 @@ asString_datum_string :: proc (self : ^Datum) -> string {
 
 
 new_datum_bang :: proc () -> ^Datum {
+    my_kind :: proc () -> string {
+	return "bang"
+    }
     p := new (Datum)
     p.data = true
     p.clone = clone_datum_bang
     p.reclaim = reclaim_datum_bang
     p.asString = asString_datum_bang    
+    p.kind = my_kind
     return p
 }
 
@@ -70,20 +79,22 @@ asString_datum_bang :: proc (src : ^Datum) -> string {
 
 ///
 new_datum_bytes :: proc (b : []byte) -> ^Datum {
+    my_kind :: proc () -> string {
+	return "bytes"
+    }
     p := new (Datum)
     p.data = clone_bytes (b)
     p.clone = clone_datum_bytes
     p.reclaim = reclaim_datum_bytes
     p.asString = asString_datum_v
+    p.kind = my_kind
     return p
 }
 
 clone_datum_bytes :: proc (src: ^Datum) -> ^Datum {
     p := new (Datum)
+    p = src
     p.data = clone_bytes (src.data.([]byte))
-    p.clone = src.clone
-    p.reclaim = src.reclaim
-    p.asString = asString_datum_v 
     return p
 }
 
@@ -108,19 +119,22 @@ clone_bytes :: proc(b: any) -> any {
 
 //
 new_datum_handle :: proc (h : os.Handle) -> ^Datum {
+    my_kind :: proc () -> string {
+	return "handle"
+    }
     p := new (Datum)
     p.data = h
     p.clone = clone_handle
     p.reclaim = reclaim_handle
     p.asString = asString_datum_v
+    p.kind = my_kind
     return p
 }
 
 clone_handle :: proc (src: ^Datum) -> ^Datum {
     p := new (Datum)
+    p = src
     p.data = src.data.(os.Handle)
-    p.clone = src.clone
-    p.reclaim = src.reclaim
     return p
 }
 
