@@ -90,7 +90,7 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
                     send_output (eh, "error", stdout, msg)
 		    zd.send_string(eh, "error", stderr, msg)
 		} else {
-                    send_output (eh, "output", stdout, msg)
+                    zd.send_string (eh, "output", transmute(string)stdout, msg)
 		}
 	    } else {
 		// panic - we should never fail to collect stdout and stderr
@@ -257,8 +257,8 @@ probe_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> 
 }
 
 probe_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    fmt.eprintf ("probe: datum=%v\n", msg.datum)
     s := msg.datum.asString (msg.datum)
-    fmt.eprintf ("probe: %v\n", s)
     fmt.eprintf ("probe %v: /%v/ len=%v\n", eh.name, s, len (s))
 }
 
@@ -290,9 +290,7 @@ ohmjs_maybe :: proc (eh: ^zd.Eh, inst: ^OhmJS_Instance_Data, causingMsg: ^zd.Mes
     if "" != inst.grammarname && "" != inst.grammarfilename && "" != inst.semanticsfilename && "" != inst.input {
 
         cmd := fmt.aprintf ("ohmjs/ohmjs.js %s %s %s", inst.grammarname, inst.grammarfilename, inst.semanticsfilename)
-	fmt.eprintf ("ohmjs_maybe begin: %v\n", cmd)
 	captured_output, err := process.run_command (cmd, inst.input)
-	fmt.eprintf ("ohmjs_maybe process finished: %v\n", cmd)
         zd.send_string (eh, "output", strings.trim_space (captured_output), causingMsg)
 	zd.send_string (eh, "error", strings.trim_space (err), causingMsg)
     }

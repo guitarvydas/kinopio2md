@@ -18,14 +18,14 @@ import leaf "leaf0d"
 
 main :: proc() {
 
-    log_level := zd.log_handlers // set this to only track handlers in Components
-    //log_level := zd.log_all // set this to track everything, equivalen to runtime.Logger_Level.Debug
-    // log_level := runtime.Logger_Level.Info
-    fmt.printf ("\n*** starting logger level %v ***\n", log_level)
-    context.logger = log.create_console_logger(
-	lowest=cast(runtime.Logger_Level)log_level,
-        opt={.Level, .Time, .Terminal_Color},
-    )
+    /* log_level := zd.log_handlers // set this to only track handlers in Components */
+    /* //log_level := zd.log_all // set this to track everything, equivalen to runtime.Logger_Level.Debug */
+    /* // log_level := runtime.Logger_Level.Info */
+    /* fmt.printf ("\n*** starting logger level %v ***\n", log_level) */
+    /* context.logger = log.create_console_logger( */
+    /* 	lowest=cast(runtime.Logger_Level)log_level, */
+    /*     opt={.Level, .Time, .Terminal_Color}, */
+    /* ) */
 
     // load arguments
     diagram_source_file := slice.get(os.args, 1) or_else "top.drawio"
@@ -66,8 +66,9 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
     )
     //dump_hierarchy (main_container)
     inject (main_container)
-    dump_outputs (main_container)
+//    dump_outputs (main_container)
     dump_stats (pregstry)
+    print_error (main_container)
     print_output (main_container)
     fmt.println("\n\n--- done ---")
 }
@@ -105,6 +106,10 @@ inject :: proc (main_container : ^zd.Eh) {
 print_output :: proc (main_container : ^zd.Eh) {
     fmt.println("\n\n--- RESULT ---")
     zd.print_specific_output (main_container, "output")
+}
+print_error :: proc (main_container : ^zd.Eh) {
+    fmt.println("\n\n--- ERRORS (if any) ---")
+    zd.print_specific_output (main_container, "error")
 }
 
 
