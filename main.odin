@@ -86,8 +86,12 @@ inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("0dvsfbp/test101.json")
     // p := zd.new_datum_string ("kjson/test100.json")
 
+    // chokes OhmJS?
     // p := zd.new_datum_string ("kjson/0dvsfbp.json") // full 0d-vs-fbp https://kinopio.club/0d-vs-fbp-pU5_-Ohrfh0d0VgKbYdws
+
+    // DUP
     // // p := zd.new_datum_string ("play/test10.json") // full 0d-vs-fbp https://kinopio.club/0d-vs-fbp-pU5_-Ohrfh0d0VgKbYdws with spurious `; at end
+
     // p := zd.new_datum_string ("kjson/test9.json")
     // p := zd.new_datum_string ("kjson/test8.json")
     // p := zd.new_datum_string ("kjson/test7.json")
