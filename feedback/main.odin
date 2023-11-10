@@ -57,7 +57,7 @@ main :: proc() {
 run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_source_file : string, injectfn : #type proc (^zd.Eh)) {
     pregstry := r
     // get entrypoint container
-    main_container, ok := reg.get_component_instance(pregstry, "", main_container_name, owner=nil)
+    main_container, ok := reg.get_component_instance(pregstry, main_container_name, owner=nil)
     fmt.assertf(
         ok,
         "Couldn't find main container with page name %s in file %s (check tab names, or disable compression?)\n",
@@ -66,9 +66,8 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
     )
     //dump_hierarchy (main_container)
     inject (main_container)
-//    dump_outputs (main_container)
+    dump_outputs (main_container)
     dump_stats (pregstry)
-    print_error (main_container)
     print_output (main_container)
     fmt.println("\n\n--- done ---")
 }
@@ -77,14 +76,14 @@ run :: proc (r : ^reg.Component_Registry, main_container_name : string, diagram_
 inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("0dvsfbp/test109.json")
     // p := zd.new_datum_string ("0dvsfbp/test108.json")
-    //--p := zd.new_datum_string ("0dvsfbp/test107.json")
-    p := zd.new_datum_string ("0dvsfbp/test106.json")
-    // xx p := zd.new_datum_string ("0dvsfbp/test105.json")
+    p := zd.new_datum_string ("0dvsfbp/test107.json")
+    // p := zd.new_datum_string ("0dvsfbp/test106.json")
+    // p := zd.new_datum_string ("0dvsfbp/test105.json")
     // p := zd.new_datum_string ("0dvsfbp/test104.json")
     // p := zd.new_datum_string ("0dvsfbp/test103.json")
     // p := zd.new_datum_string ("0dvsfbp/test102.json")
     // p := zd.new_datum_string ("0dvsfbp/test101.json")
-    // xx p := zd.new_datum_string ("kjson/test100.json")
+    // p := zd.new_datum_string ("kjson/test100.json")
 
     // p := zd.new_datum_string ("kjson/0dvsfbp.json")
     // p := zd.new_datum_string ("play/test10.json")
@@ -92,9 +91,7 @@ inject :: proc (main_container : ^zd.Eh) {
     // p := zd.new_datum_string ("kjson/test8.json")
     // p := zd.new_datum_string ("kjson/test7.json")
     // p := zd.new_datum_string ("kjson/test5.json") // test with dq and sq
-
-    // p := zd.new_datum_string ("kjson/softwareAtomsTest.json") // from Kinopio 'software atoms test' https://kinopio.club/software-atoms-test-FhzG4AniDsQj1ilz2N7FA
-
+    // p := zd.new_datum_string ("kjson/softwareAtomsTest.json")
     // p := zd.new_datum_string ("kjson/test4.json")
     // p := zd.new_datum_string ("kjson/test2.json")
     // p := zd.new_datum_string ("kjson/test0.json")
@@ -106,10 +103,6 @@ inject :: proc (main_container : ^zd.Eh) {
 print_output :: proc (main_container : ^zd.Eh) {
     fmt.println("\n\n--- RESULT ---")
     zd.print_specific_output (main_container, "output")
-}
-print_error :: proc (main_container : ^zd.Eh) {
-    fmt.println("\n\n--- ERRORS (if any) ---")
-    zd.print_specific_output (main_container, "error")
 }
 
 

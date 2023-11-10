@@ -1,35 +1,46 @@
 import json
 import sys
+import re
 
-# read file
-f = open("fakepipename1", "r")
-data = f.read()
+# file = open('full-cards-split', 'r')
+# data = sys.stdin.read ()
 
-# parse file
-try:
-    obj = json.loads(data)
-except:
-  sys.exit ("An exception occurred in json.loads ()")
-
-cards = {}
-
-for x in obj['cards']:
-    id = x['id']
-    card = { 'id' : id, 'name' : x['name'] }
-    cards[id] = card
-
-connections = {}
-for y in obj['connections']:
-    fromCard = y['startCardId']
-    toCard = y['endCardId']
-    connType = y['connectionTypeId']
-    id = y['id']
-    connections[id] = { 'id': id, 'from': fromCard, 'to': toCard, 'type': connType }
-    
-culled = { 'cards' : cards, 'connections': connections}
-
-# Serializing json
-json_object = json.dumps(culled, indent=4)
+terminator = ""
  
-print (json_object)
+try:
+    # for rawLine in file:
+    for rawLine in sys.stdin:
+        line = rawLine.strip ()
+        if re.search ("{", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ","
+        elif re.search ("}", line):
+            print (line)
+        # elif re.search ("\"id\":", line):
+        #     print (f"{terminator}{line[:-1]}"
+        elif re.search ("\"cards\":", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ""
+        elif re.search ("\"connections\":", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ""
+        elif re.search ("\"name\":", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ","
+        elif re.search ("\"name\":", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ","
+        elif re.search ("\"startCardId\":", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ","
+        elif re.search ("\"startCardId\":", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ","
+        elif re.search ("\"connectionTypeId\":", line):
+            print (f"{terminator}{line[:-1]}")
+            terminator = ","
+except:
+    sys.exit ("An exception occurred in cull.py (out of memory?)")
 
+file.close()
+    

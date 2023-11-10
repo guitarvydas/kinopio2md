@@ -21,18 +21,18 @@ gensym :: proc (s : string) -> string {
 }
 
 
-stdout_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
-    return zd.make_leaf(name, owner, nil, stdout_handle)
+stdout_instantiate :: proc(name_prefix: string,name: string, owner : ^zd.Eh) -> ^zd.Eh {
+    return zd.make_leaf(name_prefix, name, owner, nil, stdout_handle)
 }
 
 stdout_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     fmt.printf("%#v", msg.datum)
 }
 
-process_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+process_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     command_string := strings.clone(strings.trim_left(name, "$ "))
     command_string_ptr := new_clone(command_string)
-    return zd.make_leaf(name, owner, command_string_ptr^, process_handle)
+    return zd.make_leaf(name_prefix, name, owner, command_string_ptr^, process_handle)
 }
 
 process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -90,7 +90,7 @@ process_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
                     send_output (eh, "error", stdout, msg)
 		    zd.send_string(eh, "error", stderr, msg)
 		} else {
-                    send_output (eh, "output", stdout, msg)
+                    zd.send_string (eh, "output", transmute(string)stdout, msg)
 		}
 	    } else {
 		// panic - we should never fail to collect stdout and stderr
@@ -140,18 +140,18 @@ Command_Instance_Data :: struct {
     buffer : string
 }
 
-command_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+command_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("command")
     instp := new (Command_Instance_Data)
-    return zd.make_leaf (name_with_id, owner, instp^, command_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, instp^, command_handle)
 }
 
 command_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := eh.instance_data.(Command_Instance_Data)
     switch msg.port {
     case "command":
-        inst.buffer = msg.datum.data.(string)
-        received_input := msg.datum.data.(string)
+        inst.buffer = msg.datum.asString (msg.datum)
+        received_input := msg.datum.asString (msg.datum)
         captured_output, _ := process.run_command (inst.buffer, received_input)
         zd.send_string (eh, "output", captured_output, msg)
 	case:
@@ -159,19 +159,19 @@ command_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     }
 }
 
-icommand_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+icommand_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("icommand[%d]")
     instp := new (Command_Instance_Data)
-    return zd.make_leaf (name_with_id, owner, instp^, icommand_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, instp^, icommand_handle)
 }
 
 icommand_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := eh.instance_data.(Command_Instance_Data)
     switch msg.port {
     case "command":
-        inst.buffer = msg.datum.data.(string)
+        inst.buffer = msg.datum.asString (msg.datum)
     case "input":
-        received_input := msg.datum.data.(string)
+        received_input := msg.datum.asString (msg.datum)
         captured_output, _ := process.run_command (inst.buffer, received_input)
         zd.send_string (eh, "output", captured_output, msg)
 	case:
@@ -198,11 +198,11 @@ reclaim_Buffers_from_heap :: proc (inst : ^Deracer_Instance_Data) {
     zd.destroy_message (inst.buffer.second)
 }
 
-deracer_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+deracer_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym ("deracer")
     inst := new (Deracer_Instance_Data) // allocate in the heap
     inst.state = .idle
-    eh := zd.make_leaf (name_with_id, owner, inst^, deracer_handle)
+    eh := zd.make_leaf (name_prefix, name_with_id, owner, inst^, deracer_handle)
     return eh
 }
 
@@ -251,19 +251,20 @@ deracer_handle :: proc(eh: ^zd.Eh,  msg: ^zd.Message) {
 
 /////////
 
-probe_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+probe_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("?")
-    return zd.make_leaf (name_with_id, owner, nil, probe_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, probe_handle)
 }
 
 probe_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
+    fmt.eprintf ("probe: datum=%v\n", msg.datum)
     s := msg.datum.asString (msg.datum)
     fmt.eprintf ("probe %v: /%v/ len=%v\n", eh.name, s, len (s))
 }
 
-trash_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+trash_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("trash")
-    return zd.make_leaf (name_with_id, owner, nil, trash_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, trash_handle)
 }
 
 trash_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -279,19 +280,17 @@ OhmJS_Instance_Data :: struct {
     input : string, // source file to be parsed
 }
 
-ohmjs_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+ohmjs_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("OhmJS")
     inst := new (OhmJS_Instance_Data) // all fields have zero value before any messages are received
-    return zd.make_leaf (name_with_id, owner, inst^, ohmjs_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, inst^, ohmjs_handle)
 }
 
 ohmjs_maybe :: proc (eh: ^zd.Eh, inst: ^OhmJS_Instance_Data, causingMsg: ^zd.Message) {
     if "" != inst.grammarname && "" != inst.grammarfilename && "" != inst.semanticsfilename && "" != inst.input {
 
         cmd := fmt.aprintf ("ohmjs/ohmjs.js %s %s %s", inst.grammarname, inst.grammarfilename, inst.semanticsfilename)
-	fmt.eprintf ("ohmjs_maybe begin: %v\n", cmd)
 	captured_output, err := process.run_command (cmd, inst.input)
-	fmt.eprintf ("ohmjs_maybe process finished: %v\n", cmd)
         zd.send_string (eh, "output", strings.trim_space (captured_output), causingMsg)
 	zd.send_string (eh, "error", strings.trim_space (err), causingMsg)
     }
@@ -301,16 +300,16 @@ ohmjs_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := &eh.instance_data.(OhmJS_Instance_Data)
     switch (msg.port) {
     case "grammar name":
-	inst.grammarname = strings.clone (msg.datum.data.(string))
+	inst.grammarname = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
     case "grammar":
-	inst.grammarfilename = strings.clone (msg.datum.data.(string))
+	inst.grammarfilename = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
     case "semantics":
-	inst.semanticsfilename = strings.clone (msg.datum.data.(string))
+	inst.semanticsfilename = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
     case "input":
-	inst.input = strings.clone (msg.datum.data.(string))
+	inst.input = strings.clone (msg.datum.asString (msg.datum))
 	ohmjs_maybe (eh, inst, msg)
 	case:
         emsg := fmt.aprintf("!!! ERROR: OhmJS got an illegal message port %v", msg.port)
@@ -322,23 +321,23 @@ ohmjs_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 
 /// RWR rewriter generates semantics from .rwr spec
 
-rwr_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+rwr_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("rwr")
-    return zd.make_leaf (name_with_id, owner, nil, rwr_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, rwr_handle)
 }
 rwr_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     zd.send_string (eh, "output", "RWR", msg)
 }
-rwrohm_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+rwrohm_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("rwrohm")
-    return zd.make_leaf (name_with_id, owner, nil, rwrohm_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, rwrohm_handle)
 }
 rwrohm_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     zd.send_string (eh, "output", "rwr/rwr.ohm", msg)
 }
-rwrsemjs_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+rwrsemjs_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("rwrsemjs")
-    return zd.make_leaf (name_with_id, owner, nil, rwrsemjs_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, rwrsemjs_handle)
 }
 rwrsemjs_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     zd.send_string (eh, "output", "rwr/rwr.sem.js", msg)
@@ -346,9 +345,9 @@ rwrsemjs_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 
 ///
 
-fakepipename_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+fakepipename_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("fakepipename")
-    return zd.make_leaf (name_with_id, owner, nil, fakepipename_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, fakepipename_handle)
 }
 
 fakepipename_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -365,19 +364,19 @@ rwr_grammar := ""
 rwr_semobject := ""
 rwr_support_js := ""
 
-hard_coded_rwr_grammar_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+hard_coded_rwr_grammar_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("hard_coded_rwr_grammar")
-    return zd.make_leaf (name_with_id, owner, nil, hard_coded_rwr_grammar_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, hard_coded_rwr_grammar_handle)
 }
 
-hard_coded_rwr_semantics_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+hard_coded_rwr_semantics_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("hard_coded_rwr_semantics")
-    return zd.make_leaf (name_with_id, owner, nil, hard_coded_rwr_semantics_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, hard_coded_rwr_semantics_handle)
 }
 
-hard_coded_rwr_support_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+hard_coded_rwr_support_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("hard_coded_rwr_support")
-    return zd.make_leaf (name_with_id, owner, nil, hard_coded_rwr_support_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, hard_coded_rwr_support_handle)
 }
 
 hard_coded_rwr_grammar_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -391,9 +390,9 @@ hard_coded_rwr_support_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 }
 
 ///
-bang_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+bang_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("bang[%d]")
-    return zd.make_leaf (name_with_id, owner, nil, bang_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, bang_handle)
 }
 
 bang_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -405,19 +404,19 @@ StringConcat_Instance_Data :: struct {
     buffer : string
 }
 
-stringconcat_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+stringconcat_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("stringconcat")
     instp := new (StringConcat_Instance_Data)
-    return zd.make_leaf (name_with_id, owner, instp^, stringconcat_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, instp^, stringconcat_handle)
 }
 
 stringconcat_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := &eh.instance_data.(StringConcat_Instance_Data)
     switch msg.port {
     case "1":
-	inst.buffer = strings.clone (msg.datum.data.(string))
+	inst.buffer = strings.clone (msg.datum.asString (msg.datum))
     case "2":
-	s := strings.clone (msg.datum.data.(string))
+	s := strings.clone (msg.datum.asString (msg.datum))
 	if 0 == len (inst.buffer) && 0 == len (s) {
 	    fmt.printf ("stringconcat %d %d\n", len (inst.buffer), len (s))
 	    fmt.assertf (false, "TODO: something is wrong in stringconcat, both strings are 0 length\n")
@@ -440,9 +439,9 @@ stringconcat_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 
 ////
 
-word_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+word_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("word")
-    return zd.make_leaf (name_with_id, owner, nil, word_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, word_handle)
 }
 
 word_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -450,18 +449,18 @@ word_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 }
 
 
-wordohm_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+wordohm_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("word")
-    return zd.make_leaf (name_with_id, owner, nil, wordohm_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, wordohm_handle)
 }
 
 wordohm_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     zd.send_string (eh, "output", "rt/word.ohm", msg)
 }
 
-wordjs_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+wordjs_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("wordjs")
-    return zd.make_leaf (name_with_id, owner, nil, wordjs_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, wordjs_handle)
 }
 
 wordjs_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -470,23 +469,23 @@ wordjs_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 
 ////////
 
-escapes_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+escapes_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("escapes")
-    return zd.make_leaf (name_with_id, owner, nil, escapes_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, escapes_handle)
 }
 escapes_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     zd.send_string (eh, "output", "Escapes", msg)
 }
-escapesohm_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+escapesohm_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("escapesohm")
-    return zd.make_leaf (name_with_id, owner, nil, escapesohm_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, escapesohm_handle)
 }
 escapesohm_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     zd.send_string (eh, "output", "rt/escapes.ohm", msg)
 }
-escapesrwr_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+escapesrwr_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("escapesrwr")
-    return zd.make_leaf (name_with_id, owner, nil, escapesrwr_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, escapesrwr_handle)
 }
 escapesrwr_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     zd.send_string (eh, "output", "rt/escapes.rwr", msg)
@@ -500,19 +499,19 @@ Syncfilewrite_Data :: struct {
 
 // temp copy for bootstrap, sends "done" (error during bootstrap if not wired)
 
-syncfilewrite_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+syncfilewrite_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("syncfilewrite")
     inst := new (Syncfilewrite_Data)
-    return zd.make_leaf (name_with_id, owner, inst^, syncfilewrite_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, inst^, syncfilewrite_handle)
 }
 
 syncfilewrite_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     inst := &eh.instance_data.(Syncfilewrite_Data)
     switch msg.port {
     case "filename":
-	inst.filename = msg.datum.data.(string)
+	inst.filename = msg.datum.asString (msg.datum)
     case "input":
-	contents := msg.datum.data.(string)
+	contents := msg.datum.asString (msg.datum)
 	// see .../Odin/core/os.odin/write_entire_file - the following code was stolen from there
 	mode: int = 0
 	when os.OS == .Linux || os.OS == .Darwin {
@@ -537,50 +536,50 @@ syncfilewrite_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
 
 ////////
 
-low_level_read_text_file_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+low_level_read_text_file_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("Low Level Read Text File")
-    return zd.make_leaf (name_with_id, owner, nil, low_level_read_text_file_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, low_level_read_text_file_handle)
 }
 
 low_level_read_text_file_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    fname := msg.datum.data.(string)
+    fname := msg.datum.asString (msg.datum)
     fd, errnum := os.open (fname)
     if errnum == 0 {
 	data, success := os.read_entire_file_from_handle (fd)
 	if success {
 	    zd.send_string (eh, "str", transmute(string)data, msg)
 	} else {
-            emsg := fmt.aprintf("read error on file %s", msg.datum.data.(string))
+            emsg := fmt.aprintf("read error on file %s", msg.datum.asString (msg.datum))
 	    zd.send_string (eh, "error", emsg, msg)
 	}
     } else {
-        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.data.(string), errnum)
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.asString (msg.datum), errnum)
 	zd.send_string (eh, "error", emsg, msg)
     }
 }
 
 
 ////////
-open_text_file_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+open_text_file_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("Open Text File")
-    return zd.make_leaf (name_with_id, owner, nil, open_text_file_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, open_text_file_handle)
 }
 
 open_text_file_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    fd, errnum := os.open (msg.datum.data.(string))
+    fd, errnum := os.open (msg.datum.asString (msg.datum))
     if errnum == 0 {
 	zd.send (eh, "fd", zd.new_datum_handle (fd), msg)
     } else {
-        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.data.(string), errnum)
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.asString (msg.datum), errnum)
 	zd.send_string (eh, "error", emsg, msg)
     }
 }
 
 ////////
 
-read_text_from_fd_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+read_text_from_fd_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("Low Level Read Text From FD")
-    return zd.make_leaf (name_with_id, owner, nil, low_level_read_text_from_fd_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, low_level_read_text_from_fd_handle)
 }
 
 low_level_read_text_from_fd_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
@@ -589,31 +588,32 @@ low_level_read_text_from_fd_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
     if success {
 	zd.send_string (eh, "str", transmute(string)data, msg)
     } else {
-        emsg := fmt.aprintf("read error on file %s", msg.datum.data.(string))
+        emsg := fmt.aprintf("read error on file %s", msg.datum.asString (msg.datum))
 	zd.send_string (eh, "error", emsg, msg)
     }
 }
 
 ////////
-ensure_string_datum_instantiate :: proc(name: string, owner : ^zd.Eh) -> ^zd.Eh {
+ensure_string_datum_instantiate :: proc(name_prefix: string, name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym("Ensure String Datum")
-    return zd.make_leaf (name_with_id, owner, nil, ensure_string_datum_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, nil, ensure_string_datum_handle)
 }
 
 ensure_string_datum_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
-    switch x in msg.datum.data {
-    case string:
+    switch msg.datum.kind () {
+    case "string":
 	zd.forward (eh, "output", msg)
     case:
-	zd.send_string (eh, "error", "ensure: type error (expected a string datum)", msg)
+	emsg := fmt.aprintf ("*** ensure: type error (expected a string datum) but got %v in %v", msg.datum.kind (), msg)
+	zd.send_string (eh, "error", emsg, msg)
     }
 }
 
 ////////
-literal_instantiate :: proc (quoted_name: string, owner : ^zd.Eh) -> ^zd.Eh {
+literal_instantiate :: proc (name_prefix: string, quoted_name: string, owner : ^zd.Eh) -> ^zd.Eh {
     name_with_id := gensym(quoted_name)
     pstr := string_dup_to_heap (quoted_name [1:(len (quoted_name) - 1)])
-    return zd.make_leaf (name_with_id, owner, pstr^, literal_handle)
+    return zd.make_leaf (name_prefix, name_with_id, owner, pstr^, literal_handle)
 }
 
 literal_handle :: proc(eh: ^zd.Eh, msg: ^zd.Message) {
