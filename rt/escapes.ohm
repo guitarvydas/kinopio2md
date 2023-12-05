@@ -20,7 +20,7 @@ Escapes {
 
   wordchar =
     | "❲" wordchar+ "❳" -- rec
-    | any -- bottom
+    | ~"❲" ~"❳" any -- bottom
     
   quoteddq = "\\" dq
   sq = "'"
