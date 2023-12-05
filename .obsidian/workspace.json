@@ -30,21 +30,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "cd561520875414ab",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "doc/doc.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -94,7 +81,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "7e51d5ff6003aed0",
@@ -110,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "doc/doc.md",
+                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "doc/doc.md",
+                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "doc/doc.md"
+                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md"
               }
             }
           }
@@ -171,34 +159,82 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "cd561520875414ab",
+  "floating": {
+    "id": "73effee992917365",
+    "type": "floating",
+    "children": [
+      {
+        "id": "599d7bae030279bb",
+        "type": "window",
+        "children": [
+          {
+            "id": "f04ded758354dcbf",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "cd561520875414ab",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "status 20231204/SCRIPT.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 246,
+        "y": 148,
+        "width": 1095,
+        "height": 583,
+        "maximize": false,
+        "zoom": 2
+      }
+    ]
+  },
+  "active": "95961c235b3d4e7b",
   "lastOpenFiles": [
-    "leaf0d/junk.pl",
+    "status 20231204/SCRIPT.md",
+    "status 20231204/Future mov creen Recording 2023-12-05 at 12.39.03 PM.mov",
+    "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
+    "status 20231204/print tree Screenshot 2023-12-05 at 12.28.59 PM.png",
+    "status 20231204/print node Screenshot 2023-12-05 at 12.27.22 PM.png",
+    "status 20231204/print root Screenshot 2023-12-05 at 12.24.23 PM.png",
+    "status 20231204/is root Screenshot 2023-12-05 at 12.15.59 PM.png",
+    "status 20231204/is child Screenshot 2023-12-05 at 12.16.28 PM.png",
+    "status 20231204/forall Screenshot 2023-12-05 at 12.14.24 PM.png",
+    "status 20231204/consult content Screenshot 2023-12-05 at 11.58.38 AM.png",
+    "status 20231204/mdpl Screenshot 2023-12-05 at 11.56.18 AM.png",
+    "status 20231204/md.pl",
+    "status 20231204/Prolog factbase Screenshot 2023-12-05 at 11.49.23 AM.png",
+    "status 20231204/factbase.pl",
+    "status 20231204/culled json Screenshot 2023-12-05 at 11.47.26 AM.png",
+    "status 20231204/culled.json~",
+    "status 20231204/culled.json",
+    "status 20231204/make mov Screen Recording 2023-12-05 at 10.33.43 AM.mov",
     "content.pl",
     "kinopio2md",
     "kinopio2md.o",
-    "#main.odin#",
-    "leaf0d/#leaf0d.odin#",
-    "kinopio2md.ld_0b61be",
-    "registry0d/#registry.odin#",
-    "kinopio2md.ld_FumgLR",
-    "kinopio2md.ld_JsE2vn",
-    "0d/#datum.odin#",
+    "status 20231204/#cull.json#",
+    "status 20231204/desired-output.md",
+    "status 20231204/README.md",
+    "video/generated.md",
+    "doc/doc.md",
+    "video/prompts.md",
+    "video/software atoms test.md",
     "ai/generated-khoj-software atoms.md",
     "ai/generated-software atoms.md",
-    "doc/doc.md",
     "ai/ai-written-subsection.md",
-    "doc/top level.png",
-    "doc/Screenshot 2023-11-08 at 10.24.36 PM.png",
-    "Screenshot 2023-11-08 at 10.24.36 PM.png",
     "README.md",
     "0D vs FBP (2).md",
     "kjson/points.md",
-    "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
     "0dvsfbp/0dvsfbp-points.md",
     "0dvsfbp/prompt.md",
     "0dvsfbp/0dvsfbp First Attempt.md",
-    "ai/Screenshot 2023-10-29 at 10.24.11 PM.png",
     "junk.md",
     "ai-written-subsection.md"
   ]
