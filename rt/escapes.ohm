@@ -4,7 +4,7 @@ Escapes {
     | dq (~dq stringchar)* dq -- string
     | "//" (~nl stringchar)* nl -- comment
     | "❲" wordchar+ "❳" -- word
-    | any -- any
+    | ~"❲" ~"❳" any -- any
 
   stringchar =
     | " " -- space
