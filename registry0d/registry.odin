@@ -1,11 +1,13 @@
 package registry0d
 
 import "core:fmt"
-import "../syntax"
+import "core:os"
 import "core:log"
 import "core:encoding/json" 
+import "core:path/filepath"
 
 import zd "../0d"
+import "../../ir"
 
 Registry_Stats :: struct {
     nleaves : int,
@@ -22,7 +24,7 @@ Template_Kind :: enum {Leaf, Container}
 
 Container_Template :: struct {
     name: string,
-    decl: syntax.Container_Decl,
+    decl: ir.Container_Decl,
 }
 
 Leaf_Template :: struct {
@@ -38,9 +40,22 @@ Template :: union {
 }
 
 
-make_component_registry :: proc(leaves: []Leaf_Template, container_xml: string) -> Component_Registry {
+    
+json2internal :: proc (container_xml : string) -> (decls : []ir.Container_Decl) {
+    fname := fmt.aprintf ("/tmp/%v.json", filepath.base (container_xml))
+    read_fd, read_errnum := os.open (path=fname, flags=os.O_RDONLY)
+    fmt.assertf (read_errnum == 0, "read open error on %v, err=%v\n", fname, read_errnum)
+    data, success := os.read_entire_file_from_handle (read_fd)
+    fmt.assertf (success, "read error on file %s errno=%v", fname, os.get_last_error ())
+    s := transmute(string)data
+    unmarshal_err := json.unmarshal_string (s, &decls)
+    fmt.assertf (unmarshal_err == nil || unmarshal_err == .None, "failure converting from JSON to internal format %v\n", unmarshal_err)
+    os.close (read_fd)
+    return decls
+}
 
-//    dump_diagram (container_xml)
+
+make_component_registry :: proc(leaves: []Leaf_Template, containers: []ir.Container_Decl) -> Component_Registry {
 
     reg: Component_Registry
 
@@ -50,10 +65,7 @@ make_component_registry :: proc(leaves: []Leaf_Template, container_xml: string) 
 	reg.stats.nleaves += 1
     }
 
-    decls, err := syntax.parse_drawio_mxgraph(container_xml)
-    assert(err == .None, "Failed parsing container XML")
-
-    for decl in decls {
+    for decl in containers {
         container_template := Container_Template {
 	    name=decl.name,
             decl = decl,
@@ -81,7 +93,7 @@ get_component_instance :: proc(reg: ^Component_Registry, name_prefix: string, na
     return instance, ok
 }
 
-container_instantiator :: proc(reg: ^Component_Registry, owner : ^zd.Eh, name_prefix: string, decl: syntax.Container_Decl) -> ^zd.Eh {
+container_instantiator :: proc(reg: ^Component_Registry, owner : ^zd.Eh, name_prefix: string, decl: ir.Container_Decl) -> ^zd.Eh {
 
     container_name := fmt.aprintf ("%s.%s", name_prefix, decl.name)
     container := zd.make_container(container_name, owner)
@@ -209,12 +221,6 @@ dump_registry:: proc (reg : Component_Registry) {
   }
   fmt.println ("***************")
   fmt.println ()
-}
-
-dump_diagram :: proc (container_xml: string) {
-    decls, _ := syntax.parse_drawio_mxgraph(container_xml)
-    diagram_json, _ := json.marshal(decls, {pretty=true, use_spaces=true})
-    fmt.println(string(diagram_json))
 }
 
 print_stats :: proc (reg: ^Component_Registry) {

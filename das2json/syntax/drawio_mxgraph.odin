@@ -136,11 +136,7 @@ cell_from_elem :: proc(doc: ^xml.Document, elem: xml.Element, user_object_parent
         case "source": cell.mxgraph_source = attrib.val
         case "target": cell.mxgraph_target = attrib.val
         case "parent": cell.mxgraph_parent = attrib.val
-        case "value":
-	    cell.value = html_unescape(attrib.val)
-	    cell.value, _ = strings.remove_all (cell.value, "<div>")
-	    cell.value, _ = strings.remove_all (cell.value, "</div>")
-	    cell.value, _ = strings.remove_all (cell.value, "<br>")
+        case "value":  cell.value = html_unescape(attrib.val)
         case "vertex": incl(&cell.flags, Flag_Value.Vertex)
         case "edge":
             incl(&cell.flags, Flag_Value.Edge)
@@ -166,17 +162,12 @@ cell_from_elem :: proc(doc: ^xml.Document, elem: xml.Element, user_object_parent
             }
         }
     }
-    if (cell.type == .Arrow && cell.mxgraph_source == "" && cell.mxgraph_target == "") {
-	fmt.println ("\n*** Error: *** arrow is completely disconnected")
-	fmt.println (cell)
-    } else if (cell.type == .Arrow && cell.mxgraph_source == "") {
-	fmt.println ("\n*** Error: *** arrow has no source")
-	fmt.println (cell)
-	fmt.printf ("to: %v\n", cell.mxgraph_target)
+    if (cell.type == .Arrow && cell.mxgraph_source == "") {
+      fmt.println ("\n###        arrow has no source")
+      fmt.println (cell)
     } else if (cell.type == .Arrow && cell.mxgraph_target == "") {
-	fmt.println ("\n*** Error: *** arrow has no target")
-	fmt.println (cell)
-	fmt.printf ("from: %v\n", cell.mxgraph_source)
+      fmt.println ("\n###        arrow has no target")
+      fmt.println (cell)
     }
     return cell
 }
@@ -185,10 +176,7 @@ cell_from_elem :: proc(doc: ^xml.Document, elem: xml.Element, user_object_parent
 // If you find any other encoded stuff, please feel free to add them to `REPLACEMENTS`.
 //
 // This currently always makes a new string.
-//
-// pt: this needs to be recursive, e.g. &amp;#39 -> &#39 -> '
-//
-html_unescape :: proc(input_s: string) -> string {
+html_unescape :: proc(s: string) -> string {
     REPLACEMENTS :: [][2]string {
         {"&lt;", "<"},
         {"&gt;", ">"},
@@ -196,54 +184,41 @@ html_unescape :: proc(input_s: string) -> string {
         {"&quot;", "\""},
         {"&#39;", "'"},
         {"&#039;", "\\"},
-	{"&nbsp;", " "}, 
     }
 
-    quick_check_start := strings.index_rune (input_s, '&')
-    if quick_check_start == -1 {
-	// no work to do - end of recursion
-	return input_s
-    } else {
-	b := strings.builder_make()
-	s := input_s
+    b := strings.builder_make()
+    s := s
 
-	scan_loop: for {
-            start := strings.index_rune(s, '&')
-            if start == -1 {
-		break scan_loop
+    scan_loop: for {
+        start := strings.index_rune(s, '&')
+        if start == -1 {
+            break scan_loop
+        }
+
+        end := strings.index_rune(s[start:], ';')
+        if end == -1 {
+            break scan_loop
+        }
+
+        substr := s[start:start+end+1]
+        replace_loop: for row in REPLACEMENTS {
+            if row[0] == substr {
+                strings.write_string(&b, s[:start])
+                strings.write_string(&b, row[1])
+                s = s[start+end+1:]
+                continue scan_loop
             }
+        }
 
-            end := strings.index_rune(s[start:], ';')
-            if end == -1 {
-		break scan_loop
-            }
-
-            substr := s[start:start+end+1]
-            replace_loop: for row in REPLACEMENTS {
-		if row[0] == substr {
-                    strings.write_string(&b, s[:start])
-                    strings.write_string(&b, row[1])
-                    s = s[start+end+1:]
-                    continue scan_loop
-		}
-            }
-
-            // no replacement found
-            strings.write_string(&b, s[:end+1])
-            s = s[end+1:]
-	}
-
-	if len(s) > 0 {
-            strings.write_string(&b, s)
-	}
-	new_s := strings.to_string (b)
-	if new_s == input_s {
-	    return input_s
-	} else {
-	    result := html_unescape (strings.to_string (b)) // we made at least one replacement, keep trying
-	    return result
-	}
+        // no replacement found
+        strings.write_string(&b, s[:end+1])
+        s = s[end+1:]
     }
+
+    if len(s) > 0 {
+        strings.write_string(&b, s)
+    }
+    return strings.to_string(b)
 }
 
 @(test)

@@ -12,7 +12,6 @@ import "core:unicode/utf8"
 
 import reg "registry0d"
 import "process"
-import "syntax"
 import zd "0d"
 import leaf "leaf0d"
 
@@ -26,6 +25,60 @@ main :: proc() {
     /* 	lowest=cast(runtime.Logger_Level)log_level, */
     /*     opt={.Level, .Time, .Terminal_Color}, */
     /* ) */
+
+    diagram_name, main_container_name := parse_command_line_args ()
+    palette := initialize_component_palette (diagram_name)
+    run (&palette, main_container_name, diagram_name, start_function)
+}
+
+project_specific_components :: proc (leaves: ^[dynamic]reg.Leaf_Template) {
+    append(leaves, reg.Leaf_Template { name = "?", instantiate = leaf.probe_instantiate })
+    append(leaves, reg.Leaf_Template { name = "trash", instantiate = leaf.trash_instantiate })
+    append(leaves, reg.Leaf_Template { name = "1then2", instantiate = leaf.deracer_instantiate })
+
+    append(leaves, reg.Leaf_Template { name = "Low Level Read Text File", instantiate = leaf.low_level_read_text_file_instantiate })
+    append(leaves, reg.Leaf_Template { name = "Read Text From FD", instantiate = leaf.read_text_from_fd_instantiate })
+    append(leaves, reg.Leaf_Template { name = "Open Text File", instantiate = leaf.open_text_file_instantiate })
+    append(leaves, reg.Leaf_Template { name = "Ensure String Datum", instantiate = leaf.ensure_string_datum_instantiate })
+
+    ??????????????????
+    append(leaves, leaf.string_constant ("Translate to Lithuanian"))
+}
+
+parse_command_line_args :: proc () -> (diagram_source_file, main_container_name: string) {
+    diagram_source_file = slice.get(os.args, 1) or_else "<specify on command line>"
+    main_container_name = slice.get(os.args, 2) or_else "main"
+    
+    if !os.exists(diagram_source_file) {
+        fmt.println("Source diagram file", diagram_source_file, "does not exist.")
+        os.exit(1)
+    }
+    return diagram_source_file, main_container_name
+}
+initialize_component_palette :: proc (diagram_source_file: string) -> (palette: reg.Component_Registry) {
+    leaves := make([dynamic]reg.Leaf_Instantiator)
+
+    // set up shell leaves
+    leaf.collect_process_leaves(diagram_source_file, &leaves)
+
+    // export native leaves
+    reg.append_leaf (&leaves, reg.Leaf_Instantiator {
+        name = "stdout",
+        instantiate = leaf.stdout_instantiate,
+    })
+
+    project_specific_components (&leaves)
+
+    containers := reg.json2internal (diagram_source_file)
+    palette = reg.make_component_registry(leaves[:], containers)
+    return palette
+}
+
+
+
+
+old-main :: proc() {
+
 
     // load arguments
     diagram_source_file := slice.get(os.args, 1) or_else "top.drawio"

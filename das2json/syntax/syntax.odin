@@ -12,6 +12,7 @@ package syntax
 
 import "core:os"
 import "core:encoding/xml"
+import "../../ir"
 
 Error :: enum {
     None,
@@ -19,7 +20,7 @@ Error :: enum {
     XML,
 }
 
-parse_drawio_mxgraph :: proc(path: string) -> (decls: []Container_Decl, err: Error) {
+parse_drawio_mxgraph :: proc(path: string) -> (decls: []ir.Container_Decl, err: Error) {
     file, file_ok := os.read_entire_file(path)
     if !file_ok {
         return {}, .FileRead
@@ -30,7 +31,7 @@ parse_drawio_mxgraph :: proc(path: string) -> (decls: []Container_Decl, err: Err
         return {}, .XML
     }
 
-    decl_array := make([dynamic]Container_Decl)
+    decl_array := make([dynamic]ir.Container_Decl)
 
     for elem in xml.elements {
         if elem.ident == "root" {

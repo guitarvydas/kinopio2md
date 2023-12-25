@@ -1,43 +1,15 @@
 package syntax
 
-import "core:fmt"
-import zd "../0d"
-
-Container_Decl :: struct {
-    file:        string,
-    name:        string,
-    children:    []Elem_Reference,
-    connections: []Connect_Decl,
-}
-
-Connect_Decl :: struct {
-    dir:         Direction,
-    source:      Elem_Reference,
-    source_port: zd.Port_Type,
-    target:      Elem_Reference,
-    target_port: zd.Port_Type,
-}
-
-Direction :: enum {
-    Down,
-    Across,
-    Up,
-    Through,
-}
-
-Elem_Reference :: struct {
-    name: string,
-    id:   int,
-}
+import "../../ir"
 
 // Collects all declarations on the passed page, using the semantics outlined below.
-container_decl_from_page :: proc(page: Page) -> Container_Decl {
-    decl: Container_Decl
+container_decl_from_page :: proc(page: Page) -> ir.Container_Decl {
+    decl: ir.Container_Decl
     decl.name = page.name
 
     decl.children = collect_children(page.cells)
 
-    connections := make([dynamic]Connect_Decl)
+    connections := make([dynamic]ir.Connect_Decl)
     collect_down_decls(page.cells, &connections)
     collect_across_decls(page.cells, &connections)
     collect_up_decls(page.cells, &connections)
@@ -50,12 +22,12 @@ container_decl_from_page :: proc(page: Page) -> Container_Decl {
 // Semantics for detecting container children:
 //
 // All elements that are rects, and marked as a container.
-collect_children :: proc(cells: []Cell) -> []Elem_Reference {
-    children := make([dynamic]Elem_Reference)
+collect_children :: proc(cells: []Cell) -> []ir.Elem_Reference {
+    children := make([dynamic]ir.Elem_Reference)
 
     for cell in cells {
         if cell.type == .Rect && .Container in cell.flags {
-            ref := Elem_Reference{cell.value, cell.id}
+            ref := ir.Elem_Reference{cell.value, cell.id}
             append(&children, ref)
         }
     }
@@ -67,18 +39,18 @@ collect_children :: proc(cells: []Cell) -> []Elem_Reference {
 //
 // An element with a parent, connected to a rhombus (arrow towards the rhombus)
 // Where a "parent" is a "rect marked as a container"
-collect_up_decls :: proc(cells: []Cell, decls: ^[dynamic]Connect_Decl) {
+collect_up_decls :: proc(cells: []Cell, decls: ^[dynamic]ir.Connect_Decl) {
     for cell in cells {
         if cell.type != .Arrow do continue
 
-        decl: Connect_Decl
+        decl: ir.Connect_Decl
         decl.dir = .Up
 
         target_rhombus := cells[cell.target]
         if target_rhombus.type != .Rhombus do continue
 
+        // NOTE(z64): right now, i allow this to be any shape... might be ok?
         source_cell := cells[cell.source]
-	if source_cell.type != .Rect do continue
 
         decl.source_port = source_cell.value
         decl.target_port = target_rhombus.value
@@ -98,11 +70,11 @@ collect_up_decls :: proc(cells: []Cell, decls: ^[dynamic]Connect_Decl) {
 //
 // An element with a parent connected to another element with a parent
 // Where a "parent" is a "rect marked as a container"
-collect_across_decls :: proc(cells: []Cell, decls: ^[dynamic]Connect_Decl) {
+collect_across_decls :: proc(cells: []Cell, decls: ^[dynamic]ir.Connect_Decl) {
     for cell in cells {
         if cell.type != .Arrow do continue
 
-        decl: Connect_Decl
+        decl: ir.Connect_Decl
         decl.dir = .Across
 
         source_port := cells[cell.source]
@@ -131,26 +103,24 @@ collect_across_decls :: proc(cells: []Cell, decls: ^[dynamic]Connect_Decl) {
 //
 // Rhombus connected to an element that has a parent (arrow away from the rhombus)
 // Where a "parent" is a "rect marked as a container"
-collect_down_decls :: proc(cells: []Cell, decls: ^[dynamic]Connect_Decl) {
+collect_down_decls :: proc(cells: []Cell, decls: ^[dynamic]ir.Connect_Decl) {
     for cell in cells {
         if cell.type != .Arrow do continue
 
-        decl: Connect_Decl
+        decl: ir.Connect_Decl
         decl.dir = .Down
 
         source_rhombus := cells[cell.source]
         if source_rhombus.type != .Rhombus do continue
 
+        // NOTE(z64): right now, i allow this to be any shape... might be ok?
         target_cell := cells[cell.target]
-        if target_cell.type != .Rect {
-            continue
-        }
 
         decl.source_port = source_rhombus.value
         decl.target_port = target_cell.value
 
         parent_rect := cells[target_cell.parent]
-        if !(parent_rect.type == .Rect && .Container in parent_rect.flags) {
+        if parent_rect.type != .Rect && .Container in parent_rect.flags {
             continue
         }
 
@@ -163,11 +133,11 @@ collect_down_decls :: proc(cells: []Cell, decls: ^[dynamic]Connect_Decl) {
 // Semantics for detecting "Through" decls:
 //
 // Two rhombuses connected by an arrow.
-collect_through_decls :: proc(cells: []Cell, decls: ^[dynamic]Connect_Decl) {
+collect_through_decls :: proc(cells: []Cell, decls: ^[dynamic]ir.Connect_Decl) {
     for cell in cells {
         if cell.type != .Arrow do continue
 
-        decl: Connect_Decl
+        decl: ir.Connect_Decl
         decl.dir = .Through
 
         source_rhombus := cells[cell.source]

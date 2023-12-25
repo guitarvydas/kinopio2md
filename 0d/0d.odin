@@ -10,7 +10,8 @@ import "core:log"
 
 Bang :: struct {}
 log_all :: 0
-log_handlers :: 5
+log_full_handlers :: 4
+log_light_handlers :: 5
 
 // Data for an asyncronous component - effectively, a function with input
 // and output queues of messages.
@@ -207,8 +208,11 @@ deposit :: proc(c: Connector, message: ^Message) {
     fifo_push(c.receiver.queue, new_message)
 }
 
-receivef :: proc(fmt_str: string, args: ..any, location := #caller_location) {
-    log.logf(cast(runtime.Logger_Level)log_handlers,   fmt_str, ..args, location=location)
+light_receivef :: proc(fmt_str: string, args: ..any, location := #caller_location) {
+    log.logf(cast(runtime.Logger_Level)log_light_handlers,   fmt_str, ..args, location=location)
+}
+full_receivef :: proc(fmt_str: string, args: ..any, location := #caller_location) {
+    log.logf(cast(runtime.Logger_Level)log_full_handlers,   fmt_str, ..args, location=location)
 }
 
 sendf :: proc(fmt_str: string, args: ..any, location := #caller_location) {
@@ -222,7 +226,7 @@ outputf :: proc(fmt_str: string, args: ..any, location := #caller_location) {
 step_children :: proc(container: ^Eh, causingMessage: ^Message) {
     container.state = .idle
     for child in container.children {
-        msg: ^Message = make_message ("?", new_datum_bang (), make_cause (container, causingMessage))
+        msg: ^Message
         ok: bool
 
         switch {
@@ -230,11 +234,12 @@ step_children :: proc(container: ^Eh, causingMessage: ^Message) {
             msg, ok = fifo_pop(&child.input)
 	case child.state != .idle:
 	    ok = true
-	    msg = make_message (".", new_datum_bang (), make_cause (container, causingMessage))
+	    msg = force_tick (child, causingMessage)
         }
 
         if ok {
-            receivef("HANDLE  0x%p %s <- [%s]", child, child.name, msg.port)
+            light_receivef("%s <- [%s]", child.name, msg.port)
+            full_receivef("HANDLE  0x%p %s <- %v (%v)", child, child.name, msg, msg.datum.kind ())
             child.handler(child, msg)
             destroy_message(msg)
         }
@@ -245,27 +250,37 @@ step_children :: proc(container: ^Eh, causingMessage: ^Message) {
 
         for child.output.len > 0 {
             msg, _ = fifo_pop(&child.output)
-            outputf("OUTPUT 0x%p %s <- [%s]", child, child.name, msg.port)
+            outputf("OUTPUT 0x%p %s -> [%s]", child, child.name, msg.port)
             route(container, child, msg)
             destroy_message(msg)
         }
     }
 }
 
-tick :: proc (eh: ^Eh, causingMessage: ^Message) {
+force_tick :: proc (eh: ^Eh, causingMessage: ^Message) -> ^Message{
+    tick_msg := make_message (".", new_datum_tick (), make_cause (eh, causingMessage))
+    fifo_push (&eh.input, tick_msg)
+    return tick_msg
+}
+
+attempt_tick :: proc (eh: ^Eh, causingMessage: ^Message) {
     if eh.state != .idle {
-	tick_msg := make_message (".", new_datum_bang (), make_cause (eh, causingMessage))
-	fifo_push (&eh.input, tick_msg)
+	force_tick (eh, causingMessage) // ignore return value
     }
 }
+
+is_tick :: proc (msg : ^Message) -> bool {
+    return "tick" == msg.datum.kind ()
+}
+
 
 // Routes a single message to all matching destinations, according to
 // the container's connection network.
 route :: proc(container: ^Eh, from: ^Eh, message: ^Message) {
     was_sent := false // for checking that output went somewhere (at least during bootstrap)
-    if message.port == "." {
+    if is_tick (message) {
 	for child in container.children {
-	    tick (child, message)
+	    attempt_tick (child, message)
 	}
 	was_sent = true
     } else {
@@ -284,7 +299,7 @@ route :: proc(container: ^Eh, from: ^Eh, message: ^Message) {
     }
     if ! was_sent {
 	fmt.printf ("\n\n*** Error: ***")
-	fmt.printf (" *** message from %v dropped on floor: %v\n%v [%v]\n\n", from.name, message.port, message.datum.asString (message.datum), message.cause)
+	fmt.printf (" *** message '%v' from %v dropped on floor...\n%v [%v]\n\n", message.port, from.name, message.datum.repr (message.datum), message.cause)
 	fmt.printf ("\n*** possible connections:")
 	for connector in container.connections {
 	    fmt.printf ("\n\n%v", connector)
@@ -306,10 +321,6 @@ child_is_ready :: proc(eh: ^Eh) -> bool {
     return !fifo_is_empty(eh.output) || !fifo_is_empty(eh.input) || eh.state!= .idle || any_child_ready (eh)
 }
 
-any_of_my_children_ready :: proc (eh: ^Eh) -> bool {
-    return any_child_ready (eh)
-}
-
 // Utility for printing an array of messages.
 print_output_list :: proc(eh: ^Eh) {
     write_rune   :: strings.write_rune
@@ -328,15 +339,14 @@ print_output_list :: proc(eh: ^Eh) {
 	cause := msg.cause
 	{
 	    mds : string
-	    tempstr := msg.datum.asString (msg.datum)
+	    tempstr := msg.datum.repr (msg.datum)
 	    if false { //len (tempstr) > 20 {
 		mds = fmt.aprintf ("%v...", tempstr[:19])
 	    } else {
 		mds = tempstr
 	    }
-            fmt.sbprintf(&sb, "{{«%v» ⎨%v⎬ <- ⟨%v,%v⟩}}", 
-			 msg.port, mds,
-			 cause.who.name, cause.message.port)
+            fmt.sbprintf(&sb, "{{«%v»: %v}}", 
+			 msg.port, mds) //cause.who.name, cause.message.port)
 	}
     }
     strings.write_rune(&sb, ']')
@@ -353,22 +363,24 @@ set_idle :: proc (eh: ^Eh) {
 }
 
 // Utility for printing a specific output message.
-fetch_first_output :: proc (eh :^Eh, port: Port_Type) -> Datum {
+fetch_first_output :: proc (eh :^Eh, port: Port_Type) -> (Datum, bool) {
     iter := make_fifo_iterator(&eh.output)
     for msg, idx in fifo_iterate(&iter) {
 	if msg.port == port {
-	    return msg.datum^
+	    return msg.datum^, true
 	}
     }
-    return Datum{}
+    return Datum{}, false
 }
 
 print_specific_output :: proc(eh: ^Eh, port: string) {
     sb: strings.Builder
     defer strings.builder_destroy(&sb)
 
-    datum := fetch_first_output (eh, port)
-    fmt.sbprintf(&sb, "%v", datum.data)
-    fmt.println(strings.to_string(sb))
+    datum, found := fetch_first_output (eh, port)
+    if found {
+	fmt.sbprintf(&sb, "%v", datum.repr (&datum))
+	fmt.println(strings.to_string(sb))
+    }
 }
 
