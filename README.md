@@ -1,5 +1,9 @@
 convert Kinopio mind-map to markdown
 
+# Install
+$ ln -s ..../od/od ./od
+
+
 0. begin with kinopio drawing "test" which contains cards and connections between cards
 0. export to "test.json"
 

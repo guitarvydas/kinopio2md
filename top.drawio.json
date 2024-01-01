@@ -4,6 +4,10 @@
         "name": "main",
         "children": [
             {
+                "name": "Unescape Whitespace",
+                "id": 3
+            },
+            {
                 "name": "Extract Semantic Information",
                 "id": 5
             },
@@ -20,7 +24,7 @@
                 "id": 16
             },
             {
-                "name": "?",
+                "name": "?A",
                 "id": 20
             },
             {
@@ -30,14 +34,6 @@
             {
                 "name": "Escape Whitespace",
                 "id": 27
-            },
-            {
-                "name": "?",
-                "id": 31
-            },
-            {
-                "name": "Unescape Whitespace",
-                "id": 34
             }
         ],
         "connections": [
@@ -57,32 +53,6 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Generate Markdown",
-                    "id": 21
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Unescape Whitespace",
-                    "id": 34
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Escape Whitespace",
-                    "id": 27
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Extract Semantic Information",
-                    "id": 5
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 1,
-                "source": {
                     "name": "Read Text File",
                     "id": 11
                 },
@@ -96,26 +66,26 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Transpile Cards to PROLOG",
-                    "id": 16
+                    "name": "Extract Semantic Information",
+                    "id": 5
                 },
                 "source_port": "output",
                 "target": {
-                    "name": "?",
-                    "id": 31
+                    "name": "?A",
+                    "id": 20
                 },
                 "target_port": "input"
             },
             {
                 "dir": 1,
                 "source": {
-                    "name": "Transpile Cards to PROLOG",
-                    "id": 16
+                    "name": "Generate Markdown",
+                    "id": 21
                 },
-                "source_port": "error",
+                "source_port": "output",
                 "target": {
-                    "name": "?",
-                    "id": 20
+                    "name": "Unescape Whitespace",
+                    "id": 3
                 },
                 "target_port": "input"
             },
@@ -133,36 +103,23 @@
                 "target_port": "input"
             },
             {
-                "dir": 2,
+                "dir": 1,
                 "source": {
                     "name": "Escape Whitespace",
                     "id": 27
                 },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Unescape Whitespace",
-                    "id": 34
-                },
                 "source_port": "output",
                 "target": {
-                    "name": "",
-                    "id": 0
+                    "name": "Extract Semantic Information",
+                    "id": 5
                 },
-                "target_port": "output"
+                "target_port": "input"
             },
             {
                 "dir": 2,
                 "source": {
-                    "name": "Unescape Whitespace",
-                    "id": 34
+                    "name": "Transpile Cards to PROLOG",
+                    "id": 16
                 },
                 "source_port": "error",
                 "target": {
@@ -187,8 +144,34 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "Transpile Cards to PROLOG",
-                    "id": 16
+                    "name": "Unescape Whitespace",
+                    "id": 3
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "output"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Unescape Whitespace",
+                    "id": 3
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Escape Whitespace",
+                    "id": 27
                 },
                 "source_port": "error",
                 "target": {
@@ -248,6 +231,19 @@
                     "id": 0
                 },
                 "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Read Text File",
+                    "id": 11
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
             }
         ]
     },
@@ -256,7 +252,7 @@
         "name": "Extract Semantic Information",
         "children": [
             {
-                "name": "?",
+                "name": "stringconcat",
                 "id": 3
             },
             {
@@ -266,18 +262,6 @@
             {
                 "name": "$jq '.cards[] | { kind: \"card\", text: .name, id: .id }'",
                 "id": 13
-            },
-            {
-                "name": "?",
-                "id": 17
-            },
-            {
-                "name": "?",
-                "id": 20
-            },
-            {
-                "name": "stringconcat",
-                "id": 22
             }
         ],
         "connections": [
@@ -316,67 +300,41 @@
                 "source_port": "output",
                 "target": {
                     "name": "stringconcat",
-                    "id": 22
+                    "id": 3
                 },
                 "target_port": "1"
             },
             {
                 "dir": 1,
                 "source": {
-                    "name": "stringconcat",
-                    "id": 22
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "?",
-                    "id": 3
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 1,
-                "source": {
                     "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
                     "id": 9
                 },
                 "source_port": "output",
                 "target": {
                     "name": "stringconcat",
-                    "id": 22
+                    "id": 3
                 },
                 "target_port": "2"
             },
             {
-                "dir": 1,
-                "source": {
-                    "name": "$jq '.cards[] | { kind: \"card\", text: .name, id: .id }'",
-                    "id": 13
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "?",
-                    "id": 17
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 1,
+                "dir": 2,
                 "source": {
                     "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
                     "id": 9
                 },
-                "source_port": "output",
+                "source_port": "error",
                 "target": {
-                    "name": "?",
-                    "id": 20
+                    "name": "",
+                    "id": 0
                 },
-                "target_port": "input"
+                "target_port": "error"
             },
             {
                 "dir": 2,
                 "source": {
-                    "name": "stringconcat",
-                    "id": 22
+                    "name": "$jq '.cards[] | { kind: \"card\", text: .name, id: .id }'",
+                    "id": 13
                 },
                 "source_port": "error",
                 "target": {
@@ -389,7 +347,7 @@
                 "dir": 2,
                 "source": {
                     "name": "stringconcat",
-                    "id": 22
+                    "id": 3
                 },
                 "source_port": "output",
                 "target": {
@@ -401,21 +359,8 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
-                    "id": 9
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "$jq '.cards[] | { kind: \"card\", text: .name, id: .id }'",
-                    "id": 13
+                    "name": "stringconcat",
+                    "id": 3
                 },
                 "source_port": "error",
                 "target": {
@@ -1000,19 +945,84 @@
             }
         ]
     }
-]         },
+]             "name": "",
+                    "id": 0
+                },
+                "target_port": "output"
+            }
+        ]
+    },
+    {
+        "file": "src/top.drawio",
+        "name": "Unescape Whitespace",
+        "children": [
             {
-                "dir": 1,
+                "name": "$rt/unescape.js",
+                "id": 7
+            }
+        ],
+        "connections": [
+            {
+                "dir": 0,
                 "source": {
-                    "name": "'rwr/rwr.sem.js'",
-                    "id": 27
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "input",
+                "target": {
+                    "name": "$rt/unescape.js",
+                    "id": 7
+                },
+                "target_port": "input"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "$rt/unescape.js",
+                    "id": 7
                 },
                 "source_port": "output",
                 "target": {
-                    "name": "Transpiler",
-                    "id": 38
+                    "name": "",
+                    "id": 0
                 },
-                "target_port": "semanticsfn"
+                "target_port": "output"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "$rt/unescape.js",
+                    "id": 7
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            }
+        ]
+    }
+]   "id": 0
+                },
+                "target_port": "output"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "$rt/unescape.js",
+                    "id": 7
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            }
+        ]
+    }
+]emanticsfn"
             },
             {
                 "dir": 1,
