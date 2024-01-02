@@ -4,6 +4,10 @@
         "name": "main",
         "children": [
             {
+                "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Russian\" \"I love winter\"",
+                "id": 3
+            },
+            {
                 "name": "Read Text File",
                 "id": 6
             },
@@ -40,6 +44,32 @@
                 "target_port": "input"
             },
             {
+                "dir": 1,
+                "source": {
+                    "name": "Convert To Markdown",
+                    "id": 11
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Russian\" \"I love winter\"",
+                    "id": 3
+                },
+                "target_port": "input"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Convert To Markdown",
+                    "id": 11
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
                 "dir": 2,
                 "source": {
                     "name": "Read Text File",
@@ -55,8 +85,8 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "Convert To Markdown",
-                    "id": 11
+                    "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Russian\" \"I love winter\"",
+                    "id": 3
                 },
                 "source_port": "output",
                 "target": {
@@ -64,19 +94,6 @@
                     "id": 0
                 },
                 "target_port": "output"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Convert To Markdown",
-                    "id": 11
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
             }
         ]
     },
@@ -919,40 +936,7 @@
             }
         ]
     }
-]}
-] },
-                "target_port": "output"
-            }
-        ]
-    },
-    {
-        "file": "src/top.drawio",
-        "name": "Unescape Whitespace",
-        "children": [
-            {
-                "name": "$./unescape.js",
-                "id": 7
-            }
-        ],
-        "connections": [
-            {
-                "dir": 0,
-                "source": {
-                    "name": "",
-                    "id": 0
-                },
-                "source_port": "input",
-                "target": {
-                    "name": "$./unescape.js",
-                    "id": 7
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "$./unescape.js",
-                    "id": 7
+]                  "id": 7
                 },
                 "source_port": "output",
                 "target": {
