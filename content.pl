@@ -1,0 +1,13 @@
+text(a,'control%20flow%20is%20not%20data').
+text(b,'control%20flow%20is%20_interpretation_%20of%20data%20-%20dynamic%20flow').
+text(c,'a%20CPU%20is%20an%20interpreter').
+text(d,'a%20CPU%20interprets%20_opcodes_').
+text(e,'a%20CPU%20interprets%20_opcodes_%20so%20quickly%20that%20we%20think%20of%20it%20as%20something%20other%20than%20interpretation').
+text(f,'data%20is%20_static_%20-%20and%20is%20not%20interpreted%20by%20the%20underlying%20system').
+text(f,'static%20data%20is%20interpreted%20by%20the%20_program_%2C%20not%20the%20CPU').
+connection(z,a,b).
+connection(z,b,c).
+connection(z,c,d).
+connection(z,c,e).
+connection(z,f,f).
+connection(z,a,f).

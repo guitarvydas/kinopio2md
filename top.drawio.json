@@ -4,12 +4,12 @@
         "name": "main",
         "children": [
             {
-                "name": "Extract Semantic Information",
-                "id": 5
+                "name": "?A",
+                "id": 4
             },
             {
-                "name": "?A",
-                "id": 10
+                "name": "Extract Semantic Information",
+                "id": 5
             },
             {
                 "name": "Read Text File",
@@ -25,7 +25,7 @@
             },
             {
                 "name": "Unescape Whitespace",
-                "id": 26
+                "id": 25
             },
             {
                 "name": "Escape Whitespace",
@@ -49,6 +49,32 @@
             {
                 "dir": 1,
                 "source": {
+                    "name": "Escape Whitespace",
+                    "id": 27
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "Extract Semantic Information",
+                    "id": 5
+                },
+                "target_port": "input"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "Generate Markdown",
+                    "id": 21
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "?A",
+                    "id": 4
+                },
+                "target_port": "input"
+            },
+            {
+                "dir": 1,
+                "source": {
                     "name": "Read Text File",
                     "id": 11
                 },
@@ -62,32 +88,6 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Escape Whitespace",
-                    "id": 27
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Extract Semantic Information",
-                    "id": 5
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Generate Markdown",
-                    "id": 21
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Unescape Whitespace",
-                    "id": 26
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 1,
-                "source": {
                     "name": "Extract Semantic Information",
                     "id": 5
                 },
@@ -106,55 +106,16 @@
                 },
                 "source_port": "output",
                 "target": {
-                    "name": "?A",
-                    "id": 10
+                    "name": "Generate Markdown",
+                    "id": 21
                 },
                 "target_port": "input"
             },
             {
                 "dir": 2,
                 "source": {
-                    "name": "Escape Whitespace",
-                    "id": 27
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Generate Markdown",
-                    "id": 21
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Transpile Cards to PROLOG",
-                    "id": 16
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
                     "name": "Unescape Whitespace",
-                    "id": 26
+                    "id": 25
                 },
                 "source_port": "output",
                 "target": {
@@ -166,8 +127,8 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "Unescape Whitespace",
-                    "id": 26
+                    "name": "Escape Whitespace",
+                    "id": 27
                 },
                 "source_port": "error",
                 "target": {
@@ -192,8 +153,47 @@
             {
                 "dir": 2,
                 "source": {
+                    "name": "Extract Semantic Information",
+                    "id": 5
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
                     "name": "Read Text File",
                     "id": 11
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Unescape Whitespace",
+                    "id": 25
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Transpile Cards to PROLOG",
+                    "id": 16
                 },
                 "source_port": "error",
                 "target": {
@@ -231,8 +231,8 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "Extract Semantic Information",
-                    "id": 5
+                    "name": "Generate Markdown",
+                    "id": 21
                 },
                 "source_port": "error",
                 "target": {
@@ -911,6 +911,7 @@
             }
         ]
     }
+] }
 ]          "id": 7
                 },
                 "target_port": "input"
