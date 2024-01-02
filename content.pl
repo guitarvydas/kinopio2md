@@ -1,0 +1,13 @@
+text('QdcyjbU3Vhvvey7G2O3E1','control%20flow%20is%20not%20data').
+text('hrA0G0cV8-2jTwzZbZeXN','control%20flow%20is%20_interpretation_%20of%20data%20-%20dynamic%20flow').
+text('7BwhZNgIsA5BoJSMYfomd','a%20CPU%20is%20an%20interpreter').
+text('1iqhffqqZDb4mCCOpXIet','a%20CPU%20interprets%20_opcodes_').
+text('imhGfRoM95ixnSB-N0D5g','a%20CPU%20interprets%20_opcodes_%20so%20quickly%20that%20we%20think%20of%20it%20as%20something%20other%20than%20interpretation').
+text('kG4t71uepUS36ToC_iLvh','data%20is%20_static_%20-%20and%20is%20not%20interpreted%20by%20the%20underlying%20system').
+text('NszFdu5PKUwsja7G_czC2','static%20data%20is%20interpreted%20by%20the%20_program_%2C%20not%20the%20CPU').
+connection('QdcyjbU3Vhvvey7G2O3E1','hrA0G0cV8-2jTwzZbZeXN','4TR-Saps8RXfUKXtkhJ7j').
+connection('hrA0G0cV8-2jTwzZbZeXN','7BwhZNgIsA5BoJSMYfomd','4TR-Saps8RXfUKXtkhJ7j').
+connection('7BwhZNgIsA5BoJSMYfomd','1iqhffqqZDb4mCCOpXIet','4TR-Saps8RXfUKXtkhJ7j').
+connection('7BwhZNgIsA5BoJSMYfomd','imhGfRoM95ixnSB-N0D5g','4TR-Saps8RXfUKXtkhJ7j').
+connection('kG4t71uepUS36ToC_iLvh','NszFdu5PKUwsja7G_czC2','4TR-Saps8RXfUKXtkhJ7j').
+connection('QdcyjbU3Vhvvey7G2O3E1','kG4t71uepUS36ToC_iLvh','4TR-Saps8RXfUKXtkhJ7j').
