@@ -4,28 +4,28 @@
         "name": "main",
         "children": [
             {
-                "name": "Unescape Whitespace",
-                "id": 4
-            },
-            {
                 "name": "Extract Semantic Information",
                 "id": 5
             },
             {
                 "name": "Read Text File",
-                "id": 11
+                "id": 10
             },
             {
                 "name": "Transpile Cards to PROLOG",
-                "id": 16
+                "id": 15
             },
             {
                 "name": "Generate Markdown",
-                "id": 21
+                "id": 19
+            },
+            {
+                "name": "Unescape Whitespace",
+                "id": 24
             },
             {
                 "name": "Escape Whitespace",
-                "id": 27
+                "id": 25
             }
         ],
         "connections": [
@@ -38,20 +38,7 @@
                 "source_port": "filename",
                 "target": {
                     "name": "Read Text File",
-                    "id": 11
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Generate Markdown",
-                    "id": 21
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Unescape Whitespace",
-                    "id": 4
+                    "id": 10
                 },
                 "target_port": "input"
             },
@@ -59,12 +46,12 @@
                 "dir": 1,
                 "source": {
                     "name": "Read Text File",
-                    "id": 11
+                    "id": 10
                 },
                 "source_port": "str",
                 "target": {
                     "name": "Escape Whitespace",
-                    "id": 27
+                    "id": 25
                 },
                 "target_port": "input"
             },
@@ -72,7 +59,7 @@
                 "dir": 1,
                 "source": {
                     "name": "Escape Whitespace",
-                    "id": 27
+                    "id": 25
                 },
                 "source_port": "output",
                 "target": {
@@ -84,13 +71,13 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Transpile Cards to PROLOG",
-                    "id": 16
+                    "name": "Generate Markdown",
+                    "id": 19
                 },
                 "source_port": "output",
                 "target": {
-                    "name": "Generate Markdown",
-                    "id": 21
+                    "name": "Unescape Whitespace",
+                    "id": 24
                 },
                 "target_port": "input"
             },
@@ -103,28 +90,28 @@
                 "source_port": "output",
                 "target": {
                     "name": "Transpile Cards to PROLOG",
-                    "id": 16
+                    "id": 15
+                },
+                "target_port": "input"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "Transpile Cards to PROLOG",
+                    "id": 15
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "Generate Markdown",
+                    "id": 19
                 },
                 "target_port": "input"
             },
             {
                 "dir": 2,
                 "source": {
-                    "name": "Generate Markdown",
-                    "id": 21
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
                     "name": "Escape Whitespace",
-                    "id": 27
+                    "id": 25
                 },
                 "source_port": "error",
                 "target": {
@@ -136,8 +123,8 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "Transpile Cards to PROLOG",
-                    "id": 16
+                    "name": "Generate Markdown",
+                    "id": 19
                 },
                 "source_port": "error",
                 "target": {
@@ -150,20 +137,7 @@
                 "dir": 2,
                 "source": {
                     "name": "Read Text File",
-                    "id": 11
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Extract Semantic Information",
-                    "id": 5
+                    "id": 10
                 },
                 "source_port": "error",
                 "target": {
@@ -176,7 +150,7 @@
                 "dir": 2,
                 "source": {
                     "name": "Unescape Whitespace",
-                    "id": 4
+                    "id": 24
                 },
                 "source_port": "output",
                 "target": {
@@ -188,8 +162,21 @@
             {
                 "dir": 2,
                 "source": {
+                    "name": "Unescape Whitespace",
+                    "id": 24
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
                     "name": "Transpile Cards to PROLOG",
-                    "id": 16
+                    "id": 15
                 },
                 "source_port": "error",
                 "target": {
@@ -203,32 +190,6 @@
                 "source": {
                     "name": "Extract Semantic Information",
                     "id": 5
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Read Text File",
-                    "id": 11
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Unescape Whitespace",
-                    "id": 4
                 },
                 "source_port": "error",
                 "target": {
@@ -907,33 +868,9 @@
             }
         ]
     }
-] }
-]               "target_port": "error"
-            }
-        ]
-    }
-] }
-]          "id": 7
-                },
-                "target_port": "input"
-            },
-            {
-                "dir": 2,
+]           "dir": 2,
                 "source": {
-                    "name": "$rt/unescape.js",
-                    "id": 7
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "output"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "$rt/unescape.js",
+                    "name": "$./unescape.js",
                     "id": 7
                 },
                 "source_port": "error",
@@ -945,12 +882,195 @@
             }
         ]
     }
-]         "target_port": "error"
+]          {
+                "dir": 2,
+                "source": {
+                    "name": "$./unescape.js",
+                    "id": 7
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
             }
         ]
     }
-]
-]             "name": "",
+]        {
+                "dir": 2,
+                "source": {
+                    "name": "$./unescape.js",
+                    "id": 7
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            }
+        ]
+    }
+]     "id": 4
+            },
+            {
+                "name": "Transpile",
+                "id": 9
+            },
+            {
+                "name": "'escapes.ohm'",
+                "id": 17
+            },
+            {
+                "name": "'Escapes'",
+                "id": 20
+            },
+            {
+                "name": "'escapessupport.js'",
+                "id": 23
+            }
+        ],
+        "connections": [
+            {
+                "dir": 0,
+                "source": {
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "input",
+                "target": {
+                    "name": "'escapessupport.js'",
+                    "id": 23
+                },
+                "target_port": "\u237a"
+            },
+            {
+                "dir": 0,
+                "source": {
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "input",
+                "target": {
+                    "name": "'Escapes'",
+                    "id": 20
+                },
+                "target_port": "\u237a"
+            },
+            {
+                "dir": 0,
+                "source": {
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "input",
+                "target": {
+                    "name": "'escapes.ohm'",
+                    "id": 17
+                },
+                "target_port": "\u237a"
+            },
+            {
+                "dir": 0,
+                "source": {
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "input",
+                "target": {
+                    "name": "'escapes.rwr'",
+                    "id": 4
+                },
+                "target_port": "\u237a"
+            },
+            {
+                "dir": 0,
+                "source": {
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "input",
+                "target": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "target_port": "input"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "'escapessupport.js'",
+                    "id": 23
+                },
+                "source_port": "\u237a",
+                "target": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "target_port": "rwrsupportfn"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "'escapes.ohm'",
+                    "id": 17
+                },
+                "source_port": "\u237a",
+                "target": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "target_port": "ohmfn"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "'escapes.rwr'",
+                    "id": 4
+                },
+                "source_port": "\u237a",
+                "target": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "target_port": "rwrfn"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "'Escapes'",
+                    "id": 20
+                },
+                "source_port": "\u237a",
+                "target": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "target_port": "grammar name"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "",
                     "id": 0
                 },
                 "target_port": "output"
@@ -962,7 +1082,7 @@
         "name": "Unescape Whitespace",
         "children": [
             {
-                "name": "$rt/unescape.js",
+                "name": "$./unescape.js",
                 "id": 7
             }
         ],
@@ -975,7 +1095,7 @@
                 },
                 "source_port": "input",
                 "target": {
-                    "name": "$rt/unescape.js",
+                    "name": "$./unescape.js",
                     "id": 7
                 },
                 "target_port": "input"
@@ -983,7 +1103,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$rt/unescape.js",
+                    "name": "$./unescape.js",
                     "id": 7
                 },
                 "source_port": "output",
@@ -996,7 +1116,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$rt/unescape.js",
+                    "name": "$./unescape.js",
                     "id": 7
                 },
                 "source_port": "error",
@@ -1008,14 +1128,21 @@
             }
         ]
     }
-]   "id": 0
+]                "source": {
+                    "name": "$./unescape.js",
+                    "id": 7
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "",
+                    "id": 0
                 },
                 "target_port": "output"
             },
             {
                 "dir": 2,
                 "source": {
-                    "name": "$rt/unescape.js",
+                    "name": "$./unescape.js",
                     "id": 7
                 },
                 "source_port": "error",
@@ -1027,143 +1154,11 @@
             }
         ]
     }
-]emanticsfn"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Transpiler",
-                    "id": 38
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "stringconcat",
-                    "id": 40
-                },
-                "target_port": "2"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "stringconcat",
-                    "id": 40
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Transpiler",
-                    "id": 28
-                },
-                "target_port": "semantics"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Read Text File",
-                    "id": 42
-                },
-                "source_port": "str",
-                "target": {
-                    "name": "stringconcat",
-                    "id": 40
-                },
-                "target_port": "1"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "'rwr/rwr.ohm'",
-                    "id": 19
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Transpiler",
-                    "id": 38
-                },
-                "target_port": "grammarfn"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Read Text File",
-                    "id": 14
-                },
-                "source_port": "str",
-                "target": {
-                    "name": "Transpiler",
-                    "id": 38
-                },
-                "target_port": "input"
-            },
-            {
+]           {
                 "dir": 2,
                 "source": {
-                    "name": "Transpiler",
-                    "id": 28
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "output"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Read Text File",
-                    "id": 14
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Transpiler",
-                    "id": 38
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Transpiler",
-                    "id": 28
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Read Text File",
-                    "id": 42
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "stringconcat",
-                    "id": 40
+                    "name": "$./unescape.js",
+                    "id": 7
                 },
                 "source_port": "error",
                 "target": {
@@ -1173,19 +1168,23 @@
                 "target_port": "error"
             }
         ]
-    },
-    {
-        "file": "src/top.drawio",
-        "name": "Transpiler",
-        "children": [
-            {
-                "name": "All Before 4",
-                "id": 8
-            },
-            {
-                "name": "OhmJS",
-                "id": 20
-            },
+    }
+]{
+                "dir": 2,
+                "source": {
+                    "name": "$./unescape.js",
+                    "id": 7
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            }
+        ]
+    }
+]  },
             {
                 "name": "fakepipe",
                 "id": 21
