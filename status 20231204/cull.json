@@ -1,0 +1,102 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "cards": {
+        "QdcyjbU3Vhvvey7G2O3E1": {
+            "id": "QdcyjbU3Vhvvey7G2O3E1",
+            "name": "control%20flow%20is%20not%20data"
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+	"hrA0G0cV8-2jTwzZbZeXN": {
+            "id": "hrA0G0cV8-2jTwzZbZeXN",
+            "name": "control%20flow%20is%20_interpretation_%20of%20data%20-%20dynamic%20flow"
+        },
+        "7BwhZNgIsA5BoJSMYfomd": {
+            "id": "7BwhZNgIsA5BoJSMYfomd",
+            "name": "a%20CPU%20is%20an%20interpreter"
+        },
+        "1iqhffqqZDb4mCCOpXIet": {
+            "id": "1iqhffqqZDb4mCCOpXIet",
+            "name": "a%20CPU%20interprets%20_opcodes_"
+        },
+        "imhGfRoM95ixnSB-N0D5g": {
+            "id": "imhGfRoM95ixnSB-N0D5g",
+            "name": "a%20CPU%20interprets%20_opcodes_%20so%20quickly%20that%20we%20think%20of%20it%20as%20something%20other%20than%20interpretation"
+        },
+        "kG4t71uepUS36ToC_iLvh": {
+            "id": "kG4t71uepUS36ToC_iLvh",
+            "name": "data%20is%20_static_%20-%20and%20is%20not%20interpreted%20by%20the%20underlying%20system"
+        },
+        "NszFdu5PKUwsja7G_czC2": {
+            "id": "NszFdu5PKUwsja7G_czC2",
+            "name": "static%20data%20is%20interpreted%20by%20the%20_program_%2C%20not%20the%20CPU"
+        }
+    },
+    "connections": {
+        "OSwNQQ7JEccAT1PV1pH7r": {
+            "id": "OSwNQQ7JEccAT1PV1pH7r",
+            "from": "QdcyjbU3Vhvvey7G2O3E1",
+            "to": "hrA0G0cV8-2jTwzZbZeXN",
+            "type": "4TR-Saps8RXfUKXtkhJ7j"
+        },
+        "NvMi_0_vPyb3RRQio2JH5": {
+            "id": "NvMi_0_vPyb3RRQio2JH5",
+            "from": "hrA0G0cV8-2jTwzZbZeXN",
+            "to": "7BwhZNgIsA5BoJSMYfomd",
+            "type": "4TR-Saps8RXfUKXtkhJ7j"
+        },
+        "xGJjNUxKBQo8AcF-AIWt5": {
+            "id": "xGJjNUxKBQo8AcF-AIWt5",
+            "from": "7BwhZNgIsA5BoJSMYfomd",
+            "to": "1iqhffqqZDb4mCCOpXIet",
+            "type": "4TR-Saps8RXfUKXtkhJ7j"
+        },
+        "7elzpUCSfAbZx-PyoImUD": {
+            "id": "7elzpUCSfAbZx-PyoImUD",
+            "from": "7BwhZNgIsA5BoJSMYfomd",
+            "to": "imhGfRoM95ixnSB-N0D5g",
+            "type": "4TR-Saps8RXfUKXtkhJ7j"
+        },
+        "3LCCZmlImrvBuct-EMdZ5": {
+            "id": "3LCCZmlImrvBuct-EMdZ5",
+            "from": "kG4t71uepUS36ToC_iLvh",
+            "to": "NszFdu5PKUwsja7G_czC2",
+            "type": "4TR-Saps8RXfUKXtkhJ7j"
+        },
+        "egAUQXT5xY4DxoZN7fEjJ": {
+            "id": "egAUQXT5xY4DxoZN7fEjJ",
+            "from": "QdcyjbU3Vhvvey7G2O3E1",
+            "to": "kG4t71uepUS36ToC_iLvh",
+            "type": "4TR-Saps8RXfUKXtkhJ7j"
+        }
+    }
+}

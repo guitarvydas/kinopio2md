@@ -1,13 +1,11 @@
 KinopioCards {
+  Semantics [cORcs+] = ‛«cORcs»’
+  CardOrConnection [cORc] = ‛«cORc»’
 
-  SemanticJSON [lb kcards kcolon lb2 Cards+ rb kcomma kconnections kcolon2 lb3 Connections+ rb2 rb3] =
-    ‛«Cards»«Connections»’
+  Card [lb kkind kcolon1 kcard kcomma ktext kcolon2 Text kcomma2 kid kcolon3 ID rb] = ‛\ntext('«ID»','«Text»').’
 
-  Card [ID kcolon lb sid kcolon2 ID2 kcomma kname kcolon3 Text rb kcomma2] =
-    ‛\ntext('«ID2»','«Text»').’
-
-  Connection [ID kcolon lb kid kcolon2 ID2 kcomma kfrom kcolon3 ID3 kcomma2 kto kcolon4 ID4 kcomma3 ktype kcolon5 ID5 rb kcomma4] = 
-    ‛\nconnection('«ID3»','«ID4»','«ID5»').’
+  Connection [lb kkind kcolon1 kconnection kcomma1 kfrom kcolon2 IDfrom kcomma2 kto kcolon3 IDto kcomma4 ktype kcolon4 IDconn rb] =
+    ‛\nconnection('«IDfrom»','«IDto»','«IDconn»').’
 
   string [dq1 cs* dq2] = ‛«cs»’
   s [dq1 str dq2] = ‛«str»’
