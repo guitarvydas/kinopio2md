@@ -11,7 +11,6 @@ main :: proc() {
 
 inject :: proc (main_container : ^zd.Eh) {
     p := zd.new_datum_string ("softwareAtomsTest.json") // from Kinopio 'software atoms test' https://kinopio.club/software-atoms-test-FhzG4AniDsQj1ilz2N7FA
-    std.dump_hierarchy (main_container)
     msg := zd.make_message("filename", p, zd.make_cause (main_container, nil) )
     main_container.handler(main_container, msg)
 }
