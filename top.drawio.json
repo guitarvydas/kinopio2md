@@ -4,6 +4,10 @@
         "name": "main",
         "children": [
             {
+                "name": "Markdown To Essay",
+                "id": 4
+            },
+            {
                 "name": "Read Text File",
                 "id": 6
             },
@@ -42,8 +46,47 @@
             {
                 "dir": 2,
                 "source": {
+                    "name": "Convert To Markdown",
+                    "id": 11
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
                     "name": "Read Text File",
                     "id": 6
+                },
+                "source_port": "error",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "error"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Markdown To Essay",
+                    "id": 4
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "output"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Markdown To Essay",
+                    "id": 4
                 },
                 "source_port": "error",
                 "target": {
@@ -63,20 +106,7 @@
                     "name": "",
                     "id": 0
                 },
-                "target_port": "output"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Convert To Markdown",
-                    "id": 11
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
+                "target_port": "markdown"
             }
         ]
     },
@@ -918,20 +948,14 @@
                 "target_port": "error"
             }
         ]
-    }
-]}
-] },
-                "target_port": "output"
-            }
-        ]
     },
     {
         "file": "src/top.drawio",
-        "name": "Unescape Whitespace",
+        "name": "Markdown To Essay",
         "children": [
             {
-                "name": "$./unescape.js",
-                "id": 7
+                "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Lithuanian\"",
+                "id": 4
             }
         ],
         "connections": [
@@ -943,57 +967,16 @@
                 },
                 "source_port": "input",
                 "target": {
-                    "name": "$./unescape.js",
-                    "id": 7
+                    "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Lithuanian\"",
+                    "id": 4
                 },
                 "target_port": "input"
             },
             {
                 "dir": 2,
                 "source": {
-                    "name": "$./unescape.js",
-                    "id": 7
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "output"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "$./unescape.js",
-                    "id": 7
-                },
-                "source_port": "error",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            }
-        ]
-    }
-]ame": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            }
-        ]
-    }
-]      "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "error"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Transpile",
-                    "id": 9
+                    "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Lithuanian\"",
+                    "id": 4
                 },
                 "source_port": "output",
                 "target": {
@@ -1003,24 +986,20 @@
                 "target_port": "output"
             }
         ]
-    },
-    {
-        "file": "src/top.drawio",
-        "name": "Unescape Whitespace",
-        "children": [
-            {
-                "name": "$./unescape.js",
-                "id": 7
-            }
-        ],
-        "connections": [
-            {
-                "dir": 0,
-                "source": {
+    }
+]    "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Lithuanian\"",
+                    "id": 4
+                },
+                "source_port": "output",
+                "target": {
                     "name": "",
                     "id": 0
                 },
-                "source_port": "input",
+                "target_port": "output"
+            }
+        ]
+    }
+] "source_port": "input",
                 "target": {
                     "name": "$./unescape.js",
                     "id": 7
