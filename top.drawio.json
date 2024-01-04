@@ -44,19 +44,6 @@
                 "target_port": "input"
             },
             {
-                "dir": 1,
-                "source": {
-                    "name": "Convert To Markdown",
-                    "id": 11
-                },
-                "source_port": "output",
-                "target": {
-                    "name": "Markdown To Essay",
-                    "id": 4
-                },
-                "target_port": "input"
-            },
-            {
                 "dir": 2,
                 "source": {
                     "name": "Convert To Markdown",
@@ -989,6 +976,18 @@
                 "dir": 2,
                 "source": {
                     "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Lithuanian\"",
+                    "id": 4
+                },
+                "source_port": "output",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "output"
+            }
+        ]
+    }
+]    "name": "$ ../0d/llm/agency/main -model gpt-3.5-turbo -maxTokens 1000 -temp=1 -prompt \"Translate to Lithuanian\"",
                     "id": 4
                 },
                 "source_port": "output",
