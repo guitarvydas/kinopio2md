@@ -1,5 +1,7 @@
 convert Kinopio mind-map to markdown
 
+![](doc/top-main.drawio.svg)
+
 # Install
 $ ln -s ..../od/od ./od
 $ brew install swi-prolog  ## if not already installed
