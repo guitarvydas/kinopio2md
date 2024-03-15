@@ -1,26 +1,20 @@
-SRC=src
+LIBSRC=0D/odin/std
 ODIN_FLAGS ?= -debug -o:none
-LIBSRC=../0d/libsrc
-0D=../0d/0d/odin/0d/*.odin
-STD=../0d/0d/odin/std/*.odin
-D2Jsrc=../0d/0d/odin/das2json/*.odin
-D2J=../0d/0d/odin/das2json/das2json
+D2J=0d/das2json/das2json
 
-all: dev
+dev: clean run
 
-#dev: $(SRC)/top.drawio main.odin 0Dstuff
-dev: $(SRC)/top.drawio main.odin clean
+run: kinopio2md transpile.drawio.json
+	./kinopio2md "tests/SWEngineering and SWImplementation.json" main kinopio2md.drawio $(LIBSRC)/transpile.drawio
+
+kinopio2md: kinopio2md.drawio.json
 	odin build . $(ODIN_FLAGS)
-	$(D2J) $(SRC)/top.drawio
-	$(D2J) $(LIBSRC)/transpile.drawio
-	./kinopio2md main $(SRC)/top.drawio $(LIBSRC)/transpile.drawio
 
-0Dstuff: $(0D) $(STD) $(D2Jsrc)
-	echo "0D needs to be rebuilt"
-	exit 1
+kinopio2md.drawio.json: kinopio2md.drawio transpile.drawio.json
+	$(D2J) kinopio2md.drawio
+
+transpile.drawio.json: $(LIBSRC)/transpile.drawio
+	$(D2J) $(LIBSRC)/transpile.drawio
 
 clean:
-	rm -rf kinopio2md kinopio2md.dSYM
-	rm -f kinopio2md content.pl
-	rm -f /tmp/fakepipename*
-
+	rm -rf kinopio2md kinopio2md.dSYM *~ *.json

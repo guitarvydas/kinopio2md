@@ -1,74 +1,15 @@
-convert Kinopio mind-map to markdown
+# convert kinopio JSON file to markdown
+- the intention is to use an LLM to convert Kinopio "spaces" and "cards" to markdown, then use an LLM to convert the markdown into prose
+- still WIP
+- user must: export a Kinopio "space" to JSON, then run kinopio2md on the JSON to produce a markdown file
+  - ATM, this tool stops after generating markdown, hence, the user must copy/paste the markdown into an LLM to proceed
+  - e.g. use ChatGPT
+- the Kinopio format, for now, is:
+  - cards containing brief points in text (only) form
+  - connections between cards - currently every connection is treated the same, regardless of Kinopio connection type
+  - the connections are used to infer markdown nesting of points
+  - the inferencing is currently done with Prolog, although the inferencing is fairly simple and could be done in any other programming language (using, say, loops within loops)
+  
+- step 1 is to encode whitespace in the JSON strings into printable ASCII/Unicode, to allow subsequent passes to use OhmJS "syntactic" rules (syntactic rules have a more convenient syntax, but, they skip over whitespace which poses problems if the input contains words separated by whitespace only, instead of - say - commas)
 
-![](doc/top-main.drawio.svg)
-
-# Install
-$ ln -s ..../od/od ./od
-$ brew install swi-prolog  ## if not already installed
-
-0. begin with kinopio drawing "test" which contains cards and connections between cards
-0. export to "test.json"
-
-1. cull the json file, leaving only semantic information
-   - cards
-	 - id
-	 - name
-   - connections
-	 - id
-	 - from (card id)
-	 - to   (card id)
-	 - connectionType (used to determine whether the connection is indentation or footnote)
-
-2. Transpile semantic information to PROLOG
-3. Generate markdown from semantic information using SWIPL (PROLOG) using 'content.pl' and 'md.pl'
-
-# TODO:
-- check that all outputs are distinct
-  - my code had a case where I had 2 outputs called "output" and this caused mysterious bugs instead of failure
-
-# Directories and Files for odin0D
-*[see odin0d repo for details]*
-
-- `0d/`
-- `leaf0d/`
-- `process/`
-- `registry0d/`
-- `syntax/`
-
-- `(debug/)`
-
-# Directories and Files for kinopio2md
-- `doc/
-- `ohmjs/`
-- `rwr/`
-- `ai/`
-- `feedback/`
-- `kinopio2md.dSYM/`
-- `kjson/`
-- `rt/`
-- `cards.ohm`, `cards.rwr`
-- `cull.py`
-- `gen.bash`
-	- .bash script that runs swipl on md.pl manually
-- `kinopio2md`
-- `main.odin`
-- `Makefile`
-- `md.pl`
-- `README.md`
-- `support.js`
-	- JavaScript file that is prepended to all files transpiled from `.rwr`
-	- currently "empty" (contains "empty" JS namespace), since no support functions are needed
-- `top.drawio`
-	- main code for kinopio2.md (code written as diagrams)
-
-
-- `play/`
-	- directory containing various manual tests and Proofs of Concept
-	- ignore
-- `attic/`
-	- files not used, that I want to keep
-	- ignore
-- `junk.*`
-	- ignore all of these files
-	- intermediate temp files during debugging
-
+- since Kinopio produces JSON, we can use `jq` to extract the interesting fields from Kinopio's markdown, thus, reducing the overhead of processing every little detail produced by Kinopio

@@ -1,7 +1,4 @@
 *~
-kinopio2md
-*.plist
-
 node_modules/
 package*.json
 .DS_Store
