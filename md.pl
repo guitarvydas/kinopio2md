@@ -29,6 +29,7 @@ print_dash_text(ID,IndentLevel):-
 
 print_root(ID) :-
     is_root(ID),
+    write(ID),nl,
     print_node(ID,0),
     forall(connection(ID,Child,_),print_tree(Child,0)).
 print_root(ID) :-
@@ -56,3 +57,4 @@ main :-
     consult(content),
     forall(is_root(ID),print_root(ID)),
     halt.
+
