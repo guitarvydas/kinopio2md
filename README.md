@@ -13,3 +13,8 @@
 - step 1 is to encode whitespace in the JSON strings into printable ASCII/Unicode, to allow subsequent passes to use OhmJS "syntactic" rules (syntactic rules have a more convenient syntax, but, they skip over whitespace which poses problems if the input contains words separated by whitespace only, instead of - say - commas)
 
 - since Kinopio produces JSON, we can use `jq` to extract the interesting fields from Kinopio's markdown, thus, reducing the overhead of processing every little detail produced by Kinopio
+
+
+# TODO:
+- the name "✗" has been butchered by draw.io all the way up the chain - this doesn't matter if there are no errors, but, when there is an
+  error, you get a "dropped on floor" message - fix the names everywhere

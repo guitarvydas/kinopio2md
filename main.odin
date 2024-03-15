@@ -6,7 +6,7 @@ import "0d/odin/std"
 main :: proc() {
     arg, main_container_name, diagram_names := std.parse_command_line_args ()
     palette := std.initialize_component_palette (diagram_names, components_to_include_in_project)
-    std.run (&palette, arg, main_container_name, diagram_names, start_function)
+    std.run_demo (&palette, arg, main_container_name, diagram_names, start_function)
 }
 
 start_function :: proc (arg: string, main_container : ^zd.Eh) {

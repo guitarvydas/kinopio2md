@@ -881,11 +881,11 @@
             },
             {
                 "name": "1then2",
-                "id": 11
+                "id": 10
             },
             {
                 "name": "$ swipl -g 'consult(md).' -g 'main.' -g 'halt.'",
-                "id": 18
+                "id": 17
             }
         ],
         "connections": [
@@ -911,22 +911,9 @@
                 "source_port": "",
                 "target": {
                     "name": "1then2",
-                    "id": 11
+                    "id": 10
                 },
                 "target_port": "2"
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "1then2",
-                    "id": 11
-                },
-                "source_port": "1",
-                "target": {
-                    "name": "syncfilewrite",
-                    "id": 9
-                },
-                "target_port": "filename"
             },
             {
                 "dir": 1,
@@ -937,7 +924,7 @@
                 "source_port": "done",
                 "target": {
                     "name": "$ swipl -g 'consult(md).' -g 'main.' -g 'halt.'",
-                    "id": 18
+                    "id": 17
                 },
                 "target_port": ""
             },
@@ -950,7 +937,7 @@
                 "source_port": "\u237a",
                 "target": {
                     "name": "1then2",
-                    "id": 11
+                    "id": 10
                 },
                 "target_port": "1"
             },
@@ -958,7 +945,20 @@
                 "dir": 1,
                 "source": {
                     "name": "1then2",
-                    "id": 11
+                    "id": 10
+                },
+                "source_port": "1",
+                "target": {
+                    "name": "syncfilewrite",
+                    "id": 9
+                },
+                "target_port": "filename"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "1then2",
+                    "id": 10
                 },
                 "source_port": "2",
                 "target": {
@@ -971,7 +971,7 @@
                 "dir": 2,
                 "source": {
                     "name": "$ swipl -g 'consult(md).' -g 'main.' -g 'halt.'",
-                    "id": 18
+                    "id": 17
                 },
                 "source_port": "",
                 "target": {
@@ -979,19 +979,6 @@
                     "id": 0
                 },
                 "target_port": ""
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "$ swipl -g 'consult(md).' -g 'main.' -g 'halt.'",
-                    "id": 18
-                },
-                "source_port": "<span style=\"\">\u2717</span>",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "<span style=\"font-size: 11px; font-weight: 400;\">\u2717</span>"
             },
             {
                 "dir": 2,
@@ -1004,7 +991,7 @@
                     "name": "",
                     "id": 0
                 },
-                "target_port": "<span style=\"font-size: 11px; font-weight: 400;\">\u2717</span>"
+                "target_port": "\u2717"
             }
         ]
     },
