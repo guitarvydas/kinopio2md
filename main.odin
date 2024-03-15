@@ -22,6 +22,8 @@ components_to_include_in_project :: proc (leaves: ^[dynamic]zd.Leaf_Template) {
     zd.append_leaf (leaves, std.string_constant ("cards.rwr"))
     zd.append_leaf (leaves, std.string_constant ("support.js"))
 
+    zd.append_leaf (leaves, std.string_constant ("content.pl"))
+
     zd.append_leaf (leaves, std.string_constant ("Escapes"))
     zd.append_leaf (leaves, std.string_constant ("escapes.ohm"))
     zd.append_leaf (leaves, std.string_constant ("escapes.rwr"))
