@@ -1,0 +1,12 @@
+KinopioCards {
+  Semantics = CardOrConnection+
+  CardOrConnection = Card | Connection
+  Card = "{" s<"kind"> ":" s<"card"> "," s<"text"> ":" Text "," s<"id"> ":" ID "}"
+  Connection = "{" s<"kind"> ":" s<"connection"> "," s<"from"> ":" ID "," s<"to"> ":" ID "," s<"type"> ":" ID "}"
+
+  ID = string
+  Text = string
+  string = dq (~dq any)* dq
+  dq = "\""
+  s<str> = dq str dq
+}

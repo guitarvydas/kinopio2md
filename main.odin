@@ -17,5 +17,14 @@ start_function :: proc (arg: string, main_container : ^zd.Eh) {
 
 
 components_to_include_in_project :: proc (leaves: ^[dynamic]zd.Leaf_Template) {
+    zd.append_leaf (leaves, std.string_constant ("KinopioCards"))
+    zd.append_leaf (leaves, std.string_constant ("cards.ohm"))
+    zd.append_leaf (leaves, std.string_constant ("cards.rwr"))
+    zd.append_leaf (leaves, std.string_constant ("support.js"))
+
+    zd.append_leaf (leaves, std.string_constant ("Escapes"))
+    zd.append_leaf (leaves, std.string_constant ("escapes.ohm"))
+    zd.append_leaf (leaves, std.string_constant ("escapes.rwr"))
+    zd.append_leaf (leaves, std.string_constant ("escapessupport.js"))
 }
 
