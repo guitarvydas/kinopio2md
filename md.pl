@@ -44,13 +44,30 @@ print_dash_node(ID,Level):-
 
 print_tree(ID,Level):-
     text(ID,_),
+    connection(ID,_,_),
+    !,
     print_dash_node(ID,Level),
     succ(Level,NextLevel),
     forall(connection(ID,Child,_),print_tree(Child,NextLevel)).
 print_tree(ID,Level):-
     text(ID,_),
     \+connection(ID,_,_),
+    !,
     print_dash_node(ID,Level).
+% ignore orphans
+%% print_tree(ID,_):- 
+%%     connection(_,ID,_),
+%%     \+text(ID,_).
+% same code, but prints out warning about orphan
+print_tree(ID,_):-
+    connection(_,ID,_),
+    \+text(ID,_),
+    !,
+    write('[101m'),
+    write('ORPHAN: no text for node '), write(ID),
+    write('[0m'),
+    nl.
+
 
 main :-
     consult(content),
