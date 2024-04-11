@@ -4,10 +4,6 @@
         "name": "main",
         "children": [
             {
-                "name": "Generate Markdown",
-                "id": 3
-            },
-            {
                 "name": "Read Text File",
                 "id": 4
             },
@@ -16,16 +12,24 @@
                 "id": 8
             },
             {
+                "name": "?B",
+                "id": 14
+            },
+            {
                 "name": "Escape Whitespace",
                 "id": 17
             },
             {
-                "name": "Unescape Whitespace",
+                "name": "Transpile Cards To Prolog",
                 "id": 22
             },
             {
-                "name": "Transpile Cards To Prolog",
-                "id": 23
+                "name": "Unescape Whitespace",
+                "id": 26
+            },
+            {
+                "name": "Generate Markdown",
+                "id": 28
             }
         ],
         "connections": [
@@ -45,13 +49,26 @@
             {
                 "dir": 1,
                 "source": {
+                    "name": "Transpile Cards To Prolog",
+                    "id": 22
+                },
+                "source_port": "",
+                "target": {
+                    "name": "Generate Markdown",
+                    "id": 28
+                },
+                "target_port": ""
+            },
+            {
+                "dir": 1,
+                "source": {
                     "name": "Escape Whitespace",
                     "id": 17
                 },
                 "source_port": "",
                 "target": {
                     "name": "Transpile Cards To Prolog",
-                    "id": 23
+                    "id": 22
                 },
                 "target_port": ""
             },
@@ -65,32 +82,6 @@
                 "target": {
                     "name": "Escape Whitespace",
                     "id": 17
-                },
-                "target_port": ""
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Transpile Cards To Prolog",
-                    "id": 23
-                },
-                "source_port": "",
-                "target": {
-                    "name": "Generate Markdown",
-                    "id": 3
-                },
-                "target_port": ""
-            },
-            {
-                "dir": 1,
-                "source": {
-                    "name": "Generate Markdown",
-                    "id": 3
-                },
-                "source_port": "",
-                "target": {
-                    "name": "Unescape Whitespace",
-                    "id": 22
                 },
                 "target_port": ""
             },
@@ -108,25 +99,38 @@
                 "target_port": ""
             },
             {
-                "dir": 2,
+                "dir": 1,
                 "source": {
-                    "name": "Transpile Cards To Prolog",
-                    "id": 23
+                    "name": "Escape Whitespace",
+                    "id": 17
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "err",
                 "target": {
-                    "name": "",
-                    "id": 0
+                    "name": "?B",
+                    "id": 14
                 },
-                "target_port": "\u2717"
+                "target_port": ""
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "Generate Markdown",
+                    "id": 28
+                },
+                "source_port": "",
+                "target": {
+                    "name": "Unescape Whitespace",
+                    "id": 26
+                },
+                "target_port": ""
             },
             {
                 "dir": 2,
                 "source": {
-                    "name": "Generate Markdown",
-                    "id": 3
+                    "name": "Transpile Cards To Prolog",
+                    "id": 22
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -139,12 +143,38 @@
                     "name": "Escape Whitespace",
                     "id": 17
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "err",
                 "target": {
                     "name": "",
                     "id": 0
                 },
                 "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Unescape Whitespace",
+                    "id": 26
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Unescape Whitespace",
+                    "id": 26
+                },
+                "source_port": "",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": ""
             },
             {
                 "dir": 2,
@@ -162,41 +192,28 @@
             {
                 "dir": 2,
                 "source": {
+                    "name": "Generate Markdown",
+                    "id": 28
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
                     "name": "Cull JSON",
                     "id": 8
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
                 },
                 "target_port": "\u2717"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Unescape Whitespace",
-                    "id": 22
-                },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "\u2717"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Unescape Whitespace",
-                    "id": 22
-                },
-                "source_port": "",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": ""
             }
         ]
     },
@@ -217,24 +234,24 @@
                 "id": 17
             },
             {
-                "name": "Unescape Whitespace",
+                "name": "Check Roots",
                 "id": 21
             },
             {
-                "name": "String Concatenate",
+                "name": "Transpile Cards To Prolog",
                 "id": 22
             },
             {
-                "name": "Transpile Cards To Prolog",
-                "id": 23
-            },
-            {
-                "name": "Check Roots",
-                "id": 29
+                "name": "String Concatenate",
+                "id": 26
             },
             {
                 "name": "Check Orphans",
-                "id": 37
+                "id": 33
+            },
+            {
+                "name": "Unescape Whitespace",
+                "id": 34
             }
         ],
         "connections": [
@@ -254,26 +271,13 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Transpile Cards To Prolog",
-                    "id": 23
-                },
-                "source_port": "",
-                "target": {
-                    "name": "Check Roots",
-                    "id": 29
-                },
-                "target_port": ""
-            },
-            {
-                "dir": 1,
-                "source": {
                     "name": "Escape Whitespace",
                     "id": 17
                 },
                 "source_port": "",
                 "target": {
                     "name": "Transpile Cards To Prolog",
-                    "id": 23
+                    "id": 22
                 },
                 "target_port": ""
             },
@@ -281,12 +285,25 @@
                 "dir": 1,
                 "source": {
                     "name": "Transpile Cards To Prolog",
-                    "id": 23
+                    "id": 22
+                },
+                "source_port": "",
+                "target": {
+                    "name": "Check Roots",
+                    "id": 21
+                },
+                "target_port": ""
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "Transpile Cards To Prolog",
+                    "id": 22
                 },
                 "source_port": "",
                 "target": {
                     "name": "Check Orphans",
-                    "id": 37
+                    "id": 33
                 },
                 "target_port": ""
             },
@@ -307,12 +324,12 @@
                 "dir": 1,
                 "source": {
                     "name": "String Concatenate",
-                    "id": 22
+                    "id": 26
                 },
                 "source_port": "",
                 "target": {
                     "name": "Unescape Whitespace",
-                    "id": 21
+                    "id": 34
                 },
                 "target_port": ""
             },
@@ -320,12 +337,12 @@
                 "dir": 1,
                 "source": {
                     "name": "Check Roots",
-                    "id": 29
+                    "id": 21
                 },
                 "source_port": "",
                 "target": {
                     "name": "String Concatenate",
-                    "id": 22
+                    "id": 26
                 },
                 "target_port": "1"
             },
@@ -333,12 +350,12 @@
                 "dir": 1,
                 "source": {
                     "name": "Check Orphans",
-                    "id": 37
+                    "id": 33
                 },
                 "source_port": "",
                 "target": {
                     "name": "String Concatenate",
-                    "id": 22
+                    "id": 26
                 },
                 "target_port": "2"
             },
@@ -358,34 +375,8 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "Transpile Cards To Prolog",
-                    "id": 23
-                },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "\u2717"
-            },
-            {
-                "dir": 2,
-                "source": {
                     "name": "Unescape Whitespace",
-                    "id": 21
-                },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "\u2717"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Unescape Whitespace",
-                    "id": 21
+                    "id": 34
                 },
                 "source_port": "",
                 "target": {
@@ -397,36 +388,10 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "String Concatenate",
-                    "id": 22
+                    "name": "Check Roots",
+                    "id": 21
                 },
                 "source_port": "\u2717",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "\u2717"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Check Roots",
-                    "id": 29
-                },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": "\u2717"
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Check Orphans",
-                    "id": 37
-                },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
                 "target": {
                     "name": "",
                     "id": 0
@@ -439,7 +404,46 @@
                     "name": "Escape Whitespace",
                     "id": 17
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Transpile Cards To Prolog",
+                    "id": 22
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Check Orphans",
+                    "id": 33
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Unescape Whitespace",
+                    "id": 34
+                },
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -464,6 +468,19 @@
                 "source": {
                     "name": "Cull JSON",
                     "id": 8
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "String Concatenate",
+                    "id": 26
                 },
                 "source_port": "\u2717",
                 "target": {
@@ -550,7 +567,7 @@
                     "name": "$jq '.cards[] | { kind: \"card\", text: .name, id: .id }'",
                     "id": 10
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -563,7 +580,7 @@
                     "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
                     "id": 5
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -752,7 +769,7 @@
                     "name": "",
                     "id": 0
                 },
-                "target_port": "<span style=\"font-size: 11px; font-weight: 400;\">\u2717</span>"
+                "target_port": "\u2717"
             },
             {
                 "dir": 2,
@@ -774,16 +791,20 @@
         "name": "Escape Whitespace",
         "children": [
             {
+                "name": "'escapes.ohm'",
+                "id": 3
+            },
+            {
                 "name": "'escapes.rwr'",
-                "id": 4
+                "id": 6
+            },
+            {
+                "name": "?A",
+                "id": 7
             },
             {
                 "name": "Transpile",
                 "id": 9
-            },
-            {
-                "name": "'escapes.ohm'",
-                "id": 17
             },
             {
                 "name": "'Escapes'",
@@ -830,7 +851,7 @@
                 "source_port": "",
                 "target": {
                     "name": "'escapes.ohm'",
-                    "id": 17
+                    "id": 3
                 },
                 "target_port": "\u237a"
             },
@@ -843,7 +864,7 @@
                 "source_port": "",
                 "target": {
                     "name": "'escapes.rwr'",
-                    "id": 4
+                    "id": 6
                 },
                 "target_port": "\u237a"
             },
@@ -877,7 +898,7 @@
                 "dir": 1,
                 "source": {
                     "name": "'escapes.ohm'",
-                    "id": 17
+                    "id": 3
                 },
                 "source_port": "\u237a",
                 "target": {
@@ -890,7 +911,7 @@
                 "dir": 1,
                 "source": {
                     "name": "'escapes.rwr'",
-                    "id": 4
+                    "id": 6
                 },
                 "source_port": "\u237a",
                 "target": {
@@ -911,6 +932,19 @@
                     "id": 9
                 },
                 "target_port": "grammar name"
+            },
+            {
+                "dir": 1,
+                "source": {
+                    "name": "Transpile",
+                    "id": 9
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "?A",
+                    "id": 7
+                },
+                "target_port": ""
             },
             {
                 "dir": 2,
@@ -1059,7 +1093,7 @@
                     "name": "syncfilewrite",
                     "id": 8
                 },
-                "source_port": "<span style=\"\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -1200,12 +1234,12 @@
                     "name": "syncfilewrite",
                     "id": 9
                 },
-                "source_port": "<span style=\"\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
                 },
-                "target_port": "<span style=\"font-size: 11px; font-weight: 400;\">\u2717</span>"
+                "target_port": "\u2717"
             },
             {
                 "dir": 2,
@@ -1213,12 +1247,12 @@
                     "name": "$ swipl -g 'consult(checkroots).' -g 'main.' -g 'halt.'",
                     "id": 20
                 },
-                "source_port": "<span style=\"\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
                 },
-                "target_port": "<span style=\"font-size: 11px; font-weight: 400;\">\u2717</span>"
+                "target_port": "\u2717"
             }
         ]
     },
@@ -1341,7 +1375,7 @@
                     "name": "syncfilewrite",
                     "id": 9
                 },
-                "source_port": "<span style=\"\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -1354,7 +1388,7 @@
                     "name": "$ swipl -g 'consult(findorphans).' -g 'main.' -g 'halt.'",
                     "id": 19
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -1405,7 +1439,7 @@
                     "name": "$./unescape.js",
                     "id": 7
                 },
-                "source_port": "<span style=\"font-size: 12px; font-weight: 700;\">\u2717</span>",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0

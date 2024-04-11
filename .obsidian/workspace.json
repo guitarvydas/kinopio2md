@@ -13,9 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
+                "file": "tests/out-wdwnds.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "e3a7b9ca33cb4e64",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.11"
               }
             }
           },
@@ -31,7 +41,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,8 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "7e51d5ff6003aed0",
@@ -98,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
+                "file": "tests/out-wdwnds.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
+                "file": "tests/out-wdwnds.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md"
+                "file": "tests/out-wdwnds.md"
               }
             }
           }
@@ -159,56 +169,19 @@
       "command-palette:Open command palette": false
     }
   },
-  "floating": {
-    "id": "73effee992917365",
-    "type": "floating",
-    "children": [
-      {
-        "id": "599d7bae030279bb",
-        "type": "window",
-        "children": [
-          {
-            "id": "f04ded758354dcbf",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "cd561520875414ab",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "status 20231204/SCRIPT.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 246,
-        "y": 148,
-        "width": 1095,
-        "height": 583,
-        "maximize": false,
-        "zoom": 2
-      }
-    ]
-  },
-  "active": "95961c235b3d4e7b",
+  "active": "e3a7b9ca33cb4e64",
   "lastOpenFiles": [
+    "kinopio2md.dSYM/Contents/Resources/DWARF/kinopio2md",
+    "kinopio2md.dSYM/Contents/Resources/DWARF",
+    "kinopio2md.dSYM/Contents/Resources",
+    "kinopio2md.dSYM/Contents/Info.plist",
+    "kinopio2md.dSYM/Contents",
+    "kinopio2md.dSYM",
+    "kinopio2md",
+    "kinopio2md.o",
     "status 20231204/escapes2.rwr",
     "status 20231204/escapes.rwr",
     "status 20231204/escapes.ohm",
-    "status 20231204/video-escapes.ohm~",
-    "status 20231204/video-escapes2.rwr",
-    "status 20231204/#video-escapes.ohm#",
-    "status 20231204/videso-escapes2.rwr",
-    "content.pl",
-    "kinopio2md",
-    "kinopio2md.o",
-    "status 20231204/video-escapes.rwr~",
     "status 20231204/SCRIPT.md",
     "0dvsfbp/Zero-Dependency Approach vs Flow-Based Programming.md",
     "status 20231204/print tree Screenshot 2023-12-05 at 12.28.59 PM.png",
