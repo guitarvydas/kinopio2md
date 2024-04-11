@@ -104,7 +104,7 @@
                     "name": "Escape Whitespace",
                     "id": 17
                 },
-                "source_port": "err",
+                "source_port": "\u2717",
                 "target": {
                     "name": "?B",
                     "id": 14
@@ -143,7 +143,7 @@
                     "name": "Escape Whitespace",
                     "id": 17
                 },
-                "source_port": "err",
+                "source_port": "\u2717",
                 "target": {
                     "name": "",
                     "id": 0
@@ -620,7 +620,7 @@
         "name": "Transpile Cards To Prolog",
         "children": [
             {
-                "name": "'cards.rwr'",
+                "name": "'cards.rwr",
                 "id": 4
             },
             {
@@ -628,15 +628,15 @@
                 "id": 9
             },
             {
-                "name": "'cards.ohm'",
+                "name": "'cards.ohm",
                 "id": 17
             },
             {
-                "name": "'KinopioCards'",
+                "name": "'KinopioCards",
                 "id": 20
             },
             {
-                "name": "'support.js'",
+                "name": "'support.js",
                 "id": 23
             }
         ],
@@ -662,10 +662,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'support.js'",
+                    "name": "'support.js",
                     "id": 23
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -675,10 +675,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'KinopioCards'",
+                    "name": "'KinopioCards",
                     "id": 20
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -688,10 +688,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'cards.ohm'",
+                    "name": "'cards.ohm",
                     "id": 17
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -701,18 +701,18 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'cards.rwr'",
+                    "name": "'cards.rwr",
                     "id": 4
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 1,
                 "source": {
-                    "name": "'support.js'",
+                    "name": "'support.js",
                     "id": 23
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -722,10 +722,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'cards.ohm'",
+                    "name": "'cards.ohm",
                     "id": 17
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -735,10 +735,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'cards.rwr'",
+                    "name": "'cards.rwr",
                     "id": 4
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -748,10 +748,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'KinopioCards'",
+                    "name": "'KinopioCards",
                     "id": 20
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -791,11 +791,11 @@
         "name": "Escape Whitespace",
         "children": [
             {
-                "name": "'escapes.ohm'",
+                "name": "'escapes.ohm",
                 "id": 3
             },
             {
-                "name": "'escapes.rwr'",
+                "name": "'escapes.rwr",
                 "id": 6
             },
             {
@@ -807,11 +807,11 @@
                 "id": 9
             },
             {
-                "name": "'Escapes'",
+                "name": "'Escapes",
                 "id": 20
             },
             {
-                "name": "'escapessupport.js'",
+                "name": "'escapessupport.js",
                 "id": 23
             }
         ],
@@ -824,10 +824,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'escapessupport.js'",
+                    "name": "'escapessupport.js",
                     "id": 23
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -837,10 +837,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'Escapes'",
+                    "name": "'Escapes",
                     "id": 20
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -850,10 +850,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'escapes.ohm'",
+                    "name": "'escapes.ohm",
                     "id": 3
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -863,10 +863,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'escapes.rwr'",
+                    "name": "'escapes.rwr",
                     "id": 6
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -884,10 +884,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'escapessupport.js'",
+                    "name": "'escapessupport.js",
                     "id": 23
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -897,10 +897,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'escapes.ohm'",
+                    "name": "'escapes.ohm",
                     "id": 3
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -910,10 +910,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'escapes.rwr'",
+                    "name": "'escapes.rwr",
                     "id": 6
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -923,10 +923,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'Escapes'",
+                    "name": "'Escapes",
                     "id": 20
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "Transpile",
                     "id": 9
@@ -991,7 +991,7 @@
                 "id": 17
             },
             {
-                "name": "'content.pl'",
+                "name": "'content.pl",
                 "id": 23
             }
         ],
@@ -1004,10 +1004,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'content.pl'",
+                    "name": "'content.pl",
                     "id": 23
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -1051,10 +1051,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'content.pl'",
+                    "name": "'content.pl",
                     "id": 23
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "1then2",
                     "id": 10
@@ -1128,7 +1128,7 @@
                 "id": 13
             },
             {
-                "name": "'content.pl'",
+                "name": "'content.pl",
                 "id": 18
             },
             {
@@ -1145,10 +1145,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'content.pl'",
+                    "name": "'content.pl",
                     "id": 18
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -1192,10 +1192,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'content.pl'",
+                    "name": "'content.pl",
                     "id": 18
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "1then2",
                     "id": 13
@@ -1261,7 +1261,7 @@
         "name": "Check Orphans",
         "children": [
             {
-                "name": "'content.pl'",
+                "name": "'content.pl",
                 "id": 4
             },
             {
@@ -1286,10 +1286,10 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "'content.pl'",
+                    "name": "'content.pl",
                     "id": 4
                 },
-                "target_port": "\u237a"
+                "target_port": ""
             },
             {
                 "dir": 0,
@@ -1333,10 +1333,10 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "'content.pl'",
+                    "name": "'content.pl",
                     "id": 4
                 },
-                "source_port": "\u237a",
+                "source_port": "",
                 "target": {
                     "name": "1then2",
                     "id": 12
