@@ -21,6 +21,6 @@ print_root_only(ID) :-
     print_root_text(ID).
 print_root_text(ID):-
     text(ID,Text),
-    write(ID),write('...'),
+    %write(ID),write('...'),
     write(Text),
     nl.

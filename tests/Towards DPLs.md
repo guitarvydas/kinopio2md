@@ -1,0 +1,71 @@
+# observations
+- async
+    - sync everything denies reality
+- sketches on whiteboards
+- CPUs are meant to be single-threaded
+    - sensible way to use CPUs, vs. less-sensible way
+        - many threads per CPU ; extra software (inefficient) ; fake out context switching ; gotchas due to memory sharing
+- inheritance allows change of behaviour
+    - bad for understanding
+- no single happy path
+- processes are closures
+- software bigger, not simpler, after 50+ years
+- SL - pure FP -> smallness
+- .then(), promises, etc. are confusing
+- function-based notation does not cover CPU abilities
+- ground truth has changed drastically
+    - memory is cheap an plentiful
+        - why GC?
+        - no need for classical, low-level optimization
+        - more than 1 stack is possible
+    - CPUs are cheap an plentiful
+        - back to single-threaded
+            - avoid gotchas of memory sharing
+        - bowl of CPUs
+            - 1 cpu per thread
+        - can afford to not share memory
+- subroutines are not functions
+- hidden dependencies
+- affect build-and-forget
+- affect scalability
+- discourage free thought
+- paradigm (sync) built into substrate (low levels)
+- callstack == homogenous list
+- recursion good for sync/atomic single-CPU, bad for distributed
+- function-based programming is only 1 paradigm - of many possible paradigms - for executing subroutines
+- ### See Also
+    - Takeaways
+	- UNIX pipes
+	- Networking
+	- Ethernet (no sync)
+# in practice
+- 0D
+- graphml (XML)
+# principles
+- SEND in addition to CALL
+- Leaf & Container
+- I/O ports
+- layers
+- locality of reference
+- every diagram is stable
+- every diagram must make stand-alone sense
+    - details may be elided, but, meaning is stable
+- no builtin paradigm
+- give devs better tools
+    - will result in more innovation
+# Example
+- Echo
+    - 2 boxes with ports & gates
+- 1 CPU per thread
+# Other Examples, See Also
+- arith0d
+- vsh0d
+- llm0d
+- transpile
+- abc0d
+- delay0d
+- 0D odin
+- 0D python
+- helloworld0D
+- scm2xxx
+- 0D cookbook

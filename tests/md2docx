@@ -1,0 +1,1 @@
+pandoc -s -f markdown -o $2.docx $1

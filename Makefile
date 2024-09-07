@@ -1,3 +1,8 @@
+SRC="tests/t4a.json"
+#SRC="tests/kartik-20240822.json"
+#SRC="tests/Towards DPLs.json"
+#SRC="tests/Simplicity - Familiarity.json"
+#SRC="tests/copywdwnds.json"
 _00_=.
 _0D_=0D/python
 das2jsondir=./0D/das2json
@@ -24,8 +29,12 @@ dev: run
 
 run: _.py kinopio2md.drawio.json transpile.drawio.json
 	./clr
-	python3 _.py ${_00_} ${_0D_} "tests/copywdwnds.json" main kinopio2md.drawio.json transpile.drawio.json
-	python3 _.py ${_00_} ${_0D_} "tests/copywdwnds.json" check-main kinopio2md.drawio.json transpile.drawio.json
+	python3 _.py ${_00_} ${_0D_} ${SRC} main kinopio2md.drawio.json transpile.drawio.json
+	@echo
+	@echo
+	@echo
+	@echo Double-check: see that the following set of roots makes sense...
+	python3 _.py ${_00_} ${_0D_} ${SRC} check-main kinopio2md.drawio.json transpile.drawio.json
 
 _.py : main.py ${0D}
 	cat ${0D} main.py >_.py

@@ -23,9 +23,11 @@
             "id": "e3a7b9ca33cb4e64",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.5.11"
+                "file": "tests/Towards DPLs.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
@@ -108,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tests/out-wdwnds.md",
+                "file": "tests/Towards DPLs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tests/out-wdwnds.md",
+                "file": "tests/Towards DPLs.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tests/out-wdwnds.md"
+                "file": "tests/Towards DPLs.md"
               }
             }
           }
@@ -171,17 +173,19 @@
   },
   "active": "e3a7b9ca33cb4e64",
   "lastOpenFiles": [
-    "clr",
-    "_.py",
-    "0D/rt/0d.rt",
-    "0D/rt",
-    "0D/python/test/trace.txt",
-    "0D/python/test/test.abc",
-    "0D/python/test/simple0d4.drawio.json",
-    "0D/python/test/simple0d4.drawio",
-    "0D/python/test/simple0d3.drawio.json",
-    "0D/python/test/simple0d3.drawio",
-    "0D/python/test/simple00d.drawio.json",
+    "jq-connections~",
+    "jq-connections",
+    "tests/t4a.json~",
+    "tests/t4a.json",
+    "tests/#t4a.json#",
+    "tests/kartik-20240822.json",
+    "tests/Towards DPLs.md",
+    "tests/Towards DPLs.json",
+    "tests/Towards DPLs(2).json",
+    "tests/Towards DPLs(1).json",
+    "tests/md2docx",
+    "tests/Simplicity-Familiarity.docx",
+    "tests/Simplicity - Familiarity.md",
     "0D/python/test/arith0d-main.drawio.svg",
     "0D/python/test/agency/examples/README.md",
     "0D/python/test/agency/assets/dracula.png",
@@ -214,8 +218,6 @@
     "README.md",
     "0D vs FBP (2).md",
     "kjson/points.md",
-    "0dvsfbp/0dvsfbp-points.md",
-    "0dvsfbp/prompt.md",
-    "0dvsfbp/0dvsfbp First Attempt.md"
+    "0dvsfbp/0dvsfbp-points.md"
   ]
 }

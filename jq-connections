@@ -1,0 +1,1 @@
+jq '.connections[] | {kind: "connection", from: .startItemId, to: .endItemId, type: .connectionTypeId}' <tests/t4a.json
