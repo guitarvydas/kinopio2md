@@ -517,7 +517,7 @@
                 "id": 3
             },
             {
-                "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
+                "name": "$jq '.connections[] | {kind: \"connection\", from: .startItemId, to: .endItemId, type: .connectionTypeId}'",
                 "id": 5
             },
             {
@@ -534,7 +534,7 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
+                    "name": "$jq '.connections[] | {kind: \"connection\", from: .startItemId, to: .endItemId, type: .connectionTypeId}'",
                     "id": 5
                 },
                 "target_port": ""
@@ -568,7 +568,7 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
+                    "name": "$jq '.connections[] | {kind: \"connection\", from: .startItemId, to: .endItemId, type: .connectionTypeId}'",
                     "id": 5
                 },
                 "source_port": "",
@@ -594,7 +594,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$jq '.connections[] | {kind: \"connection\", from: .startCardId, to: .endCardId, type: .connectionTypeId}'",
+                    "name": "$jq '.connections[] | {kind: \"connection\", from: .startItemId, to: .endItemId, type: .connectionTypeId}'",
                     "id": 5
                 },
                 "source_port": "\u2717",
